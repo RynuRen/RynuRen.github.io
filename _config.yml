@@ -1,7 +1,7 @@
 # Jekyll configuration
 
-name: Dev Learning Diary
-description: how..?
+name: Dev Learning Notes
+description: why..?
 
 # Url is currently only used only for the RSS feed in feed.xml
 url: http://RynuRen.github.io
@@ -38,7 +38,7 @@ yandex_metrica:
 # Set this to your disqus shortname to enable comments. Note that the 'comments'
 # setting below must also be true. Individual posts can override 'comments' to
 # disable on a post-by-post basis
-disqus: streetturtle
+disqus: none
 comments: false
 
 permalink: /:year/:month/:title/

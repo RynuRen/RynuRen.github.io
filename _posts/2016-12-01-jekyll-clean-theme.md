@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Jekyll Dark Clean Theme"
+published: false
 date: 2016-12-01 16:25:06
 tags: jekyll
 description: Here I want to introduce you the dark theme for Jekyll.
