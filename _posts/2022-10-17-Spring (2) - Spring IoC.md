@@ -7,7 +7,7 @@ toc: true
 tags:
  - spring boot
 ---
-
+---
 1. 개발 환경 준비
 2. **_Spring IoC_**
 3. Spring MVC
@@ -16,14 +16,16 @@ tags:
 6. AOP / Filter / Interceptor
 7. File Upload / Download
 
+---
 # Spring IoC (제어 역전; Inversion of Control)
 * 제어권이 프레임워크에게 있어 필요에 따라 스프링 프레임워크가 사용자의 코드를 호출
 
+---
 # Bean 생성 및 주입
-## 1) @Congiguration 파일의 메소드에서 객체 반환
+## 1) `@Congiguration` 파일의 메소드에서 객체 반환
 * 메소드 자체를 bean으로 등록
 
-### @configuration 작성
+### `@Configuration` 작성
 * `@Configuration`: 해당 클래스가 Spring 설정에 사용되는 클래스라는 것을 의미
 클래스 이름은 자유롭게 지정 가능
 
@@ -81,6 +83,7 @@ public class DemoApplication {
 }
 {% endhighlight %}
 
+---
 ## 2) XML 파일 Element 작성
 
 ### xml 파일 작성
@@ -117,12 +120,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
         System.out.println("bean 생성2 : " + i);
 {% endhighlight %}
 
-## 3) @ComponentScan
+---
+## 3) `@ComponentScan` 으로 `@Component`표시된 클래스 탐색
 * `@ComponentScan`: Component를 스캔해준다
 `basePackage`: 스캔을 시작할 루트(최상위) package를 정해줌
 `basePackageClasses`: 설정된 클래스의 패키지로부터 모든 하위의 패키지에 대해 컴포넌트를 스캔
 
-### @Configuration 수정
+### `@Configuration` 수정
 * \src\main\java\com\example\demo\config\BeanConfig.java
 
 >Java
@@ -168,6 +172,7 @@ public class Bean3 {
 }
 {% endhighlight %}
 
+
 ### main method 수정
 * \src\main\java\com\example\demo\DemoApplication.java
 
@@ -183,6 +188,7 @@ System.out.println(b.run());
 ...
 {% endhighlight %}
 
+---
 # Stereo Type Annotation
 * 스프링에서 기본적으로 제공
 * 특수한 기능을 가지고 있음
@@ -192,6 +198,7 @@ System.out.println(b.run());
 3. `@Repository`: Persistence 역할을 하는 클래스에 사용
 4. `@Component`: 위 3가지 어노테이션의 상위(부모) 객체
 
+---
 # 실습
 1. 프로젝트 생성(이름: basic)
 2. 2번째 pdf 파일의 bean 생성 실습 적용

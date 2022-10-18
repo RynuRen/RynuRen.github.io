@@ -7,9 +7,9 @@ toc: true
 tags:
  - java
 ---
-
+---
 # 예외 처리
-(기초 자바에서 넘어간...)
+(기초 자바 강의에서 넘어간...)
 * 예외 (Exception)
 사용자의 잘못된 조작, 개발자의 잘못된 코딩으로 인한 오류
 예외가 발생되면 프로그램이 바로 종료되지만 예외 처리를 추가하면 정상 실행 상태로 돌아갈 수 있다.
@@ -19,6 +19,7 @@ tags:
 
 ---
 ## 예외의 종류
+
 >Java
 {:.filename}
 {% highlight java %}
@@ -197,7 +198,7 @@ public class ThrowExam {
 {% endhighlight %}
 
 
-* ErrorExam03_thorw
+* ErrorExam03_thorw.java
 
 >Java
 {:.filename}
