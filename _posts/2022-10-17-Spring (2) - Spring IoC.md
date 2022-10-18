@@ -16,6 +16,8 @@ tags:
 6. AOP / Filter / Interceptor
 7. File Upload / Download
 
+# Spring IoC (제어 역전; Inversion of Control)
+* 제어권이 프레임워크에게 있어 필요에 따라 스프링 프레임워크가 사용자의 코드를 호출
 
 # Bean 생성 및 주입
 ## 1) @Congiguration 파일의 메소드에서 객체 반환
