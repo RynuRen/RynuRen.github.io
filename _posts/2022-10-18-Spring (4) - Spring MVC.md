@@ -53,7 +53,7 @@ tags:
 url 주소의 ? 뒤가 파라미터(매개변수), = 기준으로 Lv는 변수명, Rv는 값
 
 * `@ModelAttribute`: web view에 노출할 model attribute에 반환할 메소드나 메소드 파라미터를 묶어줌
-* `@ResponseBody`: REST 통신을 하는 메소드
+* `@RequstBody`: REST 통신을 하는 메소드
     대표적 REST통신: AJAX기술 (새로고침 없이 페이지를 업데이트)
 
 ---
