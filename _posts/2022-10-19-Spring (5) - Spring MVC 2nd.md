@@ -49,7 +49,7 @@ public String string() {
 
 ...
 {% endhighlight %}
-화면 출력 : /html/string.html
+* 화면 출력 : /html/string.html
 
 
 ### void
@@ -67,7 +67,7 @@ public void htmlVoid() {
 
 ...
 {% endhighlight %}
-화면 출력 : html/void.html
+* 화면 출력 : html/void.html
 
 
 ### Map<키, 값>
@@ -85,7 +85,7 @@ public Map<String, Object> htmlMap(Map<String, Object> map) {
 
 ...
 {% endhighlight %}
-화면 출력 : html/map.html
+* 화면 출력 : html/map.html
 
 
 ### Model
@@ -102,7 +102,7 @@ public Model htmlModel(Model model) {
 
 ...
 {% endhighlight %}
-화면 출력 : html/model.html
+* 화면 출력 : html/model.html
 
 
 ### ModelAndView
@@ -122,7 +122,7 @@ public ModelAndView htmlModelAndView(){
 
 ...
 {% endhighlight %}
-화면 출력 : html/model_and_view.html
+* 화면 출력 : html/model_and_view.html
 
 
 ### Object (DTO : Date transter object)
@@ -165,7 +165,7 @@ public class Member {
 </html>
 {% endhighlight %}
 
-`[[${}]]` : Thymeleaf 템플릿: 데이터를 주고 받을때 기본이 되는 형식
+* `[[${}]]` : Thymeleaf 템플릿: 데이터를 주고 받을때 기본이 되는 형식
 
 * \src\main\java\com\example\basic\controller\HtmlController.java
 
@@ -183,7 +183,7 @@ public Member htmlObject(){
 
 ...
 {% endhighlight %}
-화면 출력 : html/object.html
+* 화면 출력 : html/object.html
 
 ---
 ## `@ResponseBody`
@@ -211,7 +211,7 @@ public String jsonString() {
 
 
 ### Map
-json의 형태로 응답
+* json의 형태로 응답
 
 >리턴 타입이 map이나 model클래스 일 경우 json형태로 응답한다
 {: .note}
@@ -234,9 +234,8 @@ public Map<String, Object> jsonMap(Map<String, Object> map) {
 ...
 {% endhighlight %}
 
-#### *json의 형태
-키값-밸류값 으로 이루어진 자바스크립트의 파일 형식
-
+>json의 형태
+* 키값-밸류값 으로 이루어진 자바스크립트의 파일 형식
 {% highlight bash %}
 {
     "userId":1,
@@ -247,7 +246,7 @@ public Map<String, Object> jsonMap(Map<String, Object> map) {
 
 
 ### Object (DTO : Date transter object)
-json의 형태로 응답
+* json의 형태로 응답
 
 >Java
 {:.filename}
@@ -265,7 +264,7 @@ public Member jsonObject(){
 
 
 ### List
-배열의 형태로 응답
+* 배열의 형태로 응답
 
 >Java
 {:.filename}
@@ -300,7 +299,7 @@ public void exam(){
 ...
 {% endhighlight %}
 
-2) http://localhost:8080/json/exam 접속 시 json 데이터 응답하기
+2) http://localhost:8080/json/exam 접속 시 json 데이터로 응답하기
 
 * \src\main\java\com\example\basic\controller\Json1Controller.java
 
@@ -371,6 +370,7 @@ public class MethodController {
 
 ---
 ## `@PostMapping`
+* 데이터베이스 등의 저장소에 리소스를 저장할 때
 
 >Java
 {:.filename}
