@@ -19,13 +19,11 @@ tags:
 ---
 # 응답처리
 
-### HTML 경로 표기법
+>HTML 경로 표기법
 * / : 웹사이트의 루트 폴더 (절대 경로)
-
 * . : 현재 웹페이지가 소속된 폴더 (상대 경로)
 * .. : 현재 웹페이지의 부모 폴더 (상대 경로)
 * 자식폴더명 : 현재 소속된 폴더의 자식 폴더 (상대 경로)
-
 출처 [https://sas-study.tistory.com/m/127](https://sas-study.tistory.com/m/127)
 
 ---
@@ -33,74 +31,99 @@ tags:
 * @RequestMapping(value="", method = RequestMethod.GET) 와 같은 의미
 * Get요청을 받았을 때 사용
 
-*메소드의 반환값에 따른 형태
+
 ### String
-    반환값에 보여줄 경로의 페이지 명시
+* 반환값에 보여줄 경로의 페이지 명시
 
 * \src\main\java\com\example\basic\controller\HtmlController.java
 
 >Java
 {:.filename}
 {% highlight java linenos %}
+...
+
 @GetMapping("/html/string")
 public String string() {
     return "/html/string";
 }
+
+...
 {% endhighlight %}
 화면 출력 : /html/string.html
 
+
 ### void
-    요청에 명시된 페이지 표시
+* 요청에 명시된 페이지 표시
 
 >Java
 {:.filename}
 {% highlight java linenos %}
+...
+
 @GetMapping("html/void")
 public void htmlVoid() {
 
 }
+
+...
 {% endhighlight %}
 화면 출력 : html/void.html
+
 
 ### Map<키, 값>
 
 >Java
 {:.filename}
 {% highlight java linenos %}
+...
+
 @GetMapping("html/map")
 public Map<String, Object> htmlMap(Map<String, Object> map) {
     Map<String, Object> map2 = new HashMap<String, Object>();
     return map2;
 }
+
+...
 {% endhighlight %}
 화면 출력 : html/map.html
+
 
 ### Model
 
 >Java
 {:.filename}
 {% highlight java linenos %}
+...
+
 @GetMapping("html/model")
 public Model htmlModel(Model model) {
     return model;
 }
+
+...
 {% endhighlight %}
 화면 출력 : html/model.html
 
+
 ### ModelAndView
-    setViewName 메소드로 출력할 화면을 지정
+* setViewName 메소드로 출력할 화면을 지정
 
 >Java
 {:.filename}
 {% highlight java linenos %}
+...
+
 @GetMapping("html/modelAndView")
 public ModelAndView htmlModelAndView(){
     ModelAndView mav = new ModelAndView();
     mav.setViewName("html/model_and_view");
     return mav;
 }
+
+...
 {% endhighlight %}
 화면 출력 : html/model_and_view.html
+
 
 ### Object (DTO : Date transter object)
 
@@ -149,18 +172,23 @@ public class Member {
 >Java
 {:.filename}
 {% highlight java linenos %}
+...
+
 @GetMapping("html/object")
 public Member htmlObject(){
     Member member = new Member();
     member.setName("kim");
     return member; // member가 html의 member에 전송됨
 }
+
+...
 {% endhighlight %}
 화면 출력 : html/object.html
 
 ---
 ## `@ResponseBody`
 * 별도의 html 페이지 없이 반환할 데이터를 전송
+
 
 ### String
 * 리턴 문자열을 데이터만 body에 담아 전송
@@ -170,12 +198,17 @@ public Member htmlObject(){
 >Java
 {:.filename}
 {% highlight java linenos %}
+...
+
 @GetMapping("/json/string")
 @ResponseBody
 public String jsonString() {
     return "반환할 데이터";
 }
+
+...
 {% endhighlight %}
+
 
 ### Map
 json의 형태로 응답
@@ -186,6 +219,8 @@ json의 형태로 응답
 >Java
 {:.filename}
 {% highlight java linenos %}
+...
+
 @GetMapping("json/map")
 @ResponseBody
 public Map<String, Object> jsonMap(Map<String, Object> map) {
@@ -195,9 +230,11 @@ public Map<String, Object> jsonMap(Map<String, Object> map) {
     map2.put("key3", true);
     return map2;
 }
+
+...
 {% endhighlight %}
 
-#### json의 형태
+#### *json의 형태
 키값-밸류값 으로 이루어진 자바스크립트의 파일 형식
 
 {% highlight bash %}
@@ -207,6 +244,7 @@ public Map<String, Object> jsonMap(Map<String, Object> map) {
     "userPw":"password"
 }
 {% endhighlight %}
+
 
 ### Object (DTO : Date transter object)
 json의 형태로 응답
@@ -224,6 +262,7 @@ public Member jsonObject(){
     return member;
 }
 {% endhighlight %}
+
 
 ### List
 배열의 형태로 응답
@@ -244,26 +283,32 @@ public List<String> jsonList(){
 
 ---
 ## 연습
-1. http://localhost:8080/html/exam 접속 시 exam.html 띄우기
+1) http://localhost:8080/html/exam 접속 시 exam.html 띄우기
 
 * \src\main\java\com\example\basic\controller\HtmlController.java
 
 >Java
 {:.filename}
 {% highlight java %}
+...
+
 @GetMapping("html/exam")
 public void exam(){
 
 }
+
+...
 {% endhighlight %}
 
-2. http://localhost:8080/json/exam 접속 시 json 데이터 응답하기
+2) http://localhost:8080/json/exam 접속 시 json 데이터 응답하기
 
 * \src\main\java\com\example\basic\controller\Json1Controller.java
 
 >Java
 {:.filename}
 {% highlight java %}
+...
+
 @GetMapping("json/exam")
 @ResponseBody
 public Map<String, Object> jsonExam(){
@@ -287,6 +332,8 @@ public Map<String, Object> jsonExam(){
 
     return map;
 }
+
+...
 {% endhighlight %}
 
 ---
@@ -328,14 +375,18 @@ public class MethodController {
 >Java
 {:.filename}
 {% highlight java linenos %}
+...
+
 @PostMapping("req/post")
 public String post(){
     return"POST";
 }
+
+...
 {% endhighlight %}
 
 ---
-## 요청 처리시 사용하는 클래스와 어노테이션
+## 요청 처리 시 사용하는 클래스와 어노테이션
 * HttpServletRequest - 가장 전통적으로 사용되는 방식
 * **RequestParam (편리함)**
     파라미터 명칭에 맞게 변수 사용
@@ -375,12 +426,13 @@ public class RequustController {
     }
 }
 {% endhighlight %}
-
+입력
 >http://localhost:8080/req/http?name=abc&pageNum=123
 
-    url 주소에서 ? 뒤에 오는 항목들이 모두 파라미터(매개변수)
-    파라미터의 형태는 '변수명=값', 파라미터간 구분은 &
+url 주소에서 ? 뒤에 오는 항목들이 모두 파라미터(매개변수)
+파라미터의 형태는 '변수명=값', 파라미터간 구분은 &
 
+출력
 >abc, 123
 
 ---
@@ -398,9 +450,10 @@ public String param1(@RequestParam("key1") String key, @RequestParam int key2){
     return key + ", " + key2;
 }
 {% endhighlight %}
-
+입력
 >http://localhost:8080/req/param1?key1=abcd&key2=1234
 
+출력
 >abcd, 1234
 
 
@@ -415,6 +468,8 @@ public String param2(@RequestParam Map<String, Object> map){
 }
 {% endhighlight %}
 
+입력
 >http://localhost:8080/req/param2?name=abcde&pageNum=12&address=seoul
 
+출력
 >{name=abcde, pageNum=12, address=seoul}
