@@ -28,7 +28,7 @@ tags:
 
 ---
 ## `@GetMapping(value="")`
-* @RequestMapping(value="", method = RequestMethod.GET) 와 같은 의미
+* `@RequestMapping(value="", method = RequestMethod.GET)` 와 같은 의미
 * Get요청을 받았을 때 사용
 
 
@@ -144,7 +144,6 @@ public class Member {
     private String userId;
     private String userPassword;
 }
-
 {% endhighlight %}
 
 >HTML
@@ -251,6 +250,8 @@ public Map<String, Object> jsonMap(Map<String, Object> map) {
 >Java
 {:.filename}
 {% highlight java linenos %}
+...
+
 @GetMapping("json/object")
 @ResponseBody
 public Member jsonObject(){
@@ -260,6 +261,8 @@ public Member jsonObject(){
     member.setUserPassword("password");
     return member;
 }
+
+...
 {% endhighlight %}
 
 
@@ -269,6 +272,8 @@ public Member jsonObject(){
 >Java
 {:.filename}
 {% highlight java linenos %}
+...
+
 @GetMapping("json/list")
 @ResponseBody
 public List<String> jsonList(){
@@ -278,6 +283,8 @@ public List<String> jsonList(){
     list.add("list3");
     return list;
 }
+
+...
 {% endhighlight %}
 
 ---
