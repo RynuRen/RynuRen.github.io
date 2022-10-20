@@ -2,10 +2,11 @@
 layout: post
 title: Spring (3) - Spring IoC 2nd
 date:   2022-10-18
-description: Spring (3) - Spring IoC 이어서...
+description: Spring (3) - Bean 생성 연습과 Maven
 toc: true
 tags:
  - spring boot
+ - java
 ---
 ---
 1. 개발 환경 준비

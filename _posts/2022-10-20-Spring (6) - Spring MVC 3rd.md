@@ -2,10 +2,11 @@
 layout: post
 title: Spring (6) - Spring MVC 3rd
 date:   2022-10-20
-description: Spring MVC - 
+description: PathVariable과 ModeAttribute를 이용한 요청처리
 toc: true
 tags:
  - spring boot
+ - java
 ---
 ---
 1. 개발 환경 준비

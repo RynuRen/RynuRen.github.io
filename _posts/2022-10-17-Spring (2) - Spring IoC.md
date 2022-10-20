@@ -2,10 +2,11 @@
 layout: post
 title: Spring (2) - Spring IoC
 date:   2022-10-17
-description: Spring (2) - Spring IoC
+description: Bean 생성
 toc: true
 tags:
  - spring boot
+ - java
 ---
 ---
 1. 개발 환경 준비

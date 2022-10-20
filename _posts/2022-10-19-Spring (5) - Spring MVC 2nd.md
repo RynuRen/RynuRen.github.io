@@ -2,10 +2,11 @@
 layout: post
 title: Spring (5) - Spring MVC 2nd
 date:   2022-10-19
-description: Spring (5) - Spring MVC 2nd
+description: GetMapping과 ResponseBody를 이용한 응답처리, HttpServletRequest와 RequestParam을 이용한 요청처리
 toc: true
 tags:
  - spring boot
+ - java
 ---
 ---
 1. 개발 환경 준비

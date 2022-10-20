@@ -2,10 +2,11 @@
 layout: post
 title: Spring (4) - Spring MVC
 date:   2022-10-18
-description: Spring (4) - Spring MVC
+description: MVC 개념과 Controller에 대해, RequestMapping을 이용한 응답처리
 toc: true
 tags:
  - spring boot
+ - java
 ---
 ---
 1. 개발 환경 준비
