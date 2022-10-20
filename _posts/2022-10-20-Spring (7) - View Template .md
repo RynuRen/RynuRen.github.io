@@ -352,7 +352,7 @@ public String gerUser(Model model, @RequestParam String userId){
             <td>비밀번호</td>
         </tr>
         <tr th:each="member : ${memberList}">
-            <span th:if="${userId == member.userId}">
+            <span th:if="${userId} == ${member.userId}">
                 <td th:text="${member.userId}"></td>
                 <td th:text="${member.name}"></td>
                 <td th:text="${member.userPassword}"></td>
