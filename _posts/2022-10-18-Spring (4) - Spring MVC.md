@@ -59,7 +59,7 @@ url 주소의 ? 뒤가 파라미터(매개변수), = 기준으로 Lv는 변수�
 ---
 # 응답 처리
 
-## @RequestMapping
+## `@RequestMapping`
 * web 요청을 메소드로 매핑
 
 >/second 주소가 들어왔을 때 (localhost:8080/second 혹은 127.0.0.1:8080/second) 작동하는 메소드 작성해보기
@@ -70,8 +70,12 @@ url 주소의 ? 뒤가 파라미터(매개변수), = 기준으로 Lv는 변수�
 >Java
 {:.filename}
 {% highlight java linenos %}
+...
+
 @RequestMapping("/second")
 public String second() {
     return "second";
 }
+
+...
 {% endhighlight %}

@@ -114,7 +114,7 @@ public Model htmlModel(Model model) {
 ...
 
 @GetMapping("html/modelAndView")
-public ModelAndView htmlModelAndView(){
+public ModelAndView htmlModelAndView() {
     ModelAndView mav = new ModelAndView();
     mav.setViewName("html/model_and_view");
     return mav;
@@ -174,7 +174,7 @@ public class Member {
 ...
 
 @GetMapping("html/object")
-public Member htmlObject(){
+public Member htmlObject() {
     Member member = new Member();
     member.setName("kim");
     return member; // member가 html의 member에 전송됨
@@ -254,7 +254,7 @@ public Map<String, Object> jsonMap(Map<String, Object> map) {
 
 @GetMapping("json/object")
 @ResponseBody
-public Member jsonObject(){
+public Member jsonObject() {
     Member member = new Member();
     member.setName("홍길동");
     member.setUserId("user01");
@@ -276,7 +276,7 @@ public Member jsonObject(){
 
 @GetMapping("json/list")
 @ResponseBody
-public List<String> jsonList(){
+public List<String> jsonList() {
     List<String> list = new ArrayList<>();
     list.add("list1");
     list.add("list2");
@@ -317,7 +317,7 @@ public void exam(){
 
 @GetMapping("json/exam")
 @ResponseBody
-public Map<String, Object> jsonExam(){
+public Map<String, Object> jsonExam() {
     Map<String, Object> map = new HashMap<>();
     List<Member> memList = new ArrayList<>();
     Member mem1 = new Member(), mem2 = new Member();
@@ -395,14 +395,14 @@ public String post(){
 ---
 ## 요청 처리 시 사용하는 클래스와 어노테이션
 * HttpServletRequest - 가장 전통적으로 사용되는 방식
-* **RequestParam (편리함)**
+* **`@RequestParam` (편리함)**
     파라미터 명칭에 맞게 변수 사용
     파라미터 종류 및 개수 상관없이 사용
-* **PathVariable (깔끔함)** - 요청 주소의 경로명 활용
-* **ModelAttribute (명확함)**
+* **`@PathVariable` (깔끔함)** - 요청 주소의 경로명 활용
+* **`@ModelAttribute` (명확함)**
     Model / DTO / VO 등 객체와 연계하여 활용
     JPA, MyBatis 등 ORM 프레임워크 활용
-* RequestBody (AJAX 요청 시 주로 사용)
+* `@RequestBody` (AJAX 요청 시 주로 사용)
     보편적인 요청 파라미터 형식을 사용하지 않고 JSON 형태의 파라미터 사용
 (Query String Parameter, Form Data, Payload)
     사용 시 메소드 방식을 POST로 지정
@@ -426,20 +426,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RequustController {
     @GetMapping("req/http")
-    public String http(HttpServletRequest request){
+    public String http(HttpServletRequest request) {
         String name = request.getParameter("name");
         String pageNum = request.getParameter("pageNum");
         return name + ", " + pageNum;
     }
 }
 {% endhighlight %}
-입력
+요청
 >http://localhost:8080/req/http?name=abc&pageNum=123
 
 url 주소에서 ? 뒤에 오는 항목들이 모두 파라미터(매개변수)
 파라미터의 형태는 '변수명=값', 파라미터간 구분은 &
 
-출력
+응답
 >abc, 123
 
 ---
@@ -452,15 +452,19 @@ url 주소에서 ? 뒤에 오는 항목들이 모두 파라미터(매개변수)
 >Java
 {:.filename}
 {% highlight java linenos %}
+...
+
 @GetMapping("req/param1")
-public String param1(@RequestParam("key1") String key, @RequestParam int key2){
+public String param1(@RequestParam("key1") String key, @RequestParam int key2) {
     return key + ", " + key2;
 }
+
+...
 {% endhighlight %}
-입력
+요청
 >http://localhost:8080/req/param1?key1=abcd&key2=1234
 
-출력
+응답
 >abcd, 1234
 
 
@@ -469,14 +473,17 @@ public String param1(@RequestParam("key1") String key, @RequestParam int key2){
 >Java
 {:.filename}
 {% highlight java linenos %}
+...
+
 @GetMapping("req/param2")
-public String param2(@RequestParam Map<String, Object> map){
+public String param2(@RequestParam Map<String, Object> map) {
     return map.toString();
 }
-{% endhighlight %}
 
-입력
+...
+{% endhighlight %}
+요청
 >http://localhost:8080/req/param2?name=abcde&pageNum=12&address=seoul
 
-출력
+응답
 >{name=abcde, pageNum=12, address=seoul}
