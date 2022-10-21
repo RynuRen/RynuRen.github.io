@@ -183,7 +183,7 @@ public String gugudan(Model model, @RequestParam int dan) {
 {% endhighlight %}
 
 ---
-## 조건문 연습3
+## 조건문 연습4
 * 로그인 기능 구현
 * localhost:8080/login?id=admin&pw=1234 -> 성공적으로 로그인 되었습니다.
 * 아이디가 틀렸을 경우 -> 아이디를 확인 해주세요.
@@ -230,7 +230,7 @@ public String login(Model model, @RequestParam String id, @RequestParam String p
 {% endhighlight %}
 
 ---
-## 조건문 연습4
+## 조건문 연습5
 * 로그인 기능 구현 고도화
 * localhost:8080/login2 -> home.html 이동
 * localhost:8080/login2?id=admin&pw=1234 -> admin.html 이동
