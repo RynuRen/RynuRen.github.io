@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Spring (8) - View Template
+title: Spring (8) - View Template 2nd
 date:   2022-10-21
 description: Thymeleaf와 Controller에서 조건문 연습
 toc: true
@@ -251,6 +251,27 @@ public String login2(Model model, @RequestParam(defaultValue = "") String id,
         return "admin";
     } else if (id.equals("user") && pw.equals("5678")) {
         model.addAttribute("userId", id);
+        return "userPage";
+    } else {
+        return "loginFail";
+    }
+}
+{% endhighlight %}
+
+* Map을 이용한 풀이
+
+>Java
+{:.filename}
+{% highlight java linenos %}
+@GetMapping("login2")
+public String login2(Model model, @RequestParam Map<String, Object> map) {
+    if (map.isEmpty()) {
+        return "home";
+    } else if (map.get("id").equals("admin") && map.get("pw").equals("1234")) {
+        model.addAttribute("userId", "admin");
+        return "admin";
+    } else if (map.get("id").equals("user") && map.get("pw").equals("5678")) {
+        model.addAttribute("userId", "user");
         return "userPage";
     } else {
         return "loginFail";
