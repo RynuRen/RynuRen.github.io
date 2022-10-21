@@ -2,7 +2,7 @@
 layout: post
 title: Spring (8) - View Template
 date:   2022-10-21
-description: Thymeleaf 조건문 연습
+description: Thymeleaf와 Controller에서 조건문 연습
 toc: true
 tags:
  - spring boot
@@ -32,7 +32,7 @@ tags:
 {% endhighlight %}
 
 ---
-## Thymeleaf 조건문 연습1
+## 조건문 연습1
 
 * \src\main\java\com\example\basic\controller\ThymeleafController.java
 
@@ -89,7 +89,7 @@ public String admin(Model model, @RequestParam String userId){
 {% endhighlight %}
 
 ---
-## Thymeleaf 조건문 연습2
+## 조건문 연습2
 
 * \src\main\java\com\example\basic\controller\ThymeleafController.java
 
@@ -131,7 +131,7 @@ public String admin2(Model model, @RequestParam String userId) {
 {% endhighlight %}
 
 ---
-## Thymeleaf 조건문 연습3
+## 조건문 연습3
 * 구구단 자동생성 페이지
 * localhost:8080/gugudan?dan=5 -> 2단부터 5단까지 출력하는 페이지 구현
 
@@ -183,7 +183,7 @@ public String gugudan(Model model, @RequestParam int dan) {
 {% endhighlight %}
 
 ---
-## Thymeleaf 조건문 연습3
+## 조건문 연습3
 * 로그인 기능 구현
 * localhost:8080/login?id=admin&pw=1234 -> 성공적으로 로그인 되었습니다.
 * 아이디가 틀렸을 경우 -> 아이디를 확인 해주세요.
@@ -230,7 +230,7 @@ public String login(Model model, @RequestParam String id, @RequestParam String p
 {% endhighlight %}
 
 ---
-## Thymeleaf 조건문 연습4
+## 조건문 연습4
 * 로그인 기능 구현 고도화
 * localhost:8080/login2 -> home.html 이동
 * localhost:8080/login2?id=admin&pw=1234 -> admin.html 이동
