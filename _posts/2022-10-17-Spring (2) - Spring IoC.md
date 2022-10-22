@@ -4,6 +4,7 @@ title: Spring (2) - Spring IoC
 date:   2022-10-17
 description: Bean 생성
 toc: true
+comments: true
 tags:
  - spring boot
  - java

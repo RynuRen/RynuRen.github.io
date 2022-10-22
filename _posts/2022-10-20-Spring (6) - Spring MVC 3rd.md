@@ -4,6 +4,7 @@ title: Spring (6) - Spring MVC 3rd
 date:   2022-10-20
 description: PathVariable과 ModeAttribute를 이용한 요청처리
 toc: true
+comments: true
 tags:
  - spring boot
  - java

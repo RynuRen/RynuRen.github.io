@@ -4,6 +4,7 @@ title: Spring (7) - View Template
 date:   2022-10-20
 description: View Template 중 하나인 Thymeleaf의 사용법, 반복문, 조건문
 toc: true
+comments: true
 tags:
  - spring boot
  - java

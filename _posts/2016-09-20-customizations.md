@@ -2,6 +2,7 @@
 layout: post
 title: "Customizations"
 date: 2016-09-20 16:25:06
+published: false
 description: Few customizations available out of the box!
 share: true
 tags:

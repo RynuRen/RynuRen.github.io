@@ -4,6 +4,7 @@ title: Spring (4) - Spring MVC
 date:   2022-10-18
 description: MVC 개념과 Controller에 대해, RequestMapping을 이용한 응답처리
 toc: true
+comments: true
 tags:
  - spring boot
  - java

@@ -4,6 +4,7 @@ title: Spring (3) - Spring IoC 2nd
 date:   2022-10-18
 description: Bean 생성 연습과 Maven
 toc: true
+comments: true
 tags:
  - spring boot
  - java

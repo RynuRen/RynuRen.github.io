@@ -4,6 +4,7 @@ title: Spring (8) - View Template 2nd
 date:   2022-10-21
 description: Thymeleaf와 Controller에서 조건문 연습
 toc: true
+comments: true
 tags:
  - spring boot
  - java
