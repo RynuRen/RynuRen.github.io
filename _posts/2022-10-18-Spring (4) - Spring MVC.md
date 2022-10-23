@@ -13,7 +13,7 @@ tags:
 2. Spring IoC [1)](/2022/10/Spring-(2)-Spring-IoC/) [2)](/2022/10/Spring-(3)-Spring-IoC-2nd/)
 3. <span style="color:Turquoise">**Spring MVC**</span> <span style="color:SteelBlue">**1)**</span> [2)](/2022/10/Spring-(5)-Spring-MVC-2nd/) [3)](/2022/10/Spring-(6)-Spring-MVC-3rd/)
 4. <del>Database 활용</del>
-5. View Template
+5. View Template [1)](/2022/10/Spring-(7)-View-Template/) [2)](/2022/10/Spring-(8)-View-Template-2nd/)
 6. AOP / Filter / Interceptor
 7. File Upload / Download
 
