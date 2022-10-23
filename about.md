@@ -4,7 +4,7 @@ title: About
 
 ---
 
-# RynuRen's note page
+# <span style="color:Turquoise">RynuRen's note</span>
 
 * 배운것들을 정리해 보자
 
