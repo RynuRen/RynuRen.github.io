@@ -10,10 +10,10 @@ tags:
  - java
 ---
 ---
-1. 개발 환경 준비
-2. Spring IoC
-3. **_Spring MVC_**
-4. Database 활용
+1. 개발 환경 준비 [1)](/2022/10/Spring-(1)-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A4%80%EB%B9%84/)
+2. Spring IoC [1)](/2022/10/Spring-(2)-Spring-IoC/) [2)](/2022/10/Spring-(3)-Spring-IoC-2nd/)
+3. <span style="color:Turquoise">**Spring MVC**</span> [1)](/2022/10/Spring-(4)-Spring-MVC/) <span style="color:SteelBlue">**2)**</span> [3)](/2022/10/Spring-(6)-Spring-MVC-3rd/)
+4. <del>Database 활용</del>
 5. View Template
 6. AOP / Filter / Interceptor
 7. File Upload / Download
@@ -21,24 +21,21 @@ tags:
 ---
 # 응답처리
 
->HTML 경로 표기법
+> HTML 경로 표기법
 * / : 웹사이트의 루트 폴더 (절대 경로)
 * . : 현재 웹페이지가 소속된 폴더 (상대 경로)
 * .. : 현재 웹페이지의 부모 폴더 (상대 경로)
 * 자식폴더명 : 현재 소속된 폴더의 자식 폴더 (상대 경로)
-출처 [https://sas-study.tistory.com/m/127](https://sas-study.tistory.com/m/127)
 
----
-## `@GetMapping(value="")`
-* `@RequestMapping(value="", method = RequestMethod.GET)` 와 같은 의미
-* Get요청을 받았을 때 사용
+## `@GetMapping`
+* `@GetMapping(value="")`는 `@RequestMapping(value="", method = RequestMethod.GET)`와 같은 의미이다.
+* Get 요청을 받았을 때 사용한다.
 
+### return String
+* 반환값에 보여줄 경로의 페이지를 명시한다.
 
-### String
-* 반환값에 보여줄 경로의 페이지 명시
-
-* \src\main\java\com\example\basic\controller\HtmlController.java
-
+> `file`\src\main\java\com\example\basic\controller\HtmlController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -54,9 +51,11 @@ public String string() {
 * 화면 출력 : /html/string.html
 
 
-### void
-* 요청에 명시된 페이지 표시
+### return void
+* 요청에 명시된 페이지를 표시한다.
 
+> `file`\src\main\java\com\example\basic\controller\HtmlController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -72,8 +71,10 @@ public void htmlVoid() {
 * 화면 출력 : html/void.html
 
 
-### Map<키, 값>
+### return Map<키, 값>
 
+> `file`\src\main\java\com\example\basic\controller\HtmlController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -90,8 +91,10 @@ public Map<String, Object> htmlMap(Map<String, Object> map) {
 * 화면 출력 : html/map.html
 
 
-### Model
+### return Model
 
+> `file`\src\main\java\com\example\basic\controller\HtmlController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -107,9 +110,11 @@ public Model htmlModel(Model model) {
 * 화면 출력 : html/model.html
 
 
-### ModelAndView
-* setViewName 메소드로 출력할 화면을 지정
+### return ModelAndView
+* `setViewName()` 메서드로 출력할 화면을 지정한다.
 
+> `file`\src\main\java\com\example\basic\controller\HtmlController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -127,12 +132,12 @@ public ModelAndView htmlModelAndView() {
 * 화면 출력 : html/model_and_view.html
 
 
-### Object (DTO : Date transter object)
+### return Object (DTO : Date transter object)
 
 * Member 클래스 작성
 
-* \src\main\java\com\example\basic\model\Member.java
-
+> `file`\src\main\java\com\example\basic\model\Member.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -148,6 +153,10 @@ public class Member {
 }
 {% endhighlight %}
 
+* html 페이지 작성
+
+> `file`\src\main\resources\templates\html\object.html
+{: style="text-align: right"}
 >HTML
 {:.filename}
 {% highlight html linenos %}
@@ -166,10 +175,12 @@ public class Member {
 </html>
 {% endhighlight %}
 
-* `[[${}]]` : Thymeleaf 템플릿: 데이터를 주고 받을때 기본이 되는 형식
+> `[[${변수}]]`
+: Thymeleaf 템플릿: 데이터를 주고 받을때 기본이 되는 형식이다.
+{: .note}
 
-* \src\main\java\com\example\basic\controller\HtmlController.java
-
+> `file`\src\main\java\com\example\basic\controller\HtmlController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -188,14 +199,14 @@ public Member htmlObject() {
 
 ---
 ## `@ResponseBody`
-* 별도의 html 페이지 없이 반환할 데이터를 전송
+* 별도의 html 페이지 없이 반환할 데이터를 전송한다.
 
 
-### String
-* 리턴 문자열을 데이터만 body에 담아 전송
+### return String
+* 리턴 문자열을 데이터만 body에 담아 전송한다.
 
-* \src\main\java\com\example\basic\controller\Json1Controller1.java
-
+> `file`\src\main\java\com\example\basic\controller\Json1Controller1.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -211,12 +222,14 @@ public String jsonString() {
 {% endhighlight %}
 
 
-### Map
-* json의 형태로 응답
+### return Map<키, 값>
+* json의 형태로 응답한다.
 
->리턴 타입이 map이나 model클래스 일 경우 json형태로 응답한다
+> 리턴 타입이 map이나 model클래스 일 경우 json형태로 응답한다.
 {: .note}
 
+> `file`\src\main\java\com\example\basic\controller\Json1Controller1.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -235,8 +248,8 @@ public Map<String, Object> jsonMap(Map<String, Object> map) {
 ...
 {% endhighlight %}
 
->json의 형태
-* 키값-밸류값 으로 이루어진 자바스크립트의 파일 형식
+> json의 형태
+* 키값-밸류값 으로 이루어진 자바스크립트의 파일 형식이다.
 {% highlight bash %}
 {
     "userId":1,
@@ -246,9 +259,11 @@ public Map<String, Object> jsonMap(Map<String, Object> map) {
 {% endhighlight %}
 
 
-### Object (DTO : Date transter object)
-* json의 형태로 응답
+### return Object (DTO : Date transter object)
+* json의 형태로 응답한다.
 
+> `file`\src\main\java\com\example\basic\controller\Json1Controller1.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -268,9 +283,11 @@ public Member jsonObject() {
 {% endhighlight %}
 
 
-### List
-* 배열의 형태로 응답
+### return List
+* 배열의 형태로 응답한다.
 
+> `file`\src\main\java\com\example\basic\controller\Json1Controller1.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -291,10 +308,10 @@ public List<String> jsonList() {
 
 ---
 ## 연습
-1) http://localhost:8080/html/exam 접속 시 exam.html 띄우기
+1) http://localhost:8080/html/exam 접속 시 exam.html 띄워보자
 
-* \src\main\java\com\example\basic\controller\HtmlController.java
-
+> `file`\src\main\java\com\example\basic\controller\HtmlController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java %}
@@ -308,10 +325,10 @@ public void exam(){
 ...
 {% endhighlight %}
 
-2) http://localhost:8080/json/exam 접속 시 json 데이터로 응답하기
+2) http://localhost:8080/json/exam 접속 시 json 데이터로 응답해보자
 
-* \src\main\java\com\example\basic\controller\Json1Controller.java
-
+> `file`\src\main\java\com\example\basic\controller\Json1Controller.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java %}
@@ -355,10 +372,10 @@ public Map<String, Object> jsonExam() {
 
 ---
 ## `@GetMapping`
-* 일반적으로 주소를 입력해서 접속하면 무조건 GET요청
+* 일반적으로 주소를 입력해서 접속하면 무조건 GET요청이다.
 
-* \src\main\java\com\example\basic\controller\MethodController.java
-
+> `file`\src\main\java\com\example\basic\controller\MethodController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -379,8 +396,10 @@ public class MethodController {
 
 ---
 ## `@PostMapping`
-* 데이터베이스 등의 저장소에 리소스를 저장할 때
+* 데이터베이스 등의 저장소에 리소스를 저장할 때 사용한다.
 
+> `file`\src\main\java\com\example\basic\controller\MethodController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -396,25 +415,24 @@ public String post(){
 
 ---
 ## 요청 처리 시 사용하는 클래스와 어노테이션
-* HttpServletRequest - 가장 전통적으로 사용되는 방식
-* **`@RequestParam` (편리함)**
-    파라미터 명칭에 맞게 변수 사용
-    파라미터 종류 및 개수 상관없이 사용
-* **`@PathVariable` (깔끔함)** - 요청 주소의 경로명 활용
-* **`@ModelAttribute` (명확함)**
-    Model / DTO / VO 등 객체와 연계하여 활용
-    JPA, MyBatis 등 ORM 프레임워크 활용
+* `HttpServletRequest` 클래스 - 가장 전통적으로 사용되는 방식이다.
+* `@RequestParam` **(편리함)**
+    파라미터 명칭에 맞게 변수를 사용한다.
+    파라미터 종류 및 개수 상관없이 사용한다.
+* `@PathVariable` **(깔끔함)** - 요청 주소의 경로명을 활용한다.
+* `@ModelAttribute` **(명확함)**
+    Model / DTO / VO 등 객체와 연계하여 활용한다.
+    JPA, MyBatis 등 ORM 프레임워크를 활용한다.
 * `@RequestBody` (AJAX 요청 시 주로 사용)
-    보편적인 요청 파라미터 형식을 사용하지 않고 JSON 형태의 파라미터 사용
-(Query String Parameter, Form Data, Payload)
-    사용 시 메소드 방식을 POST로 지정
+    보편적인 요청 파라미터 형식을 사용하지 않고 JSON 형태의 파라미터를 사용한다. (Query String Parameter, Form Data, Payload)
+    사용 시 메소드 방식을 POST로 지정한다.
 
 ---
 ### `HttpServletRequest`
-* 모든 파라미터는 문자열로 전달 (필요 시 숫자로 변환하여 사용)
+* 모든 파라미터는 문자열로 전달한다. (필요 시 숫자로 변환하여 사용)
 
-* \src\main\java\com\example\basic\controller\RequustController.java
-
+> `file`\src\main\java\com\example\basic\controller\RequustController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -438,19 +456,22 @@ public class RequustController {
 요청
 >http://localhost:8080/req/http?name=abc&pageNum=123
 
-url 주소에서 ? 뒤에 오는 항목들이 모두 파라미터(매개변수)
-파라미터의 형태는 '변수명=값', 파라미터간 구분은 &
+> url 주소에서 ? 뒤에 오는 항목들이 모두 파라미터(매개변수)이다.
+파라미터의 형태는 '변수명=값', 파라미터간 구분은 &로 한다.
+{: .note}
 
 응답
 >abc, 123
 
 ---
 ### `@RequestParam`
-* 지정된 파라미터가 없으면 400 오류 발생
-* defaultValue 또는 required 옵션으로 오류 제어 가능
-* `@RequestParam("key1")` 과 같이 name을 지정하지 않으면 변수명을 name으로 사용
-* int 등 String이 아닌 형태로도 사용 가능
+* 지정된 파라미터가 없으면 400 오류가 발생한다.
+* defaultValue 또는 required 옵션으로 오류 제어가 가능하다.
+* `@RequestParam("key1")` 과 같이 name을 지정하지 않으면 변수명을 name으로 사용한다.
+* int 등 String이 아닌 형태로도 사용 가능하다.
 
+> `file`\src\main\java\com\example\basic\controller\RequustController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -469,9 +490,10 @@ public String param1(@RequestParam("key1") String key, @RequestParam int key2) {
 응답
 >abcd, 1234
 
+* Map을 활용하면 파라미터를 정하지 않고 전달된 모든 파라미터를 동적으로 사용가능하다.
 
-* Map을 활용하면 파라미터를 정하지 않고 전달된 모든 파라미터를 동적으로 사용가능
-
+> `file`\src\main\java\com\example\basic\controller\RequustController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -489,3 +511,9 @@ public String param2(@RequestParam Map<String, Object> map) {
 
 응답
 >{name=abcde, pageNum=12, address=seoul}
+
+---
+# Reference
+{: style="text-align: right"}
+코딩하는흑구: [https://sas-study.tistory.com/m/127](https://sas-study.tistory.com/m/127)
+{: style="text-align: right"}
