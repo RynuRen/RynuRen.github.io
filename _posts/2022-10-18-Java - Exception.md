@@ -2,7 +2,7 @@
 layout: post
 title: Java - Exception
 date:   2022-10-18
-description: Java - 예외 처리
+description: 예외 처리
 toc: true
 comments: true
 tags:
