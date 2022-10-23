@@ -10,17 +10,17 @@ tags:
  - java
 ---
 ---
-1. 개발 환경 준비
-2. Spring IoC
-3. Spring MVC
-4. Database 활용
-5. **_View Template_**
+1. 개발 환경 준비 [1)](/2022/10/Spring-(1)-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A4%80%EB%B9%84/)
+2. Spring IoC [1)](/2022/10/Spring-(2)-Spring-IoC/) [2)](/2022/10/Spring-(3)-Spring-IoC-2nd/)
+3. Spring MVC [1)](/2022/10/Spring-(4)-Spring-MVC/) [2)](/2022/10/Spring-(5)-Spring-MVC-2nd/) [3)](/2022/10/Spring-(6)-Spring-MVC-3rd/)
+4. <del>Database 활용</del>
+5. <span style="color:Turquoise">**View Template**</span> [1)](/2022/10/Spring-(7)-View-Template/) <span style="color:SteelBlue">**2)**</span>
 6. AOP / Filter / Interceptor
 7. File Upload / Download
 
 ---
 # Thymeleaf
-* 문자열을 조합하는 방법
+> 문자열을 조합하는 방법
 
 >HTML
 {:.filename}
@@ -35,8 +35,8 @@ tags:
 ---
 ## 조건문 연습1
 
-* \src\main\java\com\example\basic\controller\ThymeleafController.java
-
+> `file`\src\main\java\com\example\basic\controller\ThymeleafController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -51,8 +51,8 @@ public String admin(Model model, @RequestParam String userId){
 ...
 {% endhighlight %}
 
-* \src\main\resources\templates\admin.html
-
+> `file`\src\main\resources\templates\admin.html
+{: style="text-align: right"}
 >HTML
 {:.filename}
 {% highlight html linenos %}
@@ -88,12 +88,17 @@ public String admin(Model model, @RequestParam String userId){
 
 </html>
 {% endhighlight %}
+> http://localhost:8080/admin?userId=admin
+![img]({{ '/assets/images/2022-10-21/img1.PNG' | relative_url }}){: .left-image }
+
+> http://localhost:8080/admin?userId=RynuRen
+![img]({{ '/assets/images/2022-10-21/img2.PNG' | relative_url }}){: .left-image }
 
 ---
-## 조건문 연습2
+## 조건문 연습2 - Controller
 
-* \src\main\java\com\example\basic\controller\ThymeleafController.java
-
+> `file`\src\main\java\com\example\basic\controller\ThymeleafController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -114,8 +119,8 @@ public String admin2(Model model, @RequestParam String userId) {
 ...
 {% endhighlight %}
 
-* \src\main\resources\templates\admin2.html
-
+> `file`\src\main\resources\templates\admin2.html
+{: style="text-align: right"}
 >HTML
 {:.filename}
 {% highlight html linenos %}
@@ -130,12 +135,19 @@ public String admin2(Model model, @RequestParam String userId) {
 
 </html>
 {% endhighlight %}
+> http://localhost:8080/admin2?userId=admin
+![img]({{ '/assets/images/2022-10-21/img3.PNG' | relative_url }}){: .left-image }
+
+> http://localhost:8080/admin2?userId=RynuRen
+![img]({{ '/assets/images/2022-10-21/img4.PNG' | relative_url }}){: .left-image }
 
 ---
 ## 조건문 연습3
 * 구구단 자동생성 페이지
-* localhost:8080/gugudan?dan=5 -> 2단부터 5단까지 출력하는 페이지 구현
+* localhost:8080/gugudan?dan=5 -> 2단부터 5단까지 출력하는 페이지 구현해보자
 
+> `file`\src\main\java\com\example\basic\controller\ThymeleafController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -162,8 +174,8 @@ public String gugudan(Model model, @RequestParam int dan) {
 ...
 {% endhighlight %}
 
-* \src\main\resources\templates\gugudan.html
-
+> `file`\src\main\resources\templates\gugudan.html
+{: style="text-align: right"}
 >HTML
 {:.filename}
 {% highlight html linenos %}
@@ -182,6 +194,8 @@ public String gugudan(Model model, @RequestParam int dan) {
 
 </html>
 {% endhighlight %}
+> http://localhost:8080/gugudan?dan=3
+![img]({{ '/assets/images/2022-10-21/img5.PNG' | relative_url }}){: .left-image }
 
 ---
 ## 조건문 연습4
@@ -190,6 +204,8 @@ public String gugudan(Model model, @RequestParam int dan) {
 * 아이디가 틀렸을 경우 -> 아이디를 확인 해주세요.
 * 아이디를 정상입력, 비밀번호가 틀렸을 경우 -> 비밀번호를 확인 해주세요.
 
+> `file`\src\main\java\com\example\basic\controller\ThymeleafController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -212,8 +228,8 @@ public String login(Model model, @RequestParam String id, @RequestParam String p
 ...
 {% endhighlight %}
 
-* \src\main\resources\templates\login.html
-
+> `file`\src\main\resources\templates\login.html
+{: style="text-align: right"}
 >HTML
 {:.filename}
 {% highlight html linenos %}
@@ -229,6 +245,14 @@ public String login(Model model, @RequestParam String id, @RequestParam String p
 
 </html>
 {% endhighlight %}
+> http://localhost:8080/login?id=admin&pw=1234
+![img]({{ '/assets/images/2022-10-21/img6.PNG' | relative_url }}){: .left-image }
+
+> http://localhost:8080/login?id=admi&pw=123
+![img]({{ '/assets/images/2022-10-21/img7.PNG' | relative_url }}){: .left-image }
+
+> http://localhost:8080/login?id=admin&pw=123
+![img]({{ '/assets/images/2022-10-21/img8.PNG' | relative_url }}){: .left-image }
 
 ---
 ## 조건문 연습5
@@ -237,8 +261,10 @@ public String login(Model model, @RequestParam String id, @RequestParam String p
 * localhost:8080/login2?id=admin&pw=1234 -> admin.html 이동
 * localhost:8080/login2?id=user&pw=5678 -> userPage.html 이동
 * 로그인 실패 시 -> loginFail.html 이동
-* 로그인 기능의 아이디, 비밀번호 체크는 포함되어야 함.
+* 로그인 기능의 아이디, 비밀번호 체크는 포함되어야 한다.
 
+> `file`\src\main\java\com\example\basic\controller\ThymeleafController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -261,6 +287,8 @@ public String login2(Model model, @RequestParam(defaultValue = "") String id,
 
 * Map을 이용한 풀이
 
+> `file`\src\main\java\com\example\basic\controller\ThymeleafController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -279,3 +307,14 @@ public String login2(Model model, @RequestParam Map<String, Object> map) {
     }
 }
 {% endhighlight %}
+> http://localhost:8080/login2
+![img]({{ '/assets/images/2022-10-21/img9.PNG' | relative_url }}){: .left-image }
+
+> http://localhost:8080/login2?id=admin&pw=1234
+![img]({{ '/assets/images/2022-10-21/img1.PNG' | relative_url }}){: .left-image }
+
+> http://localhost:8080/login2?id=user&pw=5678
+![img]({{ '/assets/images/2022-10-21/img10.PNG' | relative_url }}){: .left-image }
+
+> http://localhost:8080/login2?id=user&pw=567
+![img]({{ '/assets/images/2022-10-21/img11.PNG' | relative_url }}){: .left-image }

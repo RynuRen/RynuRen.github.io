@@ -348,7 +348,7 @@ public String gerUser(Model model, @RequestParam String userId){
 ...
 {% endhighlight %}
 
-* 파라미터 userId 값에 따라 해당하는 userId 값과 동일한 유저정보만 출력
+* 파라미터 userId 값에 따라 해당하는 userId 값과 동일한 유저정보만 출력되게 작성해보자
 * 예) http://localhost:8080/member?userId=1 접속 시 홍길동의 정보만 출력
 
 * each반복문과 if문 사용
@@ -420,6 +420,5 @@ public String gerUser(Model model, @RequestParam String userId){
 
 </html>
 {% endhighlight %}
-
 > http://localhost:8080/member?userId=2
 ![img]({{ '/assets/images/2022-10-20/img9.PNG' | relative_url }}){: .left-image }
