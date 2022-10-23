@@ -195,9 +195,8 @@ public Member htmlObject() {
 
 ...
 {% endhighlight %}
-
 > http://localhost:8080/html/object
-![img]({{ '/assets/images/2022-10-19/img2.PNG' | relative_url }}){: .center-image }*화면 출력*
+![img]({{ '/assets/images/2022-10-19/img2.PNG' | relative_url }}){: .left-image }*화면 출력*
 
 ---
 ## `@ResponseBody`
@@ -249,6 +248,8 @@ public Map<String, Object> jsonMap(Map<String, Object> map) {
 
 ...
 {% endhighlight %}
+> http://localhost:8080/json/map
+![img]({{ '/assets/images/2022-10-19/img3.PNG' | relative_url }}){: .left-image }*화면 출력*
 
 > json의 형태
 * 키값-밸류값 으로 이루어진 자바스크립트의 파일 형식이다.
@@ -283,7 +284,8 @@ public Member jsonObject() {
 
 ...
 {% endhighlight %}
-
+> http://localhost:8080/json/object
+![img]({{ '/assets/images/2022-10-19/img4.PNG' | relative_url }}){: .left-image }*화면 출력*
 
 ### return List
 * 배열의 형태로 응답한다.
@@ -307,6 +309,8 @@ public List<String> jsonList() {
 
 ...
 {% endhighlight %}
+> http://localhost:8080/json/object
+![img]({{ '/assets/images/2022-10-19/img5.PNG' | relative_url }}){: .left-image }*화면 출력*
 
 ---
 ## 연습
@@ -326,6 +330,38 @@ public void exam(){
 
 ...
 {% endhighlight %}
+
+> `file`\src\main\resources\templates\html\exam.html
+{: style="text-align: right"}
+>HTML
+{:.filename}
+{% highlight html linenos %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+<div class="p-5 bg-primary text-white text-center">
+    <h1>My First Bootstrap 5 Page</h1>
+    <p>Resize this responsive page to see the effect!</p>
+</div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="mt-5">TITLE HEADING</h2>
+            <h5>Title description, Sep 2, 2020</h5>
+            <p>Sunt in culpa qui officia deserunt mollit</p>
+        </div>
+    </div>
+</div>
+{% endhighlight %}
+> http://localhost:8080/html/exam
+![img]({{ '/assets/images/2022-10-19/img6.PNG' | relative_url }}){: .left-image }*화면 출력*
 
 2) http://localhost:8080/json/exam 접속 시 json 데이터로 응답해보자
 
@@ -362,6 +398,8 @@ public Map<String, Object> jsonExam() {
 
 ...
 {% endhighlight %}
+> http://localhost:8080/json/exam
+![img]({{ '/assets/images/2022-10-19/img7.PNG' | relative_url }}){: .left-image }*화면 출력*
 
 ---
 # 요청 처리
@@ -455,15 +493,12 @@ public class RequustController {
     }
 }
 {% endhighlight %}
-> 요청
-http://localhost:8080/req/http?name=abc&pageNum=123
+> http://localhost:8080/req/http?name=abc&pageNum=123
+![img]({{ '/assets/images/2022-10-19/img8.PNG' | relative_url }}){: .left-image }*화면 출력*
 
 > url 주소에서 ? 뒤에 오는 항목들이 모두 파라미터(매개변수)이다.
 파라미터의 형태는 '변수명=값', 파라미터간 구분은 &로 한다.
 {: .note}
-
-> 응답
-abc, 123
 
 ---
 ### `@RequestParam`
@@ -486,11 +521,8 @@ public String param1(@RequestParam("key1") String key, @RequestParam int key2) {
 
 ...
 {% endhighlight %}
-> 요청
-http://localhost:8080/req/param1?key1=abcd&key2=1234
-
-> 응답
- abcd, 1234
+> http://localhost:8080/req/param1?key1=abcd&key2=1234
+![img]({{ '/assets/images/2022-10-19/img9.PNG' | relative_url }}){: .left-image }*화면 출력*
 
 * Map을 활용하면 파라미터를 정하지 않고 전달된 모든 파라미터를 동적으로 사용가능하다.
 
@@ -508,11 +540,8 @@ public String param2(@RequestParam Map<String, Object> map) {
 
 ...
 {% endhighlight %}
-> 요청
-http://localhost:8080/req/param2?name=abcde&pageNum=12&address=seoul
-
-> 응답
-{name=abcde, pageNum=12, address=seoul}
+> http://localhost:8080/req/param2?name=abcde&pageNum=12&address=seoul
+![img]({{ '/assets/images/2022-10-19/img10.PNG' | relative_url }}){: .left-image }*화면 출력*
 
 ---
 # Reference
