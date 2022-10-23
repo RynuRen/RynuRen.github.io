@@ -196,7 +196,7 @@ public Member htmlObject() {
 ...
 {% endhighlight %}
 > http://localhost:8080/html/object
-![img]({{ '/assets/images/2022-10-19/img2.PNG' | relative_url }}){: .left-image }*화면 출력*
+![img]({{ '/assets/images/2022-10-19/img2.PNG' | relative_url }}){: .left-image }
 
 ---
 ## `@ResponseBody`
@@ -249,7 +249,7 @@ public Map<String, Object> jsonMap(Map<String, Object> map) {
 ...
 {% endhighlight %}
 > http://localhost:8080/json/map
-![img]({{ '/assets/images/2022-10-19/img3.PNG' | relative_url }}){: .left-image }*화면 출력*
+![img]({{ '/assets/images/2022-10-19/img3.PNG' | relative_url }}){: .left-image }
 
 > json의 형태
 * 키값-밸류값 으로 이루어진 자바스크립트의 파일 형식이다.
@@ -285,7 +285,7 @@ public Member jsonObject() {
 ...
 {% endhighlight %}
 > http://localhost:8080/json/object
-![img]({{ '/assets/images/2022-10-19/img4.PNG' | relative_url }}){: .left-image }*화면 출력*
+![img]({{ '/assets/images/2022-10-19/img4.PNG' | relative_url }}){: .left-image }
 
 ### return List
 * 배열의 형태로 응답한다.
@@ -310,7 +310,7 @@ public List<String> jsonList() {
 ...
 {% endhighlight %}
 > http://localhost:8080/json/object
-![img]({{ '/assets/images/2022-10-19/img5.PNG' | relative_url }}){: .left-image }*화면 출력*
+![img]({{ '/assets/images/2022-10-19/img5.PNG' | relative_url }}){: .left-image }
 
 ---
 ## 연습
@@ -361,7 +361,7 @@ public void exam(){
 </div>
 {% endhighlight %}
 > http://localhost:8080/html/exam
-![img]({{ '/assets/images/2022-10-19/img6.PNG' | relative_url }}){: .left-image }*화면 출력*
+![img]({{ '/assets/images/2022-10-19/img6.PNG' | relative_url }}){: .left-image }
 
 2) http://localhost:8080/json/exam 접속 시 json 데이터로 응답해보자
 
@@ -399,7 +399,7 @@ public Map<String, Object> jsonExam() {
 ...
 {% endhighlight %}
 > http://localhost:8080/json/exam
-![img]({{ '/assets/images/2022-10-19/img7.PNG' | relative_url }}){: .left-image }*화면 출력*
+![img]({{ '/assets/images/2022-10-19/img7.PNG' | relative_url }}){: .left-image }
 
 ---
 # 요청 처리
@@ -494,7 +494,7 @@ public class RequustController {
 }
 {% endhighlight %}
 > http://localhost:8080/req/http?name=abc&pageNum=123
-![img]({{ '/assets/images/2022-10-19/img8.PNG' | relative_url }}){: .left-image }*화면 출력*
+![img]({{ '/assets/images/2022-10-19/img8.PNG' | relative_url }}){: .left-image }
 
 > url 주소에서 ? 뒤에 오는 항목들이 모두 파라미터(매개변수)이다.
 파라미터의 형태는 '변수명=값', 파라미터간 구분은 &로 한다.
@@ -522,7 +522,7 @@ public String param1(@RequestParam("key1") String key, @RequestParam int key2) {
 ...
 {% endhighlight %}
 > http://localhost:8080/req/param1?key1=abcd&key2=1234
-![img]({{ '/assets/images/2022-10-19/img9.PNG' | relative_url }}){: .left-image }*화면 출력*
+![img]({{ '/assets/images/2022-10-19/img9.PNG' | relative_url }}){: .left-image }
 
 * Map을 활용하면 파라미터를 정하지 않고 전달된 모든 파라미터를 동적으로 사용가능하다.
 
@@ -541,7 +541,7 @@ public String param2(@RequestParam Map<String, Object> map) {
 ...
 {% endhighlight %}
 > http://localhost:8080/req/param2?name=abcde&pageNum=12&address=seoul
-![img]({{ '/assets/images/2022-10-19/img10.PNG' | relative_url }}){: .left-image }*화면 출력*
+![img]({{ '/assets/images/2022-10-19/img10.PNG' | relative_url }}){: .left-image }
 
 ---
 # Reference
