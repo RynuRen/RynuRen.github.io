@@ -10,20 +10,20 @@ tags:
  - java
 ---
 ---
-1. 개발 환경 준비
-2. Spring IoC
-3. Spring MVC
-4. Database 활용
-5. **_View Template_**
+1. 개발 환경 준비 [1)](/2022/10/Spring-(1)-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A4%80%EB%B9%84/)
+2. Spring IoC [1)](/2022/10/Spring-(2)-Spring-IoC/) [2)](/2022/10/Spring-(3)-Spring-IoC-2nd/)
+3. Spring MVC [1)](/2022/10/Spring-(4)-Spring-MVC/) [2)](/2022/10/Spring-(5)-Spring-MVC-2nd/) [3)](/2022/10/Spring-(6)-Spring-MVC-3rd/)
+4. <del>Database 활용</del>
+5. <span style="color:Turquoise">**View Template**</span> <span style="color:SteelBlue">**1)**</span> [2)](/2022/10/Spring-(8)-View-Template-2nd/)
 6. AOP / Filter / Interceptor
 7. File Upload / Download
 
 ---
 # Thymeleaf
-- 스프링 부트에서 권장하는 View Template
+- Spring Boot 에서 권장하는 View Template
 - HTML5 문법을 사용하는 HTML 태그 및 속성 기반의 Template Engine
-- 텍스트, HTML, XML, JavaScript, CSS 등 사용 가능
-- Controller에서 View로 넘겨준 Model을 이용하여 내용 출력
+- 텍스트, HTML, XML, JavaScript, CSS 등에 사용 가능하다.
+- Controller에서 View로 넘겨준 Model을 이용하여 내용을 출력한다.
 
 >HTML
 {:.filename}
@@ -31,8 +31,8 @@ tags:
 <h3>[[${list}]]</h3>
 {% endhighlight %}
 
-* \src\main\java\com\example\basic\controller\HtmlController.java
-
+> `file`\src\main\java\com\example\basic\controller\HtmlController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -64,8 +64,8 @@ public String welcome(Model model){
 ...
 {% endhighlight %}
 
-* \src\main\resources\templates\welcome.html
-
+> `file`\src\main\resources\templates\welcome.html
+{: style="text-align: right"}
 >HTML
 {:.filename}
 {% highlight html linenos %}
@@ -95,12 +95,14 @@ public String welcome(Model model){
 
 </html>
 {% endhighlight %}
+> http://localhost:8080/welcome
+![img]({{ '/assets/images/2022-10-20/img4.PNG' | relative_url }}){: .left-image }
 
 ---
 ## Variable Expression : ${...}
 
-* \src\main\java\com\example\basic\controller\ThymeleafController.java
-
+> `file`\src\main\java\com\example\basic\controller\ThymeleafController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -127,8 +129,8 @@ public class ThymeleafController {
 }
 {% endhighlight %}
 
-* \src\main\resources\templates\user.html
-
+> `file`\src\main\resources\templates\user.html
+{: style="text-align: right"}
 >HTML
 {:.filename}
 {% highlight html linenos %}
@@ -159,8 +161,10 @@ public class ThymeleafController {
 
 </html>
 {% endhighlight %}
+> http://localhost:8080/user
+![img]({{ '/assets/images/2022-10-20/img5.PNG' | relative_url }}){: .left-image }
 
-* 문법의 차이에 따라 3가지 방법이 있다
+* 문법의 차이에 따라 여러 방법이 있다.
 1. 단순 문자열 데이터 표현 방법
 2. 열리는 태그 안에 속성값을 넣는 방식, 기능을 나타내는 문법(text표현)
 
@@ -168,8 +172,8 @@ public class ThymeleafController {
 ## Iteration - th:each
 * 반복작업을 표현하는 방법 (반복문)
 
-* \src\main\java\com\example\basic\controller\ThymeleafController.java
-
+> `file`\src\main\java\com\example\basic\controller\ThymeleafController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -203,8 +207,8 @@ public String userList(Model model) {
 ...
 {% endhighlight %}
 
-* \src\main\resources\templates\userList.html
-
+> `file`\src\main\resources\templates\userList.html
+{: style="text-align: right"}
 >HTML
 {:.filename}
 {% highlight html linenos %}
@@ -234,14 +238,16 @@ public String userList(Model model) {
 
 </html>
 {% endhighlight %}
+> http://localhost:8080/userlist
+![img]({{ '/assets/images/2022-10-20/img6.PNG' | relative_url }}){: .left-image }
 
 ---
 ## Conditional Evaluaiton - th:if, th:unless, th:switch
 
 * Thymeleaf의 if, else, switch 조건문
 
-* \src\main\java\com\example\basic\controller\ThymeleafController.java
-
+> `file`\src\main\java\com\example\basic\controller\ThymeleafController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -262,8 +268,8 @@ public String mode(Model model, @RequestParam Map<String, Object> map) {
 ...
 {% endhighlight %}
 
-* \src\main\resources\templates\mode.html
-
+> `file`\src\main\resources\templates\mode.html
+{: style="text-align: right"}
 >HTML
 {:.filename}
 {% highlight html linenos %}
@@ -295,12 +301,19 @@ public String mode(Model model, @RequestParam Map<String, Object> map) {
 
 </html>
 {% endhighlight %}
+> http://localhost:8080/mode
+![img]({{ '/assets/images/2022-10-20/img7.PNG' | relative_url }}){: .left-image }
+
+> http://localhost:8080/mode?name=사용자&auth=456&category=3
+![img]({{ '/assets/images/2022-10-20/img8.PNG' | relative_url }}){: .left-image }
 
 ---
 ## 연습
 
 * Thymeleaf 조건문 활용 연습
 
+> `file`\src\main\java\com\example\basic\controller\ThymeleafController.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -338,6 +351,10 @@ public String gerUser(Model model, @RequestParam String userId){
 * 파라미터 userId 값에 따라 해당하는 userId 값과 동일한 유저정보만 출력
 * 예) http://localhost:8080/member?userId=1 접속 시 홍길동의 정보만 출력
 
+* each반복문과 if문 사용
+
+> `file`\src\main\resources\templates\member.html
+{: style="text-align: right"}
 >HTML
 {:.filename}
 {% highlight html linenos %}
@@ -364,3 +381,45 @@ public String gerUser(Model model, @RequestParam String userId){
 
 </html>
 {% endhighlight %}
+
+* switch문 활용
+
+>HTML
+{:.filename}
+{% highlight html linenos %}
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <td>아이디</td>
+            <td>이름</td>
+            <td>비밀번호</td>
+        </tr>
+        <span th:switch="${userId}">
+            <tr th:case="1">
+                <td th:text="${memberList[0].userId}"></td>
+                <td th:text="${memberList[0].name}"></td>
+                <td th:text="${memberList[0].userPassword}"></td>
+            </tr>
+            <tr th:case="2">
+                <td th:text="${memberList[1].userId}"></td>
+                <td th:text="${memberList[1].name}"></td>
+                <td th:text="${memberList[1].userPassword}"></td>
+            </tr>
+            <tr th:case="3">
+                <td th:text="${memberList[2].userId}"></td>
+                <td th:text="${memberList[2].name}"></td>
+                <td th:text="${memberList[2].userPassword}"></td>
+            </tr>
+        </span>
+</body>
+
+</html>
+{% endhighlight %}
+
+> http://localhost:8080/member?userId=2
+![img]({{ '/assets/images/2022-10-20/img9.PNG' | relative_url }}){: .left-image }

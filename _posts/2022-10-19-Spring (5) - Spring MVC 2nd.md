@@ -31,6 +31,7 @@ tags:
 * `@GetMapping(value="")`는 `@RequestMapping(value="", method = RequestMethod.GET)`와 같은 의미이다.
 * Get 요청을 받았을 때 사용한다.
 
+---
 ### return String
 * 반환값에 보여줄 경로의 페이지를 명시한다.
 
@@ -48,10 +49,10 @@ public String string() {
 
 ...
 {% endhighlight %}
-* 화면 출력 : /html/string.html
+> /html/string.html
 
-
-### return void
+---
+### void
 * 요청에 명시된 페이지를 표시한다.
 
 > `file`\src\main\java\com\example\basic\controller\HtmlController.java
@@ -68,9 +69,9 @@ public void htmlVoid() {
 
 ...
 {% endhighlight %}
-* 화면 출력 : html/void.html
+> html/void.html
 
-
+---
 ### return Map<키, 값>
 
 > `file`\src\main\java\com\example\basic\controller\HtmlController.java
@@ -88,9 +89,9 @@ public Map<String, Object> htmlMap(Map<String, Object> map) {
 
 ...
 {% endhighlight %}
-* 화면 출력 : html/map.html
+> html/map.html
 
-
+---
 ### return Model
 
 > `file`\src\main\java\com\example\basic\controller\HtmlController.java
@@ -107,9 +108,9 @@ public Model htmlModel(Model model) {
 
 ...
 {% endhighlight %}
-* 화면 출력 : html/model.html
+> html/model.html
 
-
+---
 ### return ModelAndView
 * `setViewName()` 메서드로 출력할 화면을 지정한다.
 
@@ -129,9 +130,9 @@ public ModelAndView htmlModelAndView() {
 
 ...
 {% endhighlight %}
-* 화면 출력 : html/model_and_view.html
+> html/model_and_view.html
 
-
+---
 ### return Object (DTO : Date transter object)
 
 * Member 클래스 작성
@@ -202,7 +203,7 @@ public Member htmlObject() {
 ## `@ResponseBody`
 * 별도의 html 페이지 없이 반환할 데이터를 전송한다.
 
-
+---
 ### return String
 * 리턴 문자열을 데이터만 body에 담아 전송한다.
 
@@ -222,7 +223,7 @@ public String jsonString() {
 ...
 {% endhighlight %}
 
-
+---
 ### return Map<키, 값>
 * json의 형태로 응답한다.
 
@@ -261,7 +262,7 @@ public Map<String, Object> jsonMap(Map<String, Object> map) {
 }
 {% endhighlight %}
 
-
+---
 ### return Object (DTO : Date transter object)
 * json의 형태로 응답한다.
 
@@ -287,6 +288,7 @@ public Member jsonObject() {
 > http://localhost:8080/json/object
 ![img]({{ '/assets/images/2022-10-19/img4.PNG' | relative_url }}){: .left-image }
 
+---
 ### return List
 * 배열의 형태로 응답한다.
 
@@ -362,6 +364,7 @@ public void exam(){
 {% endhighlight %}
 > http://localhost:8080/html/exam
 ![img]({{ '/assets/images/2022-10-19/img6.PNG' | relative_url }}){: .left-image }
+
 
 2) http://localhost:8080/json/exam 접속 시 json 데이터로 응답해보자
 
