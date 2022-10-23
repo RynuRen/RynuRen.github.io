@@ -195,7 +195,9 @@ public Member htmlObject() {
 
 ...
 {% endhighlight %}
-* 화면 출력 : html/object.html
+
+> http://localhost:8080/html/object
+![img]({{ '/assets/images/2022-10-19/img2.PNG' | relative_url }}){: .center-image }*화면 출력*
 
 ---
 ## `@ResponseBody`
@@ -453,15 +455,15 @@ public class RequustController {
     }
 }
 {% endhighlight %}
-요청
->http://localhost:8080/req/http?name=abc&pageNum=123
+> 요청
+http://localhost:8080/req/http?name=abc&pageNum=123
 
 > url 주소에서 ? 뒤에 오는 항목들이 모두 파라미터(매개변수)이다.
 파라미터의 형태는 '변수명=값', 파라미터간 구분은 &로 한다.
 {: .note}
 
-응답
->abc, 123
+> 응답
+abc, 123
 
 ---
 ### `@RequestParam`
@@ -484,11 +486,11 @@ public String param1(@RequestParam("key1") String key, @RequestParam int key2) {
 
 ...
 {% endhighlight %}
-요청
->http://localhost:8080/req/param1?key1=abcd&key2=1234
+> 요청
+http://localhost:8080/req/param1?key1=abcd&key2=1234
 
-응답
->abcd, 1234
+> 응답
+ abcd, 1234
 
 * Map을 활용하면 파라미터를 정하지 않고 전달된 모든 파라미터를 동적으로 사용가능하다.
 
@@ -506,11 +508,11 @@ public String param2(@RequestParam Map<String, Object> map) {
 
 ...
 {% endhighlight %}
-요청
->http://localhost:8080/req/param2?name=abcde&pageNum=12&address=seoul
+> 요청
+http://localhost:8080/req/param2?name=abcde&pageNum=12&address=seoul
 
-응답
->{name=abcde, pageNum=12, address=seoul}
+> 응답
+{name=abcde, pageNum=12, address=seoul}
 
 ---
 # Reference
