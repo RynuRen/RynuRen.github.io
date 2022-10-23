@@ -10,20 +10,20 @@ tags:
  - java
 ---
 ---
-1. 개발 환경 준비
-2. **_Spring IoC_**
+1. 개발 환경 준비 [1)](/2022/10/Spring-(1)-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A4%80%EB%B9%84/)
+2. <span style="color:Turquoise">**Spring IoC**</span> [1)](/2022/10/Spring-(2)-Spring-IoC/) <span style="color:SteelBlue">**2)**</span>
 3. Spring MVC
-4. Database 활용
+4. <del>Database 활용</del>
 5. View Template
 6. AOP / Filter / Interceptor
 7. File Upload / Download
 
 ---
-# 연습문제
-* ImageUtil 클래스를 Bean으로 생성, save 메소드를 실행하여 URL의 이미지 다운로드 하기
+# 연습
+* ImageUtil 클래스를 bean으로 생성하고 save 메서드를 실행하여 URL의 이미지 다운로드할 수 있게 작성해보자
 
-* \src\main\java\com\example\demo\config\ImageUtil.java
-
+> `file`\src\main\java\com\example\demo\config\ImageUtil.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -54,8 +54,8 @@ public class ImageUtil {
 }
 {% endhighlight %}
 
-* \src\main\java\com\example\demo\DemoApplication.java
-
+> `file`\src\main\java\com\example\demo\DemoApplication.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}

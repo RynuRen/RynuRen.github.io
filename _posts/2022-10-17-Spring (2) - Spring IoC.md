@@ -10,33 +10,54 @@ tags:
  - java
 ---
 ---
-1. 개발 환경 준비
-2. **_Spring IoC_**
+1. 개발 환경 준비 [1)](/2022/10/Spring-(1)-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A4%80%EB%B9%84/)
+2. <span style="color:Turquoise">**Spring IoC**</span> <span style="color:SteelBlue">**1)**</span> [2)](/2022/10/Spring-(3)-Spring-IoC-2nd/)
 3. Spring MVC
-4. Database 활용
+4. <del>Database 활용</del>
 5. View Template
 6. AOP / Filter / Interceptor
 7. File Upload / Download
 
 ---
 # Spring IoC (제어 역전; Inversion of Control)
-* 제어권이 프레임워크에게 있어 필요에 따라 스프링 프레임워크가 사용자의 코드를 호출
+* 제어권이 framework에게 있어 필요에 따라 Spring framework가 사용자의 코드를 호출
+
+* Spring Container
+: bean의 생명주기를 관리한다.
+
+![img]({{ '/assets/images/2022-10-17/img2.PNG' | relative_url }}){: .center-image }*Spring Container*
+
+* `BeanFactory`
+: 객체 생성과 검색에 대한 기능을 정의하는 interface이다.
+Spring의 IoC를 담당하는 핵심 컨테이너이다.
+
+* `ApplicationContext`
+: 위의 `BeanFactory` interface를 상속하는, 기능이 더욱 추가된 interface이다.
+자원 처리 추상화나 메시지, 프로필, 환경변수 등을 처리할 수 있는 기능을 추가로 제공하고 있어 `BeanFactory`보다 더 자주 사용된다.
+
+* `AnnotationConfigApplicationContext`
+: `ApplicationContext` interface를 구현한 클래스로 `@Configuration` 어노테이션이 붙은 클래스를 이용하여 설정 정보를 읽어와 bean객체를 생성, 관리한다.
+
+* `ClassPathXmlApplicationContext`
+: `ApplicationContext` interface를 구현한 클래스로 classpath의 XML파일에서 설정 정보를 읽어온다.
 
 ---
 # Bean 생성 및 주입
-## 1) `@Congiguration` 파일의 메소드에서 객체 반환
-* 메소드 자체를 bean으로 등록
+## 1) `@Congiguration` 어노테이션 클래스에서 직접 등록
+* 메서드 자체를 bean객체로 등록하는 방법
 
-### `@Configuration` 작성
-* `@Configuration`: 해당 클래스가 Spring 설정에 사용되는 클래스라는 것을 의미
-클래스 이름은 자유롭게 지정 가능
+### - `@Configuration` 작성
+* `@Configuration`
+: 해당 클래스가 Spring 설정에 사용되는 클래스라는 것을 의미한다.
+클래스 이름은 자유롭게 지정 가능하다.
 
-* `@Bean`: 해당 클래스가 Bean을 등록하는 메소드라는 것을 의미
-메소드 명: Bean의 이름으로 지정
-메소드의 매개변수는 Bean에 등록된 객체가 있다면 자동으로 전달
+* `@Bean`
+: 해당 메서드가 생성한 객체를 Spring이 관리하는 bean객체로 등록한다.
+메서드 명: bean객체의 이름으로 지정, 구분할 때 사용한다.
+메서드의 매개변수는 bean에 등록된 객체가 있다면 자동으로 전달한다.
 
-* \src\main\java\com\example\demo\config\BeanConfig.java
-
+> `file`\src\main\java\com\example\demo\config\BeanConfig.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java %}
@@ -55,9 +76,12 @@ public class BeanConfig {
 {% endhighlight %}
 
 
-### main method 수정
-* \src\main\java\com\example\demo\DemoApplication.java
+### - main method 수정
+* `getBean()`
+: 생성된 bean객체를 검색할 때 사용된다.
 
+> `file`\src\main\java\com\example\demo\DemoApplication.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java %}
@@ -72,10 +96,9 @@ import com.example.demo.config.BeanConfig;
 
 @SpringBootApplication
 public class DemoApplication {
-
 	public static void main(String[] args) {
 		// 클래스1 변수명 = new 클래스1();
-		// 변수명.메소드()  ... 와 결과적으로 같은 형태
+		// 변수명.메서드()  ... 와 결과적으로 같은 형태
 		ApplicationContext context = new AnnotationConfigApplicationContext(BeanConfig.class);
 		String s = (String) context.getBean("bean1");
 		System.out.println("bean 생성1 : " + s);
@@ -86,11 +109,11 @@ public class DemoApplication {
 {% endhighlight %}
 
 ---
-## 2) XML 파일 Element 작성
+## 2) XML 파일에서 정보를 읽어와 등록
 
-### xml 파일 작성
-* \src\main\resources\bean2.xml
-
+### - xml 파일 작성
+> `file`\src\main\resources\bean2.xml
+{: style="text-align: right"}
 >XML
 {:.filename}
 {% highlight xml linenos %}
@@ -105,9 +128,9 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 {% endraw %}
 {% endhighlight xml %}
 
-### main method 수정
-* \src\main\java\com\example\demo\DemoApplication.java
-
+### - main method 수정
+> `file`\src\main\java\com\example\demo\DemoApplication.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos%}
@@ -120,17 +143,27 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
         ApplicationContext context2 = new ClassPathXmlApplicationContext("classpath:bean2.xml");
         int i = (int) context2.getBean("bean2");
         System.out.println("bean 생성2 : " + i);
+
+...
 {% endhighlight %}
 
 ---
-## 3) `@ComponentScan` 으로 `@Component`표시된 클래스 탐색
-* `@ComponentScan`: Component를 스캔해준다
-`basePackage`: 스캔을 시작할 루트(최상위) package를 정해줌
-`basePackageClasses`: 설정된 클래스의 패키지로부터 모든 하위의 패키지에 대해 컴포넌트를 스캔
+## 3) `@ComponentScan`으로 `@Component`를 탐색해서 등록
+* `@ComponentScan`
+: Component를 스캔해준다
 
-### `@Configuration` 수정
-* \src\main\java\com\example\demo\config\BeanConfig.java
+> Spring Boot의 main메서드가 포함된 패키지에 붙는 `@SpringBootApplicaiton` 어노테이션을 `Crtl`{:key} + `클릭`으로 들어가보면 `@ComponentScan`도 포함되어 있음을 확인할 수 있다.
+따라서 해당 클래스가 포함된 package의 하위 package에 대해 스캔하여 빈으로 등록한다. 이 범위를 벗어난 컴포넌트를 빈으로 등록하기 위해 `@ComponentScan`으로 범위를 지정할 수 있다.
 
+* `basePackage`
+: 스캔을 시작할 루트(최상위) package를 정해준다.
+
+* `basePackageClasses`
+: 설정된 클래스의 package로부터 모든 하위의 package에 대해 component를 스캔한다.
+
+### - `@Configuration` 수정
+> `file`\src\main\java\com\example\demo\config\BeanConfig.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos%}
@@ -155,10 +188,9 @@ public class BeanConfig {
 ...
 {% endhighlight %}
 
-
-### Bean 작성
-* \src\main\java\com\example\demo\config\Bean3.java
-
+### - Bean으로 등록할 클래스 작성
+> `file`\src\main\java\com\example\demo\config\Bean3.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos%}
@@ -175,9 +207,9 @@ public class Bean3 {
 {% endhighlight %}
 
 
-### main method 수정
-* \src\main\java\com\example\demo\DemoApplication.java
-
+### - main method 수정
+> `file`\src\main\java\com\example\demo\DemoApplication.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos%}
@@ -192,15 +224,21 @@ System.out.println(b.run());
 
 ---
 # Stereo Type Annotation
-* 스프링에서 기본적으로 제공
-* 특수한 기능을 가지고 있음
+* Spring에서 기본적으로 제공하는 어노테이션이다.
+* 특수한 기능을 가지고 있다.
 * 자주 사용되는 대표적인 4종류
-1. `@Controller`: 요청과 응답을 처리하는 클래스에 사용
-2. `@Service`: 비지니스 로직을 구현한 클래스에 사용
-3. `@Repository`: Persistence 역할을 하는 클래스에 사용
-4. `@Component`: 위 3가지 어노테이션의 상위(부모) 객체
+1. `@Controller`: 요청과 응답을 처리하는 클래스에 사용한다.
+2. `@Service`: 비지니스 로직을 구현한 클래스에 사용한다.
+3. `@Repository`: Persistence 역할을 하는 클래스에 사용한다.
+4. `@Component`: 위 3가지 어노테이션의 상위(부모) 객체이다.
 
 ---
 # 실습
 1. 프로젝트 생성(이름: basic)
 2. 2번째 pdf 파일의 bean 생성 실습 적용
+
+---
+# Reference
+{: style="text-align: right"}
+젼꾸이자 쪄니: [https://jihyunhillpark.github.io/springframework/spring-fundamental4/](https://jihyunhillpark.github.io/springframework/spring-fundamental4/)
+{: style="text-align: right"}

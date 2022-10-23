@@ -11,8 +11,9 @@ tags:
 ---
 # 예외 처리
 (기초 자바 강의에서 넘어간...)
-* 예외 (Exception)
-사용자의 잘못된 조작, 개발자의 잘못된 코딩으로 인한 오류
+
+**예외 (Exception)**
+:사용자의 잘못된 조작, 개발자의 잘못된 코딩으로 인한 오류
 예외가 발생되면 프로그램이 바로 종료되지만 예외 처리를 추가하면 정상 실행 상태로 돌아갈 수 있다.
 1. 컴파일 오류 (Compile Error)
 2. 런타임 오류 (Runtime Error)
@@ -157,8 +158,8 @@ public static void main(String[] args) throws NumberFormatException, ClassCastEx
 ---
 ### 의도적인 예외 발생
 
-* ThrowExam.java
-
+> `file`ThrowExam.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
@@ -198,9 +199,8 @@ public class ThrowExam {
 }
 {% endhighlight %}
 
-
-* ErrorExam03_thorw.java
-
+> `file`ErrorExam03_thorw.java
+{: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
