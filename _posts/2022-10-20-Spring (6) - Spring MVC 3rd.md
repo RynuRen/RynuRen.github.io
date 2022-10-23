@@ -93,6 +93,7 @@ public class HtmlController {
 > http://localhost:8080/signup?name=val1&userId=val2&userPassword=val3
 ![img]({{ '/assets/images/2022-10-20/img2.PNG' | relative_url }}){: .left-image }
 
+---
 ### 연습
 * 클라이언트의 요청 파라미터에 따라 응답이 달라지도록 작성해보자
 
