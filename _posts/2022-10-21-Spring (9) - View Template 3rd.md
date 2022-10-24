@@ -22,7 +22,7 @@ tags:
 ## Iteration, Conditional Evaluation
 * ${#numbers.sequence(from, to, [step])}
 : Thymeleaf의 Number Format 클래스 중 유틸리티 메서드인 sequence
-from에서 to까지 step(default=1)까지 정수의 시퀀스 생성한다.
+from에서 to까지 step(default=1)차이만큼 정수의 시퀀스 생성한다.
 
 * #~
 : Thymeleaf에서 제공하는 기본 객체(자바의 클래스)이다.
