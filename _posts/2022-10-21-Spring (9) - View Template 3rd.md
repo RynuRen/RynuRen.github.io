@@ -130,7 +130,7 @@ public String linkUrl(Model model, @RequestParam(defaultValue = "1") int page) {
 </html>
 {% endhighlight html %}
 > http://localhost:8080/linkUrl?page=23
-![img]({{ '/assets/images/경로/2022-10-24/img2.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022-10-24/img2.PNG' | relative_url }}){: .left-image }
 
 ---
 # Session
