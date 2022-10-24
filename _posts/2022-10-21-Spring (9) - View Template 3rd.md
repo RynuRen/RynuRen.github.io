@@ -435,11 +435,12 @@ public String login3(Model model, @RequestParam("id") String id, @RequestParam("
 
 ---
 ## 연습5 - Get, Post 매핑 활용
-* Get요청으로 들어왔을 때는 adminLogin.html로 이동한다.
-* adminLogin.html에서는 form태그와 input태그를 활용해서 로그인 기능 적용한다.
-* adminLogin.html에서 로그인 시도하게 되면 adminLogin의 post매핑으로 연결한다.
-* 이때 파라미터는 id와 pw라고 한다.
-* 관리자 계정 정보는 id는 admin, pw는 1234이며 로그인 성공시 adminPage.html로 이동하고 로그인 실패시 loginFail.html로 이동한다.
+* 다음 조건을 만족시켜보자
+1. Get요청으로 들어왔을 때는 adminLogin.html로 이동한다.
+2. adminLogin.html에서는 form태그와 input태그를 활용해서 로그인 기능 적용한다.
+3. adminLogin.html에서 로그인 시도하게 되면 adminLogin의 post매핑으로 연결한다.
+4. 이때 파라미터는 id와 pw라고 한다.
+5. 관리자 계정 정보는 id는 admin, pw는 1234이며 로그인 성공시 adminPage.html로 이동하고 로그인 실패시 loginFail.html로 이동한다.
 
 > `file`\src\main\java\com\example\basic\controller\ThymeleafController.java
 {: style="text-align: right"}
