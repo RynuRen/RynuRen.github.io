@@ -2,7 +2,7 @@
 layout: post
 title: Spring (9) - View Template 3rd
 date:   2022-10-24
-description: Thymeleaf와 Controller에서 조건문 연습
+description: Thymeleaf 반복문과 Url링크, Session
 toc: true
 comments: true
 tags:
