@@ -13,7 +13,7 @@ tags:
 2. Spring IoC [1)](/2022/10/Spring-(2)-Spring-IoC/) [2)](/2022/10/Spring-(3)-Spring-IoC-2nd/)
 3. Spring MVC [1)](/2022/10/Spring-(4)-Spring-MVC/) [2)](/2022/10/Spring-(5)-Spring-MVC-2nd/) [3)](/2022/10/Spring-(6)-Spring-MVC-3rd/)
 4. ~~Database 활용~~
-5. <span style="color:Turquoise">**View Template**</span> [1)](/2022/10/Spring-(7)-View-Template/) [2)](/2022/10/Spring-(8)-View-Template-2nd/) [3)](/2022/10/Spring-/Spring-(9)-View-Template-3rd/) <span style="color:SteelBlue">**4)**</span>
+5. <span style="color:Turquoise">**View Template**</span> [1)](/2022/10/Spring-(7)-View-Template/) [2)](/2022/10/Spring-(8)-View-Template-2nd/) [3)](/2022/10/Spring-(9)-View-Template-3rd/) <span style="color:SteelBlue">**4)**</span>
 6. AOP / Filter / Interceptor
 7. File Upload / Download
 
@@ -144,28 +144,86 @@ public class User {
 {% endhighlight html %}
 ![img]({{ '/assets/images/2022-10-25/img3.PNG' | relative_url }}){: .left-image }
 
+## 연습 세션만으로 새 게시판 프로젝트 작성
+* p태그 : 가로줄 전체를 범위로 잡는다.
 
+* 홈화면 설정
 
+> `file`\src\main\java\com\example\sesac\first\controller\HomeController.java
+{: style="text-align: right"}
+>Java
+{:.filename}
+{% highlight java linenos %}
+package com.example.sesac.first.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-
-
-
-
-
-
-
-
-
-
+@Controller
+public class HomeController {
+    @GetMapping("/")
+    public String home() {
+        return "home";
+    }
+}
+{% endhighlight java %}
 
 > `file`\path\page.html
+{: style="text-align: right"}
+>HTML
+{:.filename}
+{% highlight html linenos %}
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+</head>
+
+<body>
+    <h1>Home 화면</h1>
+    <a href="/user/join">회원가입</a> | 
+    <th:block th:if="${session.user} == null">
+        <a href="/user/login">로그인</a>
+    </th:block>
+    <th:block th:unless="${session.user} == null">
+        <a href="/user/logout">로그아웃</a> | <span>[[${session.user.userName}]] 님 환영합니다.</span>
+        <a href="/board/boardList">게시판</a>
+    </th:block>
+</body>
+
+</html>
+{% endhighlight html %}
+> http://localhost:8080/
+![img]({{ '/assets/images/2022-10-25/img0.PNG' | relative_url }}){: .left-image }
+
+* 사용자 가입
+
+> `file`\src\main\java\com\example\sesac\first\controller\UserController.java
 {: style="text-align: right"}
 >Java
 {:.filename}
 {% highlight java linenos %}
 ...
-Java code
+
+@Controller
+@RequestMapping("user") // http://localhost:8080/user
+public class UserController {
+    @GetMapping("join") // http://localhost:8080/user/join
+    public String join() {
+        return "user/join";
+    }
+
+    @PostMapping("join") // http://localhost:8080/user/join
+    public String join(User user, HttpSession session) {
+        List<User> userlist = new ArrayList<>();
+        if (session.getAttribute("userlist") != null) {
+            userlist = (List<User>) session.getAttribute("userlist");
+        }
+        userlist.add(user);
+        session.setAttribute("userlist", userlist);
+        // session.setAttribute("joinUser", user);
+        return "redirect:/";
+    }
+
 ...
 {% endhighlight java %}
 
@@ -174,7 +232,329 @@ Java code
 >HTML
 {:.filename}
 {% highlight html linenos %}
-HTML code
+...
+
+<h2>회원가입</h2>
+<form action="/user/join" method="post">
+    <input type="text" placeholder="아이디" name="userId"/><br />
+    <input type="text" placeholder="비밀번호" name="userPw"/><br />
+    <input type="text" placeholder="이름" name="userName"/><br />
+    <input type="text" placeholder="주소" name="userAddr"/><br />
+    <input type="submit" value="회원가입"/>
+</form>
+
+...
 {% endhighlight html %}
-> http://localhost:8080/접속주소
-![img]({{ '/assets/images/2022-10-25/img1.PNG' | relative_url }}){: .left-image }
+> 홈화면의 `회원가입`{:.key}
+![img]({{ '/assets/images/2022-10-25/img4.PNG' | relative_url }}){: .left-image }
+
+* 로그인
+
+> `file`\src\main\java\com\example\sesac\first\controller\UserController.java
+{: style="text-align: right"}
+>Java
+{:.filename}
+{% highlight java linenos %}
+...
+
+@GetMapping("login")
+public String login() {
+    return "user/login";
+}
+
+@PostMapping("login")
+public String login(User user, HttpSession session) {
+    String id = user.getUserId();
+    String pw = user.getUserPw();
+    List<User> userlist = new ArrayList<>();
+    userlist = (List<User>) session.getAttribute("userlist");
+    for (User listedUser : userlist) {
+        if (listedUser.getUserId().equals(id) && listedUser.getUserPw().equals(pw)) {
+            session.setAttribute("user", listedUser);
+            break;
+        } else {
+            session.setAttribute("user", null);
+        }
+    }
+
+    return "redirect:/";
+}
+
+...
+{% endhighlight java %}
+
+> `file`\path\page.html
+{: style="text-align: right"}
+>HTML
+{:.filename}
+{% highlight html linenos %}
+...
+
+<h2>로그인</h2>
+<form action="/user/login" method="post">
+    <input type="text" placeholder="아이디" name="userId"/><br />
+    <input type="text" placeholder="비밀번호" name="userPw"/><br />
+    <input type="submit" value="로그인"/>
+</form>
+
+...
+{% endhighlight html %}
+> 홈화면의 `로그인`{:.key}
+![img]({{ '/assets/images/2022-10-25/img5.PNG' | relative_url }}){: .left-image }
+
+> 아이디: 1, 비밀번호: 1234, 이름: 홍길동, 주소: 서울 => `로그인`{:.key}
+![img]({{ '/assets/images/2022-10-25/img6.PNG' | relative_url }}){: .left-image }
+
+* 로그아웃
+
+> `file`\src\main\java\com\example\sesac\first\controller\BoardController.java
+{: style="text-align: right"}
+>Java
+{:.filename}
+{% highlight java linenos %}
+...
+
+@GetMapping("logout")
+public String logout(HttpSession session) {
+    session.removeAttribute("user");
+    return "redirect:/";
+}
+
+...
+{% endhighlight java %}
+
+* 게시판 구현
+
+> `file`\path\page.html
+{: style="text-align: right"}
+>Java
+{:.filename}
+{% highlight java linenos %}
+...
+
+@Controller
+@RequestMapping("board")
+public class BoardController {
+    // 게시글 목록
+    @GetMapping("boardList")
+    public String boardList(Model model, Board board, HttpSession session) {
+        if (session.getAttribute("boardList") != null){
+            List<Board> boardList = (List<Board>) session.getAttribute("boardList");
+            model.addAttribute("boardList", boardList);
+        } else {
+            model.addAttribute("boardList", null);
+        }
+        return "board/boardList";
+    }
+    
+...
+{% endhighlight java %}
+
+> `file`\src\main\resources\templates\board\boardList.html
+{: style="text-align: right"}
+>HTML
+{:.filename}
+{% highlight html linenos %}
+...
+
+<h2>- 게시글 목록 -</h2>
+<table border="1">
+    <tr>
+        <td>번호</td>
+        <td align="center">게시글 제목</td>
+        <td>작성자</td>
+    </tr>
+    <th:block th:if="${boardList} != null">
+        <tr th:each="board : ${boardList}">
+            <td th:text="${board.boardNo}"></a></td>
+            <td>
+                <a th:href="@{/board/boardDetail(boardNo=${board.boardNo})}">[[${board.boardTitle}]]</a>
+            </td>
+            <td th:text="${board.boardWriter}"></td>
+        </tr>
+    </th:block>
+    <th:block th:unless="${boardList} != null">
+        <tr colspan="3">게시글이 존재하지 않습니다.</tr>
+        <!-- colspan : 셀 병합 -->
+    </th:block>
+</table>
+<a href="/">홈으로</a> | <a href="/board/boardCreate">글쓰기</a>
+
+...
+{% endhighlight html %}
+> 로그인 세션 상태에서 홈화면의 `게시판`{:.key}
+![img]({{ '/assets/images/2022-10-25/img7.PNG' | relative_url }}){: .left-image }
+
+* 게시글 작성
+
+> `file`\src\main\java\com\example\sesac\first\controller\BoardController.java
+{: style="text-align: right"}
+>Java
+{:.filename}
+{% highlight java linenos %}
+...
+
+// 게시글 작성 페이지
+@GetMapping("boardCreate")
+public String boardCreate() {
+    return "board/boardCreate";
+}
+//게시글 작성 요청
+@PostMapping("boardCreate")
+public String boardCreate(Board board, HttpSession session) {
+    List<Board> boardList = new ArrayList<>();
+    if (session.getAttribute("boardList") != null) {
+        boardList = (List<Board>) session.getAttribute("boardList");
+        int preBoardNo = Integer.parseInt(boardList.get(boardList.size() - 1).getBoardNo());
+        board.setBoardNo(Integer.toString(preBoardNo + 1));
+    } else {
+        board.setBoardNo("1");
+    }
+    User user = (User) session.getAttribute("user");
+    board.setBoardWriter(user.getUserName());
+    boardList.add(board);
+    session.setAttribute("boardList", boardList);
+    return "redirect:/board/boardList";
+}
+
+...
+{% endhighlight java %}
+
+> `file`\src\main\resources\templates\board\boardCreate.html
+{: style="text-align: right"}
+>HTML
+{:.filename}
+{% highlight html linenos %}
+...
+
+<h2>- 게시글 작성 -</h2>
+<form action="/board/boardCreate" method="post">
+    <h3>작성자 : [[${session.user.userName}]]</h3>
+    <h3>글 제목</h3>
+    <textarea name="boardTitle" style="width:100%;"></textarea>
+    <h3>글 내용</h3>
+    <textarea name="boardContent" style="width:100%; height:200px"></textarea>
+    <input type="submit" value="게시글 작성">
+</form>
+<a href="/board/boardList">취소</a>
+
+...
+{% endhighlight html %}
+> `게시글 작성`{:.key}
+![img]({{ '/assets/images/2022-10-25/img8.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022-10-25/img9.PNG' | relative_url }}){: .left-image }
+
+* 게시글 상세보기
+
+> `file`\src\main\java\com\example\sesac\first\controller\BoardController.java
+{: style="text-align: right"}
+>Java
+{:.filename}
+{% highlight java linenos %}
+...
+
+// 게시글 상세보기
+@GetMapping("boardDetail")
+public String boardDetail(Model model, HttpSession session, @RequestParam String boardNo) {
+    List<Board> boardList = (List<Board>) session.getAttribute("boardList");
+    for (Board board : boardList) {
+        if (board.getBoardNo().equals(boardNo)) {
+            model.addAttribute("board", board);
+            break;
+        }
+    }
+    return "board/boardDetail";
+}
+
+...
+{% endhighlight java %}
+
+> `file`\src\main\resources\templates\board\boardDetail.html
+{: style="text-align: right"}
+>HTML
+{:.filename}
+{% highlight html linenos %}
+...
+
+<h2>- 게시글 [[${board.boardNo}]] -</h2>
+<h3>작성자 : [[${board.boardWriter}]]</h3>
+<h3>글 제목</h3>
+<textarea name="boardTitle" style="width:100%;" readonly>[[${board.boardTitle}]]</textarea>
+<h3>글 내용</h3>
+<textarea name="boardContent" style="width:100%; height:200px" readonly>[[${board.boardContent}]]</textarea>
+<a href="/board/boardList">목록으로</a>
+<th:block th:if="${session.user.userName} == ${board.boardWriter}">
+    | <a th:href="@{/board/boardUpdate(boardNo=${board.boardNo})}">수정</a>
+</th:block>
+
+...
+{% endhighlight html %}
+> 작성한 게시글 제목 클릭
+![img]({{ '/assets/images/2022-10-25/img10.PNG' | relative_url }}){: .left-image }
+
+* 게시글 수정
+
+> `file`\src\main\java\com\example\sesac\first\controller\BoardController.java
+{: style="text-align: right"}
+>Java
+{:.filename}
+{% highlight java linenos %}
+...
+
+// 게시글 수정 페이지
+@GetMapping("boardUpdate")
+public String boardUpdate(Model model, HttpSession session, @RequestParam String boardNo) {
+    // 수정하고자 하는 페이지의 글정보를 가져와 페이지에 표시
+    List<Board> boardList = (List<Board>) session.getAttribute("boardList");
+    User user = (User) session.getAttribute("user");
+    for (Board board : boardList) {
+        if (board.getBoardNo().equals(boardNo) && board.getBoardWriter().equals(user.getUserName())) {
+            model.addAttribute("board", board);
+            return "board/boardUpdate";
+        }
+    }
+    return "board/boardError";
+}
+// 게시글 수정 요청
+@PostMapping("boardUpdate")
+public String boardUpdate(Board board, HttpSession session) {
+    List<Board> boardList = (List<Board>) session.getAttribute("boardList");
+    User user = (User) session.getAttribute("user");
+    board.setBoardWriter(user.getUserName());
+    for (int i = 0; i < boardList.size(); i++) {
+        if (boardList.get(i).getBoardNo().equals(board.getBoardNo())) {
+            boardList.set(i, board);
+            session.setAttribute("boardList", boardList);
+        }
+    }
+    return "redirect:/board/boardList";
+}
+
+...
+{% endhighlight java %}
+
+> `file`\src\main\resources\templates\board\boardUpdate.html
+{: style="text-align: right"}
+>HTML
+{:.filename}
+{% highlight html linenos %}
+...
+
+<h2>- 게시글 [[${board.boardNo}]] 수정 -</h2>
+<form action="/board/boardUpdate" method="post">
+    <input type="hidden" name="boardNo" th:value="${board.boardNo}" />
+    <h3>작성자 : [[${session.user.userName}]]</h3>
+    <h3>글 제목</h3>
+    <textarea name="boardTitle" style="width:100%;">[[${board.boardTitle}]]</textarea>
+    <h3>글 내용</h3>
+    <textarea name="boardContent" style="width:100%; height:200px">[[${board.boardContent}]]</textarea>
+    <input type="submit" value="게시글 수정">
+</form>
+<a href="/board/boardList">취소</a>
+
+...
+{% endhighlight html %}
+> 자세히보기에서 수정
+![img]({{ '/assets/images/2022-10-25/img11.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022-10-25/img12.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022-10-25/img13.PNG' | relative_url }}){: .left-image }
