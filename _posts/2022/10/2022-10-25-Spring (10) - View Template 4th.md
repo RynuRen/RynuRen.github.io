@@ -221,7 +221,7 @@ public class HomeController {
 ![img]({{ '/assets/images/2022-10-25/img0.PNG' | relative_url }}){: .left-image }
 
 * 회원가입 페이지 만들기 - 세션에 user의 정보를 저장한다.
-* 여러 user의 정보를 담기 위해 list를 사용했다.
+* 여러 user의 정보를 담기 위해 list를 사용한다.
 
 > `file`\src\main\java\com\example\sesac\first\controller\UserController.java
 {: style="text-align: right"}
@@ -582,8 +582,8 @@ public String boardUpdate(Board board, HttpSession session) {
 ...
 {% endhighlight java %}
 
-* input의 hidden 타입을 이용해 post요청 시 넘길 boardNo 값을 지정했다.
-* title과 content는 수정한 값을 그대로 넘기고 writer는 java에서 세션 userName 값으로 지정했다.
+* input의 hidden 타입을 이용해 post요청 시 넘길 boardNo 값을 지정한다.
+* title과 content는 수정한 값을 그대로 넘기고 writer는 java에서 세션 userName 값으로 지정한다.
 
 > `file`\src\main\resources\templates\board\boardUpdate.html
 {: style="text-align: right"}

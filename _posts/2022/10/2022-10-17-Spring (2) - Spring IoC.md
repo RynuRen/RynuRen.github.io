@@ -12,8 +12,8 @@ tags:
 1. 개발 환경 준비 [1)](/2022/10/Spring-(1)-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A4%80%EB%B9%84/)
 2. <span style="color:Turquoise">**Spring IoC**</span> <span style="color:SteelBlue">**1)**</span> [2)](/2022/10/Spring-(3)-Spring-IoC-2nd/)
 3. Spring MVC [1)](/2022/10/Spring-(4)-Spring-MVC/) [2)](/2022/10/Spring-(5)-Spring-MVC-2nd/) [3)](/2022/10/Spring-(6)-Spring-MVC-3rd/)
-4. <del>Database 활용</del>
-5. View Template [1)](/2022/10/Spring-(7)-View-Template/) [2)](/2022/10/Spring-(8)-View-Template-2nd/)
+4. ~~Database 활용~~
+5. View Template [1)](/2022/10/Spring-(7)-View-Template/) [2)](/2022/10/Spring-(8)-View-Template-2nd/) [3)](/2022/10/Spring-(9)-View-Template-3rd/) [4)](/2022/10/Spring-(10)-View-Template-4th/)
 6. AOP / Filter / Interceptor
 7. File Upload / Download
 
@@ -239,5 +239,5 @@ System.out.println(b.run());
 ---
 # Reference
 {: style="text-align: right"}
-젼꾸이자 쪄니: [https://jihyunhillpark.github.io/springframework/spring-fundamental4/](https://jihyunhillpark.github.io/springframework/spring-fundamental4/)
+젼꾸이자 쪄니: [스프링 기본 핵심원리 (스프링 컨테이너와 스프링 빈)](https://jihyunhillpark.github.io/springframework/spring-fundamental4/)
 {: style="text-align: right"}
