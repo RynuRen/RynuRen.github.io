@@ -75,6 +75,12 @@ public class MyBatisConfig {
 }
 {% endhighlight java %}
 
+
+---
+## 회원 관련 기능
+### 회원가입
+* 세션 활용 회원가입 요청을 수정한다.
+
 * BD와 연결해서 BD에 user정보를 삽입하는 XML을 작성한다.
 
 > `file`\src\main\resources\mapper\userMapper.xml
@@ -112,10 +118,6 @@ public interface UserMapper {
 }
 {% endhighlight java %}
 
----
-## 회원 관련 기능
-* 세션 활용 회원가입 요청을 수정한다.
-
 > `file`\src\main\java\com\example\sesac\first\controller\UserController.java
 {: style="text-align: right"}
 >Java
@@ -135,6 +137,8 @@ public String join(User user, HttpSession session) {
 ...
 {% endhighlight java %}
 
+---
+### 로그인
 * 세션 활용 로그인 요청을 수정한다.
 
 > `file`\src\main\java\com\example\sesac\first\controller\UserController.java
