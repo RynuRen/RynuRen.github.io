@@ -1,0 +1,58 @@
+---
+layout: post
+title: Spring Boot Project (2)
+published: false
+date:   2022-10-26
+description: 프로젝트 구현
+# toc: true
+comments: true
+tags:
+ - spring boot
+---
+---
+# 1) 레이아웃
+* 구현됨>한 페이지만 보여주는게 아니라 화면을 분할해서 페이지를 넘어가더라도 top과 bottom은 계속 유지되도록 하고 싶다.
+
+## top 페이지
+* 구현됨>해당 웹의 이름과 게시판들(일단 한 게시판만 작성하기로)의 링크와 로그인 세션의 유무에 따라 보이는 내용이 달라지는 구역을 표시하려고 한다.
+* 구현됨>왼쪽은 웹의 이름, 가운데는 게시판들 링크, 오른쪽은 로그인 세션이 없으면 '로그인 | 계정생성' 세션이 있으면 '로그아웃 | 정보수정'을 표시한다.
+
+## bottom 페이지
+* 구현됨>일단 담을것이 없으니 Copyright만 넣는다.
+시간이 되면 다크모드를 구현해보고 싶다.
+
+# 2) 계정 관련
+구현됨>계정에 필요한 정보는 로그인 할 때 사용하고 고유값으로 중복 불가능한 id와 로그인에 본인확인할 pw, 게시글에 사용할 닉네임, 그리고 이메일로 정했다.
+모든 게시글에 대한 권한을 가진 계정을 설정해둔다.
+
+## 계정 생성
+*required를 input속성에 추가해 null이면 submit할 수 없게 구현함>정보를 post로 넘길 때 4가지 값 모두 null인지 체크하고 null이 있다면 에러메시지를 띄운다.
+
+id는 중복체크하는 버튼을 만들어 체크값이 참일때만 생성가능하게 한다. hidden속성으로 필드값을 하나 두고 중복체크후 true일때만 생성버튼이 활성화되게 하면 가능하지 않을까 싶다.
+
+* input에 minlength 속성을 추가해 구현함>pw도 일단은 8자리 이상만 만족하도록 하고
+* input type을 email로 설정해 구현함>이메일은 문자열@문자열.문자열 양식을 만족하는지 체크한다.
+
+## 로그인
+*required를 input속성에 추가해 null이면 submit할 수 없게 구현함>>로그인 시 post에 null을 주기 전에 미리 체크한다.
+
+* 구현됨>로그인 후에는 유저 정보에 접근해 수정할 수 있는 페이지도 만들어 보자.
+
+# 3) 게시글 관련
+구현함>게시글 리스트를 한 페이지에 10개만(시간이되면 사용자가 선택할 수 있도록) 보이도록 하고, 페이지 이동을 아래에 표시한다.
+구현함>게시글의 작성일자를 오늘이면 시간을 오늘이 아니라면 MM-dd형식으로만 출력한다.
+조회수와 추천, 비추천 시스템도 추가해 보자.
+게시글의 수정과 삭제는 작성자와 세션의 유저가 같을 경우에만 표시되게 한다.
+게시글 작성 버튼은 유저 세션이 존재할 경우에만 표시되게 한다.
+아마 시간이 안될테지만 관리자 계정으로 게시글을 작성할 경우 공지로 등록할 수 있는 옵션을 주고 공지일 경우 게시글 목록의 상단에 고정한다.
+
+# 레이아웃 구현
+1. thymeleaf-layout을 이용해 페이지를 세 구역을 나눴고 일단 footer에 copyright 문구만 띄우는데는 성공했다.
+2. header구역을 div태그에 float속성을 줘서 3개로 나눴다.
+
+
+# Reference
+sgoho01: [타임리프 레이아웃 (thymeleaf layout dialect)](https://sgoho01.tistory.com/12)
+Jan92: [Spring Boot 타임리프 Thymeleaf layout 적용하는 방법](https://wildeveloperetrain.tistory.com/136)
+zepinos: [페이징에 대한 이해](https://zepinos.tistory.com/29)
+mdn web docs: [<input>: 입력 요소](https://developer.mozilla.org/ko/docs/Web/HTML/Element/Input)
