@@ -3,8 +3,8 @@ layout: post
 title: Spring Boot Project (2)
 published: true
 date:   2022-10-27
-description: 프로젝트 구현 (1)
-# toc: true
+description: 프로젝트 구현 (1/2)
+toc: true
 comments: true
 tags:
  - spring boot
@@ -82,6 +82,7 @@ top구역을 네비게이션 구역으로 사용해 게시판과 유저관련 �
 ...
 {% endhighlight xml %}
 
+---
 ## 로그인
 계정 생성과 마찬가지로 아이디와 비밀번호에 required 속성을 추가해 null이면 submit할 수 없게 했다.
 비밀번호의 타입도 password로 설정했다.
@@ -113,6 +114,7 @@ public String login(User user, HttpSession session) {
 ...
 {% endhighlight java %}
 
+---
 ## 정보수정
 로그인 해서 세션에 유저 정보가 있을 때만 접근할 수 있도록 했다.
 아이디는 수정할 수 없게 readonly 속성을 주고 비밀번호를 제외한 닉네임과 이메일은 해당 세션의 유저정보에서 읽어와 보여주고 수정도 가능하게 했다.
@@ -235,6 +237,9 @@ MariaDB에서는 Row_Number를 지원하지 않으므로 변수를 설정하여 
 {% highlight xml linenos %}
 ...
 
+<select id="getTotal" resultType="int">
+    SELECT count(*) AS totalCount FROM board
+</select>
 <select id="getList" parameterType="int" resultType="kr.ac.sesac.springboot.webproject.model.Board">
     SELECT @rownum:=@rownum + 1 AS rnum, boardId, boardTitle, boardWriter, boardCreateDate, boardViews, boardThumbUp
     FROM board, (SELECT @rownum:=0) R
@@ -245,8 +250,7 @@ MariaDB에서는 Row_Number를 지원하지 않으므로 변수를 설정하여 
 ...
 {% endhighlight xml %}
 
-Java 소스 쪽에서도 테이블 아래에 표시할 페이지 번호를 계산하여 model에 담아 html로 넘겼다. html쪽에서도 이전에 배웠던 thymeleaf 문법을 이용해 구현은 완료했다.
-아쉬운 디자인은 시간이 되면...
+Java 소스 쪽에서도 테이블 아래에 표시할 페이지 번호들을 계산하여 model에 담아 html로 넘겼다. html쪽에서도 이전에 배웠던 thymeleaf 문법을 이용해 구현은 완료했다.
 
 > `file`\src\main\java\kr\ac\sesac\springboot\webproject\controller\UserController.java
 {: style="text-align: right"}

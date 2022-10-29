@@ -1,81 +1,284 @@
 ---
 layout: post
-title: Spring Boot Project (2)
-published: false
-date:   2022-10-26
-description: 프로젝트 구현
-# toc: true
+title: Spring Boot Project (3)
+published: true
+date:   2022-10-28
+description: 프로젝트 구현 (2/2)
+toc: true
 comments: true
 tags:
  - spring boot
 ---
 ---
-# 1) 레이아웃 구현
-thymeleaf-layout을 이용해 페이지를 세 구역을 나눴고 일단 footer에 copyright 문구만 띄우는데는 성공했다.
-head fragment에는 페이지에서 타이틀 값을 가져와 타이틀을 설정하는 기능을 넣었다.
-
-## top 페이지
-top구역을 네비게이션 구역으로 사용해 게시판과 유저관련 기능을 넣었다. div태그에 float속성을 줘서 3개로 나눴다.
-메인과 게시판으로 이동하는 링크들을 좌측에, 유저관련 기능은 우측으로 넣었다. 로그인 세션의 유무에 따라 없으면 '로그인과 계정생성' 있으면 '로그아웃과 정보수정'을 표시했다
-
-## bottom 페이지
-일단 담을것이 없어 Copyright만 넣었다.
-
-# 2) 계정 관련
-계정 정보는 아이디와 비밀번호, 닉네임, 이메일, 계정 생성일 5가지로 잡았다. 아이디를 primary값으로 했다.
-
-## 계정 생성
-계정 생성 페이지에서 form태그의 input태그에 type속성을 각각 다르게 설정했다.
-필수적으로 입력받을 아이디, 비밀번호, 닉네임에 required 속성을 추가해 null을 넘길 수 없도록 했다.
-비밀번호는 타입을 password로 해서 입력을 가렸고 minlength 속성도 8로 추가해 8자리 이상을 받도록 했다.
-이메일은 타입을 email로 해서 입력받을 때 @양쪽으로 문자가 있는지 체크하게 했다.
-
-## 로그인
-계정 생성과 마찬가지로 아이디와 비밀번호에 required 속성을 추가해 null이면 submit할 수 없게 했다.
-비밀번호의 타입도 password로 설정했다.
-
-## 정보수정
-로그인 해서 세션에 유저 정보가 있을 때만 접근할 수 있도록 했다.
-아이디는 수정할 수 없게 readonly 속성을 주고 비밀번호를 제외한 닉네임과 이메일은 해당 세션의 유저정보에서 읽어와 보여주고 수정도 가능하게 했다.
-수정을 하려면 현재 비밀번호에 맞는 비밀번호를 입력해야 하고 비밀번호를 변경하고자 할때에는 바꿀 비밀번호 칸에 입력하면 DB상에 수정되도록 했다.
-가장 아래쪽에는 계정을 생성한 날짜를 보여준다.
-
 # 3) 게시글 관련
-게시글은 고유의 아이디와 제목, 내용, 작성자, 작성일, 수정일, 조회수, 추천, 비추천을 DB에 저장할 항목으로 했다.
-추가로 DB에서 불러올때 아이디와는 다른 순서를 매길 번호도 필드로 선언해 뒀다.
+## 게시글 작성
+게시글 작성 버튼은 유저 세션이 존재할 경우에만 표시되게 한다. 정보수정에서 별명을 바꿀 수 있게 디자인 했기에 나중에 게시글 수정이나 삭제 시 작성자를 구별할 작성자의 id도 게시글 데이터에 추가로 받기로 했다. 하지만 게시글과 리스트에는 작성자의 별명으로만 노출되게 구현했다.
 
-## 게시글 리스트
-이곳에서는 해당 게시글의 내용과 수정일은 사용하지 않고 나머지 6개의 데이터만 게시글당 한줄에 나타냈다.
-우선 게시글이 하나도 없을 경우 목록의 한 열을 병합해 게시글이 존재하지 않음을 나타냈다.
-해당 게시글의 제목에 게시글의 상세페이지로 넘어갈 하이퍼링크를 만들었다.
-작성일의 경우 게시글이 오늘 작성됐다면 시:분으로 아니라면 월, 일만 표시되도록 if문을 쓰고 thymeleaf의 클래스인 calendars, dates들의 메서드를 활용했다.
-여기서 DB에 저장한 시간을 불러 웹에 표시했을때 시간이 맞지 않은 것을 발견하고 설정을 뒤적이다가 application.properties에 답이 있었다.
+> `file`\src\main\java\kr\ac\sesac\springboot\webproject\controller\BoardController.java
+{: style="text-align: right"}
+>Java
+{:.filename}
+{% highlight java linenos %}
+...
 
-    spring.datasource.url=jdbc:mysql://localhost:3306/webproject?serverTimezone=UTC&characterEncoding=UTF-8
+@PostMapping("create")
+public String create(Board board, HttpSession session) {
+    User user = (User) session.getAttribute("user");
+    board.setBoardWriter(user.getUserNick());
+    board.setBoardWriterId(user.getUserId());
+    boardMapper.putBoard(board);
+    return "redirect:/board/list";
+}
 
-여기에서 serverTimezone이 UTC로 설정되어 있어서 스프링으로 불러오면 KST인 +9가 되어 이상해진 것이었다. 다음으로 바꿔주니 정상적으로 출력되었다.
+...
+{% endhighlight java %}
 
-    spring.datasource.url=jdbc:mysql://localhost:3306/webproject?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+> `file`\src\main\resources\mapper\boardMapper.xml
+{: style="text-align: right"}
+>XML
+{:.filename}
+{% highlight xml linenos %}
+...
 
-페이지네이션을 구현하기 위해 매퍼에서 쿼리로 불러올때 구문에 LIMIT를 써서 해당 페이지에 표시할 게시글만 불러왔다. 표시하지 않을 내용과 수정일은 포함하지 않았다.
-MySQL과 유사한 MariaDB이기에 rownum을 지원하지 않으므로 변수를 설정하여 가장 오래된 게시글부터 번호를 매겨 표시를 시작할 게시글의 전 숫자와 출력할 게시글 수를 LIMIT의 변수로 넘겼다.
-Java 소스 쪽에서도 테이블 아래에 표시할 페이지 번호를 계산하여 model에 담아 html로 넘겼다. html쪽에서도 이전에 배웠던 thymeleaf 문법을 이용해 구현은 완료했다.
-아쉬운 디자인은 시간이 되면...
+<insert id="putBoard" parameterType="kr.ac.sesac.springboot.webproject.model.Board">
+    INSERT INTO board VALUES(NULL, #{boardTitle}, #{boardContent}, #{boardWriter}, #{boardWriterId}, now(), NULL, 0, 0, 0)
+</insert>
 
+...
+{% endhighlight xml %}
 
+---
+## 게시글 조회
+상세보기 페이지 호출시 해당 게시판 id를 통해 boardViews를 1씩 더해 업데이트 하는 쿼리를 실행하는 방식으로 조회수를 구현했다. 하지만 상세 페이지에서 새로고침을 할때마다 조회수가 올라가 수정이 필요해 보인다.
 
-# 추가 사항
-아이디 중복체크 - 버튼으로 쿼리실행, 결과 획득에 따라 가능/불가능 팝업 메시지를 띄울 수 있으면 좋겠다.
-계정 생성시 비밀번호 확인 기능을 넣어 생성 버튼을 눌렀을때 두항목이 다르면 에러 팝업 메시지를 띄울 수 있으면 좋겠다.
-게시판 리스트에서 한 페이지에 표시할 글의 수를 유저가 고를 수 있게 콤보박스를 구현해보면 좋겠다.
-조회수와 추천, 비추천 시스템도 추가해 보자.
+> `file`\src\main\java\kr\ac\sesac\springboot\webproject\controller\BoardController.java
+{: style="text-align: right"}
+>Java
+{:.filename}
+{% highlight java linenos %}
+...
 
-조회수는 상세보기 페이지 호출시 해당 게시판 id를 통해 boardViews를 1더해주는 쿼리를 작성했다. 하지만 상세 페이지에서 새로고침을 할때마다 조회수가 올라가 수정이 필요해 보인다.
+@GetMapping("detail")
+public String detail(Model model, HttpSession session, @RequestParam int boardId) {
+    Board board = boardMapper.selectBoard(boardId);
+    boardMapper.updateViews(boardId);
+    model.addAttribute("board", board);
+    return "board/detail";
+}
 
-게시글 작성 버튼은 유저 세션이 존재할 경우에만 표시되게 한다.
+...
+{% endhighlight java %}
+
+> `file`\src\main\resources\mapper\boardMapper.xml
+{: style="text-align: right"}
+>XML
+{:.filename}
+{% highlight xml linenos %}
+...
+
+<update id="updateViews" parameterType="kr.ac.sesac.springboot.webproject.model.Board">
+    UPDATE board SET boardViews=boardViews+1
+    WHERE boardId = #{boardId}
+</update>
+
+...
+{% endhighlight xml %}
+
+게시글 수정일은 수정일에 데이터가 있을 때만 표시되도록 했다.
 게시글의 수정과 삭제는 작성자와 세션의 유저가 같을 경우에만 표시되게 한다.
-아마 시간이 안될테지만 관리자 계정으로 게시글을 작성할 경우 공지로 등록할 수 있는 옵션을 주고 공지일 경우 게시글 목록의 상단에 고정한다.
-추천에 비추천을 뺀 값을 기준으로 상위 몇개의 개시글을 상단에 노출시킬 수 있으면 좋겠다.
+
+> `file`\src\main\resources\templates\board\detail.html
+{: style="text-align: right"}
+>HTML
+{:.filename}
+{% highlight html linenos %}
+...
+
+<th:block th:unless="${board.boardUpdateDate} == null">
+    <tr>
+        <td style="padding-left: 5px;">수정일</td>
+        <td colspan="3" style="padding-right: 5px; text-align: right;">
+            [[${#dates.format(board.boardUpdateDate, 'yyyy-MM-dd HH:mm:ss')}]]
+        </td>
+    </tr>
+</th:block>
+
+...
+
+<th:block th:unless="${session.user} == null">
+    <th:block th:if="${session.user.userId} == ${board.boardWriterId}">
+        <tr>
+            <td colspan="4" style="text-align: right; padding-right: 5px;">
+                <input type="button" value="게시글 수정"
+                    th:onclick="|location.href='@{edit(boardId=${board.boardId})}'|">
+                <input type="button" value="게시글 삭제"
+                    th:onclick="|location.href='@{delete(boardId=${board.boardId})}'|">
+            </td>
+        </tr>
+    </th:block>
+</th:block>
+
+...
+{% endhighlight html %}
+
+---
+## 게시글 수정
+수정 요청을 쿼리 할 때와 수정 후 리다이렉트 할 때 게시글을 구별할 용도로 필요한 boardId는 hidden속성으로 view에 준 뒤 submit시 받아왔다.
+
+> `file`\src\main\resources\templates\board\detail.html
+{: style="text-align: right"}
+>HTML
+{:.filename}
+{% highlight html linenos %}
+...
+
+<form action="/board/edit" method="post">
+    <input type="hidden" name="boardId" th:value="${board.boardId}">
+    <tr>
+        <td width="80px" style="padding-left: 5px;">작성자</td>
+        <td>[[${board.boardWriter}]]</td>
+    </tr>
+    <tr>
+        <td style="padding-left: 5px;">제목</td>
+        <td style="padding-right:5px;">
+            <textarea name="boardTitle" style="width:100%; height:21px;">[[${board.boardTitle}]]</textarea>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="padding: 5px;">
+            <textarea name="boardContent" style="width:100%; height:300px">[[${board.boardContent}]]</textarea>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td style="text-align: right; padding-right: 5px;"><input type="submit" value="수정 완료"></td>
+    </tr>
+</form>
+
+...
+{% endhighlight html %}
+
+수정할 수 있는 항목은 제목과 내용이며 추가로 수정일에 데이터를 추가해줬다.
+
+> `file`\src\main\resources\mapper\boardMapper.xml
+{: style="text-align: right"}
+>XML
+{:.filename}
+{% highlight xml linenos %}
+...
+
+<update id="updateBoard" parameterType="kr.ac.sesac.springboot.webproject.model.Board">
+    UPDATE board SET boardTitle=#{boardTitle}, boardContent=#{boardContent}, boardUpdateDate=now()
+    WHERE boardId = #{boardId}
+</update>
+
+...
+{% endhighlight xml %}
+
+---
+## 게시글 삭제
+삭제는 간단하게 boardId를 가져와 해당 항목을 삭제하는 방식으로 했다.
+
+> `file`\src\main\java\kr\ac\sesac\springboot\webproject\controller\BoardController.java
+{: style="text-align: right"}
+>Java
+{:.filename}
+{% highlight java linenos %}
+...
+
+@GetMapping("delete")
+public String delete(@RequestParam int boardId) {
+    boardMapper.deleteBoard(boardId);
+    return "redirect:/board/list";
+}
+
+...
+{% endhighlight java %}
+
+---
+# 구현 화면
+메인페이지
+![img]({{ '/assets/images/2022-10-28/img1.PNG' | relative_url }}){: .left-image }
+
+계정생성
+![img]({{ '/assets/images/2022-10-28/img2.PNG' | relative_url }}){: .left-image }
+
+비밀번호 길이 제한
+![img]({{ '/assets/images/2022-10-28/img3.PNG' | relative_url }}){: .left-image }
+
+이메일 형식 제한
+![img]({{ '/assets/images/2022-10-28/img4.PNG' | relative_url }}){: .left-image }
+
+로그인
+![img]({{ '/assets/images/2022-10-28/img5.PNG' | relative_url }}){: .left-image }
+
+로그인 성공 시 메인페이지
+![img]({{ '/assets/images/2022-10-28/img6.PNG' | relative_url }}){: .left-image }
+
+로그인 세션이 없을 때 게시판 화면
+![img]({{ '/assets/images/2022-10-28/img7.PNG' | relative_url }}){: .left-image }
+
+게시글 리스트 설정 변경시 페이지네이션과 보이는 리스트
+
+> `file`\src\main\java\kr\ac\sesac\springboot\webproject\controller\BoardController.java
+{: style="text-align: right"}
+>Java
+{:.filename}
+{% highlight java linenos %}
+...
+
+////수정할 것////
+int countPage = 3; // 한 화면에 출력될 페이지 수
+int countPost = 3; // 한 페이지에 출력할 게시글 수
+////수정할 것////
+
+...
+{% endhighlight java %}
+![img]({{ '/assets/images/2022-10-28/img8.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022-10-28/img9.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022-10-28/img10.PNG' | relative_url }}){: .left-image }
+
+로그인 세션이 존재할 경우
+![img]({{ '/assets/images/2022-10-28/img11.PNG' | relative_url }}){: .left-image }
+
+게시글 작성
+![img]({{ '/assets/images/2022-10-28/img12.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022-10-28/img13.PNG' | relative_url }}){: .left-image }
+
+게시글 상세보기
+![img]({{ '/assets/images/2022-10-28/img14.PNG' | relative_url }}){: .left-image }
+
+로그인 세션이 없을 시
+![img]({{ '/assets/images/2022-10-28/img15.PNG' | relative_url }}){: .left-image }
+
+게시글 수정
+![img]({{ '/assets/images/2022-10-28/img16.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022-10-28/img17.PNG' | relative_url }}){: .left-image }
+
+게시글 삭제
+![img]({{ '/assets/images/2022-10-28/img18.PNG' | relative_url }}){: .left-image }
+
+---
+# 개선점
+1. 회원가입 시 primary값인 아이디를 중복으로 쿼리문으로 넣으면 에러페이지를 출력하게 되는데 미리 아이디 중복체크 기능을 넣거나 쿼리문을 넣기 전에 if문으로 감싸 에러페이지를 방지 했어야 했다.
+2. 게시글 페이지네이션도 '한 화면에 출력될 페이지 수'와 '한 페이지에 출력할 게시글 수'를 유저가 선택해서 변경이 가능하도록 커스터마이징 옵션을 주면 더 좋았을 것이다.
+3. 게시글 상세페이지를 새로고침 할 때마다 조회수가 증가하는 문제가 있다. 사용자 쿠키를 읽어 이미 해당 게시글을 방문한 사용자라면 조회수 증가 쿼리를 실행하지 않는 방법이 있었을 것이다.
+4. DB에 항목만 만들어 놓은 추천과 비추천을 구현하지 못했다. 해당 기능으로 추천과 비추천 수의 계산으로 일정이상의 점수를 받은 게시글을 상단이나 메인페이지에 노출시키는 것도 괜찮았을 것이다.
+5. 덧글 기능은 게시글마다 comment DB항목을 달아 게시글 내용 아래쪽에 작성과 수정, 삭제가 가능하게 만들어야 했다.
+6. 게시글 상세 페이지 하단에 게시글 목록을 출력해 게시글 페이지 이동을 자유롭게 만들어야 했다.
+7. 관리자 계정을 설정해 모든 게시글에 삭제 권한을 주고 공지사항 작성 기능도 구현해 리스트를 호출 할 때 상단에 노출시키는 기능도 구현하고 싶었다.
+8. 게시글을 삭제할 때 DB상에서 완전히 없애는게 아니라 삭제 컬럼을 하나 추가해 tinyint형으로 리스트를 불러올 때나 게시글 상세보기 시 이 컬럼이 0이면 불러오지 않도록 구현하면 게시글 복구도 가능하지 않을까 생각한다.
+
+---
+# 마무리
+자바 스프링 부트의 기능을 넣는 것에 집중해서 웹페이지상의 디자인이 너무 심플했다. 보기만이라도 좋게 하려고 HTML로 이리저리 찾아봤지만 마음대로 되지 않아 시간을 많이 잡아 먹은 듯 하다.
+DB와 연동해 필요한 것만 화면에 출력하는 게 생각보다 재미있었다. SQL에 대해 좀더 배우고 프로젝트를 시작했으면 더 즐거웠을 것 같다.
+구현하고 싶은 기능들을 넣기위해 방법을 찾거나 테스트를 하는데 시간이 걸려 최초에 목표했던 기능들을 넣지 못한게 아쉽다. 그래도 구현한 기능들이 에러없이 출력되는 것을 보니 성취감은 있었다. 
+
+
+
+
+
 
 ---
 # Reference
