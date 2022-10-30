@@ -286,7 +286,7 @@ public String list(Model model, HttpSession session, @RequestParam(defaultValue 
         endPage = 1;
     }
     // 마지막 페이지 리스트 전의 마지막 페이지
-    int preLastPage = totalPage - (totalPage%countPage==0?3:totalPage%countPage);
+    int preLastPage = totalPage - (totalPage%countPage==0?countPage:totalPage%countPage);
     List<Board> list = boardMapper.getList((page - 1) * countPost, countPost);
     model.addAttribute("list", list);
     model.addAttribute("startPage", startPage);

@@ -275,11 +275,6 @@ int countPost = 3; // 한 페이지에 출력할 게시글 수
 DB와 연동해 필요한 것만 화면에 출력하는 게 생각보다 재미있었다. SQL에 대해 좀더 배우고 프로젝트를 시작했으면 더 즐거웠을 것 같다.
 구현하고 싶은 기능들을 넣기위해 방법을 찾거나 테스트를 하는데 시간이 걸려 최초에 목표했던 기능들을 넣지 못한게 아쉽다. 그래도 구현한 기능들이 에러없이 출력되는 것을 보니 성취감은 있었다. 
 
-
-
-
-
-
 ---
 # Reference
 밈아: [[Thymeleaf] location.href에 변수 넣기 (th:onclick, GET)](https://mimah.tistory.com/entry/Thymeleaf-locationhref%EC%97%90-%EB%B3%80%EC%88%98-%EB%84%A3%EA%B8%B0-thonclick-GET)
