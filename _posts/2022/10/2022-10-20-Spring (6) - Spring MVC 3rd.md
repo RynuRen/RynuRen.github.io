@@ -43,7 +43,7 @@ public class RequustController {
 ...
 {% endhighlight %}
 > http://localhost:8080/req/path/1st_path/2nd_path
-![img]({{ '/assets/images/2022-10-20/img1.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/20/img1.PNG' | relative_url }}){: .left-image }
 
 ---
 ### `@ModelAttribute`
@@ -90,7 +90,7 @@ public class HtmlController {
 </html>
 {% endhighlight %}
 > http://localhost:8080/signup?name=val1&userId=val2&userPassword=val3
-![img]({{ '/assets/images/2022-10-20/img2.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/20/img2.PNG' | relative_url }}){: .left-image }
 
 ---
 ### 연습
@@ -112,4 +112,4 @@ public class RequustController {
 ...
 {% endhighlight %}
 > http://localhost:8080/req/data?area=제주도&score=100
-![img]({{ '/assets/images/2022-10-20/img3.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/20/img3.PNG' | relative_url }}){: .left-image }

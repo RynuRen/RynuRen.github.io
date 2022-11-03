@@ -23,7 +23,7 @@ tags:
 * Presentation과 Business를 분리시키기 위해 사용한다.
 * MVC 아키텍처 (FrontControler / Command 패턴) 흐름
 
-![img]({{ '/assets/images/2022-10-18/img1.PNG' | relative_url }}){: .center-image }*MVC*
+![img]({{ '/assets/images/2022/10/18/img1.PNG' | relative_url }}){: .center-image }*MVC*
 
 * DispatcherServlet이 FrontController 역할을 담당
     요청(request)에 따라 해당 Controller로 매핑
@@ -42,7 +42,7 @@ tags:
 ---
 # Controller 에서 주로 사용되는 Annotation
 
-![img]({{ '/assets/images/2022-10-18/img2.PNG' | relative_url }}){: .center-image }*Controller Annotation*
+![img]({{ '/assets/images/2022/10/18/img2.PNG' | relative_url }}){: .center-image }*Controller Annotation*
 
 * `@RestController` : `@Controller` + `@ResponseBody`
 * `@RequestMapping` : 특정 주소로 입력됐을 때 실행할 메소드와 매핑

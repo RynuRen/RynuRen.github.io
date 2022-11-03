@@ -118,9 +118,9 @@ public class User {
 ...
 {% endhighlight html %}
 > http://localhost:8080/sessionLogin
-![img]({{ '/assets/images/2022-10-25/img1.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/25/img1.PNG' | relative_url }}){: .left-image }
 > id: abc, pw: 1234 => `Click`{:.key} => 터미널
-![img]({{ '/assets/images/2022-10-25/img2.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/25/img2.PNG' | relative_url }}){: .left-image }
 
 * 세션에 user 정보의 유무에 따라 다른 내용 출력하기
 
@@ -156,7 +156,7 @@ public class User {
 <hr>
 <a href="/">홈으로</a>
 {% endhighlight html %}
-![img]({{ '/assets/images/2022-10-25/img3.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/25/img3.PNG' | relative_url }}){: .left-image }
 
 ---
 ## 연습
@@ -218,7 +218,7 @@ public class HomeController {
 </html>
 {% endhighlight html %}
 > http://localhost:8080/
-![img]({{ '/assets/images/2022-10-25/img0.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/25/img0.PNG' | relative_url }}){: .left-image }
 
 * 회원가입 페이지 만들기 - 세션에 user의 정보를 저장한다.
 * 여러 user의 정보를 담기 위해 list를 사용한다.
@@ -281,7 +281,7 @@ public class UserController {
 ...
 {% endhighlight html %}
 > 홈화면의 `회원가입`{:.key}
-![img]({{ '/assets/images/2022-10-25/img4.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/25/img4.PNG' | relative_url }}){: .left-image }
 
 * 로그인 페이지 만들기 - id와 pw를 입력받는다.
 * 입력받은 값과 세션의 userlist와 비교하여 id와 pw가 일치하면 해당 user정보를 세션에 추가한다.
@@ -337,10 +337,10 @@ public String login(User user, HttpSession session) {
 ...
 {% endhighlight html %}
 > 홈화면의 `로그인`{:.key}
-![img]({{ '/assets/images/2022-10-25/img5.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/25/img5.PNG' | relative_url }}){: .left-image }
 
 > 아이디: 1, 비밀번호: 1234, 이름: 홍길동, 주소: 서울 => `로그인`{:.key}
-![img]({{ '/assets/images/2022-10-25/img6.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/25/img6.PNG' | relative_url }}){: .left-image }
 
 * 로그아웃 - 세션에서 user만 삭제한다.
 
@@ -422,7 +422,7 @@ public class BoardController {
 ...
 {% endhighlight html %}
 > 로그인 세션 상태에서 홈화면의 `게시판`{:.key}
-![img]({{ '/assets/images/2022-10-25/img7.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/25/img7.PNG' | relative_url }}){: .left-image }
 
 * 게시글 작성하기
 
@@ -485,8 +485,8 @@ public String boardCreate(Board board, HttpSession session) {
 ...
 {% endhighlight html %}
 > `게시글 작성`{:.key}
-![img]({{ '/assets/images/2022-10-25/img8.PNG' | relative_url }}){: .left-image }
-![img]({{ '/assets/images/2022-10-25/img9.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/25/img8.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/25/img9.PNG' | relative_url }}){: .left-image }
 
 * 게시글 상세보기 - 게시글 제목에 게시글 번호를 파라미터로 링크를 넘겨준다.
 
@@ -539,7 +539,7 @@ public String boardDetail(Model model, HttpSession session, @RequestParam String
 ...
 {% endhighlight html %}
 > 작성한 게시글 `제목`{:.key}
-![img]({{ '/assets/images/2022-10-25/img10.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/25/img10.PNG' | relative_url }}){: .left-image }
 
 * 게시글 수정하기
 
@@ -607,9 +607,9 @@ public String boardUpdate(Board board, HttpSession session) {
 ...
 {% endhighlight html %}
 > 자세히 보기에서 `수정`{:.key}
-![img]({{ '/assets/images/2022-10-25/img11.PNG' | relative_url }}){: .left-image }
-![img]({{ '/assets/images/2022-10-25/img12.PNG' | relative_url }}){: .left-image }
-![img]({{ '/assets/images/2022-10-25/img13.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/25/img11.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/25/img12.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/25/img13.PNG' | relative_url }}){: .left-image }
 
 ---
 # Reference

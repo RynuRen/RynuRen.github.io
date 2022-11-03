@@ -88,10 +88,10 @@ public String admin(Model model, @RequestParam String userId){
 </html>
 {% endhighlight %}
 > http://localhost:8080/admin?userId=admin
-![img]({{ '/assets/images/2022-10-21/img1.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/21/img1.PNG' | relative_url }}){: .left-image }
 
 > http://localhost:8080/admin?userId=RynuRen
-![img]({{ '/assets/images/2022-10-21/img2.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/21/img2.PNG' | relative_url }}){: .left-image }
 
 ---
 ## 조건문 연습2 - Controller
@@ -135,10 +135,10 @@ public String admin2(Model model, @RequestParam String userId) {
 </html>
 {% endhighlight %}
 > http://localhost:8080/admin2?userId=admin
-![img]({{ '/assets/images/2022-10-21/img3.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/21/img3.PNG' | relative_url }}){: .left-image }
 
 > http://localhost:8080/admin2?userId=RynuRen
-![img]({{ '/assets/images/2022-10-21/img4.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/21/img4.PNG' | relative_url }}){: .left-image }
 
 ---
 ## 조건문 연습3
@@ -194,7 +194,7 @@ public String gugudan(Model model, @RequestParam int dan) {
 </html>
 {% endhighlight %}
 > http://localhost:8080/gugudan?dan=3
-![img]({{ '/assets/images/2022-10-21/img5.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/21/img5.PNG' | relative_url }}){: .left-image }
 
 ---
 ## 조건문 연습4
@@ -245,13 +245,13 @@ public String login(Model model, @RequestParam String id, @RequestParam String p
 </html>
 {% endhighlight %}
 > http://localhost:8080/login?id=admin&pw=1234
-![img]({{ '/assets/images/2022-10-21/img6.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/21/img6.PNG' | relative_url }}){: .left-image }
 
 > http://localhost:8080/login?id=admi&pw=123
-![img]({{ '/assets/images/2022-10-21/img7.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/21/img7.PNG' | relative_url }}){: .left-image }
 
 > http://localhost:8080/login?id=admin&pw=123
-![img]({{ '/assets/images/2022-10-21/img8.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/21/img8.PNG' | relative_url }}){: .left-image }
 
 ---
 ## 조건문 연습5
@@ -307,13 +307,13 @@ public String login2(Model model, @RequestParam Map<String, Object> map) {
 }
 {% endhighlight %}
 > http://localhost:8080/login2
-![img]({{ '/assets/images/2022-10-21/img9.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/21/img9.PNG' | relative_url }}){: .left-image }
 
 > http://localhost:8080/login2?id=admin&pw=1234
-![img]({{ '/assets/images/2022-10-21/img1.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/21/img1.PNG' | relative_url }}){: .left-image }
 
 > http://localhost:8080/login2?id=user&pw=5678
-![img]({{ '/assets/images/2022-10-21/img10.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/21/img10.PNG' | relative_url }}){: .left-image }
 
 > http://localhost:8080/login2?id=user&pw=567
-![img]({{ '/assets/images/2022-10-21/img11.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/21/img11.PNG' | relative_url }}){: .left-image }

@@ -198,25 +198,25 @@ public String delete(@RequestParam int boardId) {
 ---
 # 구현 화면
 메인페이지
-![img]({{ '/assets/images/2022-10-28/img1.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img1.PNG' | relative_url }}){: .left-image }
 
 계정생성
-![img]({{ '/assets/images/2022-10-28/img2.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img2.PNG' | relative_url }}){: .left-image }
 
 비밀번호 길이 제한
-![img]({{ '/assets/images/2022-10-28/img3.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img3.PNG' | relative_url }}){: .left-image }
 
 이메일 형식 제한
-![img]({{ '/assets/images/2022-10-28/img4.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img4.PNG' | relative_url }}){: .left-image }
 
 로그인
-![img]({{ '/assets/images/2022-10-28/img5.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img5.PNG' | relative_url }}){: .left-image }
 
 로그인 성공 시 메인페이지
-![img]({{ '/assets/images/2022-10-28/img6.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img6.PNG' | relative_url }}){: .left-image }
 
 로그인 세션이 없을 때 게시판 화면
-![img]({{ '/assets/images/2022-10-28/img7.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img7.PNG' | relative_url }}){: .left-image }
 
 게시글 리스트 설정 변경시 페이지네이션과 보이는 리스트
 
@@ -234,29 +234,29 @@ int countPost = 3; // 한 페이지에 출력할 게시글 수
 
 ...
 {% endhighlight java %}
-![img]({{ '/assets/images/2022-10-28/img8.PNG' | relative_url }}){: .left-image }
-![img]({{ '/assets/images/2022-10-28/img9.PNG' | relative_url }}){: .left-image }
-![img]({{ '/assets/images/2022-10-28/img10.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img8.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img9.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img10.PNG' | relative_url }}){: .left-image }
 
 로그인 세션이 존재할 경우
-![img]({{ '/assets/images/2022-10-28/img11.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img11.PNG' | relative_url }}){: .left-image }
 
 게시글 작성
-![img]({{ '/assets/images/2022-10-28/img12.PNG' | relative_url }}){: .left-image }
-![img]({{ '/assets/images/2022-10-28/img13.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img12.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img13.PNG' | relative_url }}){: .left-image }
 
 게시글 상세보기
-![img]({{ '/assets/images/2022-10-28/img14.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img14.PNG' | relative_url }}){: .left-image }
 
 로그인 세션이 없을 시
-![img]({{ '/assets/images/2022-10-28/img15.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img15.PNG' | relative_url }}){: .left-image }
 
 게시글 수정
-![img]({{ '/assets/images/2022-10-28/img16.PNG' | relative_url }}){: .left-image }
-![img]({{ '/assets/images/2022-10-28/img17.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img16.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img17.PNG' | relative_url }}){: .left-image }
 
 게시글 삭제
-![img]({{ '/assets/images/2022-10-28/img18.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/28/img18.PNG' | relative_url }}){: .left-image }
 
 ---
 # 개선점

@@ -71,7 +71,7 @@ public String pagination(Model model, @RequestParam(defaultValue = "1") int page
 </html>
 {% endhighlight html %}
 > http://localhost:8080/pagination?page=12
-![img]({{ '/assets/images/2022-10-24/img1.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/24/img1.PNG' | relative_url }}){: .left-image }
 
 ---
 ## Link Url Expression - @{ ... }
@@ -132,7 +132,7 @@ public String linkUrl(Model model, @RequestParam(defaultValue = "1") int page) {
 </html>
 {% endhighlight html %}
 > http://localhost:8080/linkUrl?page=23
-![img]({{ '/assets/images/2022-10-24/img2.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/24/img2.PNG' | relative_url }}){: .left-image }
 
 ---
 ## 연습1
@@ -158,7 +158,7 @@ public String linkUrl(Model model, @RequestParam(defaultValue = "1") int page) {
 </html>
 {% endhighlight html %}
 > http://localhost:8080/
-![img]({{ '/assets/images/2022-10-24/img3.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/24/img3.PNG' | relative_url }}){: .left-image }
 
 ---
 ## 연습2
@@ -283,7 +283,7 @@ public String board(Model model, @RequestParam(defaultValue = "1") int page) {
 ...
 {% endhighlight html %}
 > http://localhost:8080/board
-![img]({{ '/assets/images/2022-10-24/img4.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/24/img4.PNG' | relative_url }}){: .left-image }
 
 * 상세 페이지
 
@@ -365,7 +365,7 @@ public String boardDetail(Model model, @RequestParam int bNo) {
 ...
 {% endhighlight html %}
 > 두번째 글입니다. `Click`{:.key}
-![img]({{ '/assets/images/2022-10-24/img5.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/24/img5.PNG' | relative_url }}){: .left-image }
 
 ---
 ## 연습4
@@ -428,10 +428,10 @@ public String login3(Model model, @RequestParam("id") String id, @RequestParam("
 ...
 {% endhighlight html %}
 > http://localhost:8080/login3
-![img]({{ '/assets/images/2022-10-24/img6.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/24/img6.PNG' | relative_url }}){: .left-image }
 
 > 아이디: abc, 비밀번호: 12345 => `로그인`{:.key}
-![img]({{ '/assets/images/2022-10-24/img7.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/24/img7.PNG' | relative_url }}){: .left-image }
 
 ---
 ## 연습5 - Get, Post 매핑 활용
@@ -486,10 +486,10 @@ public String adminLogin(@RequestParam Map<String, Object> map) {
 ...
 {% endhighlight html %}
 > http://localhost:8080/adminLogin
-![img]({{ '/assets/images/2022-10-24/img8.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/24/img8.PNG' | relative_url }}){: .left-image }
 
 > 아이디: admin, 비밀번호: 1234 => `로그인`{:.key}
-![img]({{ '/assets/images/2022-10-24/img9.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/24/img9.PNG' | relative_url }}){: .left-image }
 
 > 아이디: admin, 비밀번호: 123 => `로그인`{:.key}
-![img]({{ '/assets/images/2022-10-24/img10.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/24/img10.PNG' | relative_url }}){: .left-image }

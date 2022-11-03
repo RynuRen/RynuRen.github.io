@@ -95,7 +95,7 @@ public String welcome(Model model){
 </html>
 {% endhighlight %}
 > http://localhost:8080/welcome
-![img]({{ '/assets/images/2022-10-20/img4.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/20/img4.PNG' | relative_url }}){: .left-image }
 
 ---
 ## Variable Expression : ${...}
@@ -161,7 +161,7 @@ public class ThymeleafController {
 </html>
 {% endhighlight %}
 > http://localhost:8080/user
-![img]({{ '/assets/images/2022-10-20/img5.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/20/img5.PNG' | relative_url }}){: .left-image }
 
 * 문법의 차이에 따라 여러 방법이 있다.
 1. 단순 문자열 데이터 표현 방법
@@ -238,7 +238,7 @@ public String userList(Model model) {
 </html>
 {% endhighlight %}
 > http://localhost:8080/userlist
-![img]({{ '/assets/images/2022-10-20/img6.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/20/img6.PNG' | relative_url }}){: .left-image }
 
 ---
 ## Conditional Evaluaiton - th:if, th:unless, th:switch
@@ -301,10 +301,10 @@ public String mode(Model model, @RequestParam Map<String, Object> map) {
 </html>
 {% endhighlight %}
 > http://localhost:8080/mode
-![img]({{ '/assets/images/2022-10-20/img7.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/20/img7.PNG' | relative_url }}){: .left-image }
 
 > http://localhost:8080/mode?name=사용자&auth=456&category=3
-![img]({{ '/assets/images/2022-10-20/img8.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/20/img8.PNG' | relative_url }}){: .left-image }
 
 ---
 ## 연습
@@ -420,4 +420,4 @@ public String gerUser(Model model, @RequestParam String userId){
 </html>
 {% endhighlight %}
 > http://localhost:8080/member?userId=2
-![img]({{ '/assets/images/2022-10-20/img9.PNG' | relative_url }}){: .left-image }
+![img]({{ '/assets/images/2022/10/20/img9.PNG' | relative_url }}){: .left-image }

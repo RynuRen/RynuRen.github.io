@@ -24,7 +24,7 @@ tags:
 * Spring Container
 : bean의 생명주기를 관리한다.
 
-![img]({{ '/assets/images/2022-10-17/img2.PNG' | relative_url }}){: .center-image }*Spring Container*
+![img]({{ '/assets/images/2022/10/17/img2.PNG' | relative_url }}){: .center-image }*Spring Container*
 
 * `BeanFactory`
 : 객체 생성과 검색에 대한 기능을 정의하는 interface이다.
