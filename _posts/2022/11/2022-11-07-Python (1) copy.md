@@ -1,0 +1,779 @@
+---
+layout: post
+title: Python (1)
+published: true
+date:   2022-11-07
+description: 파이썬 개요 및 기초 문법
+toc: true
+comments: true
+tags:
+ - python
+---
+---
+# 1. 출력
+{% highlight python linenos %}
+print('안녕하세요')
+
+print(1)
+{% endhighlight python %}
+
+셀의 맨 마지막을 항상 출력한다.
+print 구문을 붙혀 주면 중간에서도 출력한다.
+{% highlight python linenos %}
+print('안녕하세요')
+'반갑습니다'
+'다음에 또 봐요'
+{% endhighlight python %}
+
+---
+# 2. 변수와 대입
+변수는 **데이터를 담는 그릇**이다.
+변수라는 그릇에 정수를 담을 수도 있고, 긴 글을 담을 수도 있고, file을 담을 수도 있다.
+
+## 변수(Variable)란?
+- 변수는 메모리에 데이터를 저장하기 위한 공간을 가리키는 말이며, 컴퓨터와 프로그래밍 언어 사용자 간의 약속이다.
+> a : 컴퓨터와 사용자가 인식하는 특정 데이터를 저장하고 있는 공간이고, 공간의 이름을 a라고 한다.
+
+- 변수는 일종의 닉네임으로, 실제 물리적인 메모리 주소공간을 가리킨다.
+> 사용자는 변수의 이름으로 데이터를 인식하고, 컴퓨터는 변수의 주소로 데이터를 인식한다.
+
+- 변수에 데이터를 저장할 때는 `=`를 사용한다. 이 때 `=`를 assignment operator라고 부른다.
+> a = 10 (a라는 공간에, 10이라는 데이터를 할당)
+
+> a = 10을 예로 들었을 때, =을 기준으로 왼쪽을 lvalue라고 하며 실제 메모리 주소를 의미하고, =을 기준으로 오른쪽을 rvalue고 하며 실제 데이터(또는 값)을 의미한다.
+
+## 2.1. 변수의 이름
+* 가능
+알파벳 대소문자(한글도 가능하나 추천하지 않는다.)
+알파벳 + 숫자
+알파벳 + 언더바(_)
+언더바(_) + 알파벳
+
+* 불가능
+숫자 + 알파벳
+특수문자
+변수의 이름 사이의 공백
+
+주로 변수는 **소문자 알파벳으로 생성**하고, 필요 시 **언더바**나 **숫자를 붙히는 방식**이 일반적이다.
+
+## 2.2. 변수의 출력
+1. print() 구문에 **값을 직접 집어 넣으면**, 바로 **값이 출력**된다.
+2. print() 구문에 **변수 이름**을 집어 넣으면, 그 **값이 출력**된다.
+
+{% highlight python linenos %}
+print('test')
+print(test)
+{% endhighlight python %}
+
+{% highlight python linenos %}
+a = 123
+print(a)
+{% endhighlight python %}
+
+{% highlight python linenos %}
+a = '안녕하세요, 반갑습니다'
+print(a)
+{% endhighlight python %}
+
+---
+# 3. Python Data Types
+![img]({{ '/assets/images/2022/11/07/img1.PNG' | relative_url }}){: .left-image }
+## Data Type이란?
+- 모든 프로그래밍 언어가 데이터를 다루기 위해 필요한 약속.
+> int, float, str, list, tuple, set, dict, ...
+
+- 프로그래밍 언어마다 조금씩 다르며, 어떤 프로그래밍 언어에 대해 배울 때 제일 먼저 익혀야 하는 필수 관문.
+> data type에 대한 이해도가 있어야, 파이썬을 이용한 데이터 분석이 가능하다!
+
+- 프로그래밍 언어에서는 변수(Variable)에서 데이터를 저장/관리 하며 변수에 대한 개념을 통해 데이터를 사용할 수 있다.
+> "변수" 라는 개념을 통해 데이터를 사용할 수 있다.
+
+- data type을 배울 중요한 포인트는 어떤 연산을 사용할 수 있는지와 **연산결과가 어떤 의미인지**를 알아야한다.
+
+---
+## 3.1. 숫자 데이터 (Numeric Data Types)
+* 숫자형 데이터란, 정수/실수/복소수/2진수/8진수/16진수를 포함하며 가장 많이 사용하는 데이터 타입중에 하나다.
+
+* 파이썬은 숫자의 표현 범위가 무한대이다.
+
+* 숫자 데이터는 우리가 알고 있는 대부분의 연산을 그대로 지원한다. 사칙연산, 나머지 구하기, 몫 구하기, 거듭제곱 등
+
+### 정수형 (Integer)
+{% highlight python linenos %}
+1+1
+{% endhighlight python %}
+
+{% highlight python linenos %}
+a = 10
+b = 5
+a + b
+{% endhighlight python %}
+
+{% highlight python linenos %}
+a - b
+{% endhighlight python %}
+
+### 실수형 (Floating point)
+{% highlight python linenos %}
+c = 3.14
+c
+{% endhighlight python %}
+
+{% highlight python linenos %}
+c + 3.14
+{% endhighlight python %}
+
+{% highlight python linenos %}
+d = 4
+c - d
+{% endhighlight python %}
+
+{% highlight python linenos %}
+# 1.34 x 10^6을 의미
+e = 1.34E6; e2 = 1.34e-3 # e소수점 앞으로 이동 / E소수점 뒤로 이동
+e, e2
+{% endhighlight python %}
+
+### 숫자형 데이터 타입이 제공하는 여러 연산자 
+#### 사칙연산
+{% highlight python linenos %}
+a = 10
+b = 3
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+{% endhighlight python %}
+
+{% highlight python linenos %}
+a = 10.3
+b = -1.6
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+{% endhighlight python %}
+
+#### 특수연산
+{% highlight python linenos %}
+c = 5
+d = 2
+print(c ** d) # c를 d번 곱한 것.
+print(c // d) # c를 d로 나눈 몫.
+print(c % d)  # c를 d로 나눈 나머지.
+{% endhighlight python %}
+
+**Q. 어떤 연도를 N이라고 할 때,  N이 윤년인지 아닌지 알아보는 방법은 무엇일까?**
+*A. 윤년 규칙. N이 4의 배수이면서, 100의 배수가 아니거나 400의 배수면 윤년이다.*
+
+{% highlight python linenos %}
+N = 2000
+((N % 4 == 0) and (N % 100 != 0)) or (N % 400 == 0)
+{% endhighlight python %}
+
+---
+## 3.2. 문자열(String)
+* 문자열 데이터란, 문자(character)의 나열을 의미한다. e.g. "Hello world"
+> string ; Character Sequence
+
+* 파이썬에 다룰 수 있는 문자열의 크기도 제한이 없다.
+
+* 파이썬에선 `'`와 `"` 두 가지의 기호를 통해 문자열을 나타낸다. 즉 ' 부터 ' 까지 또는 " 부터 " 까지 하나의 문자열이다.
+e.g. 'Hello', "World"
+
+* 컴퓨터는 문자(character)를 encoding하여 숫자로 표현한다. 알려진 예로 ASCII, utf-8, cp949가 있다.
+> 컴퓨터는 문자를 숫자로 인식한다. e.g. ASCII 코드로 변환하면 A->65, a->97
+
+* 현재 전세계적으로 웹에서 사용되는 국제 표준은 UTF-8(Universal code character set Transformation Format - 8-bit)이다.
+ 
+> UTF-8에선 a는 1바이트로, '가'는 3바이트로 인식한다. 이를 가변 인코딩 방식이라고 하며, 영어보다 한글이 더 많은 데이터를 필요로 한다.
+
+### 문자열을 만드는 여러가지 방법
+{% highlight python linenos %}
+s = "Hello World"
+s
+{% endhighlight python %}
+
+{% highlight python linenos %}
+s1 = 'Life is short, You need Python.'
+s1
+{% endhighlight python %}
+
+{% highlight python linenos %}
+s2 ="""To Be Great is
+To Be Misunderstood.
+- Ralph Waldo Emerson
+"""
+print(s2) # 그냥 s2만 쓰면 어떻게 될까?
+s2
+{% endhighlight python %}
+
+{% highlight python linenos %}
+# 왜 파이썬은 ""와 ''를 모두 제공할까요?
+# 아래 s3와 s4를 문자열로 만들어서 출력해보자.
+s3 = "I'm a boy."
+s4 = 'She said, "Go home!"'
+print(s3)
+print(s4)
+{% endhighlight python %}
+
+### 특수 문자 표현 (escape code) 익히기
+{% highlight python linenos %}
+# \n -> new line
+print("Hello\nWorld")
+{% endhighlight python %}
+
+{% highlight python linenos %}
+# \t -> tab
+print("Hello\tWorld")
+{% endhighlight python %}
+
+### 문자열 연산하기
+{% highlight python linenos %}
+s = "Hello" 
+s1 = "World"
+
+s + ' ' + s1 # string concatenation
+{% endhighlight python %}
+
+{% highlight python linenos %}
+s2 = "hello"
+s2 * 10
+{% endhighlight python %}
+
+{% highlight python linenos %}
+s3 = "Enjoy your life."
+len(s3)
+# 문자열의 길이를 출력하는 함수 len() 을 통해 s3의 문자 갯수(문자열 길이)를 알아보자.
+{% endhighlight python %}
+
+### 문자열 Formatting
+{% highlight python linenos %}
+apple = "사과" ; count = 4
+{% endhighlight python %}
+
+{% highlight python linenos %}
+# 1) print formatting
+print("%s는 %d개있다." % (apple, count))
+{% endhighlight python %}
+
+{% highlight python linenos %}
+# 2) str.format
+print("{}는 {}개있다.".format(apple, count))
+{% endhighlight python %}
+
+{% highlight python linenos %}
+# 3) f-string
+print(f"{apple}는 {count}개있다.")
+{% endhighlight python %}
+
+### 문자열 관련 함수들 (**) 
+#### (영어) 대소문자 바꾸기 upper(), lower()
+{% highlight python linenos %}
+s = "hi"
+s.upper()
+{% endhighlight python %}
+
+{% highlight python linenos %}
+s = "Hi"
+s.lower()
+{% endhighlight python %}
+
+#### 문자 공백 지우기 strip() 
+{% highlight python linenos %}
+s = " h i     "
+s.strip()
+{% endhighlight python %}
+
+#### 문자열 삽입 join()
+{% highlight python linenos %}
+"=".join("abcd")
+{% endhighlight python %}
+
+#### 문자열  나누기 split()
+{% highlight python linenos %}
+s = "Life is too short."
+s.split() # token
+{% endhighlight python %}
+
+#### 문자열 바꾸기 replace() 
+{% highlight python linenos %}
+s = "Life is too short."
+# Life를 This pencil로 바꿔보자.
+s.replace("Life", "This pencil")
+print(s)
+# TMI)공백 없애기
+s.replace(" ", "")
+print(s)
+{% endhighlight python %}
+
+---
+## 3.3. 연속형 데이터 (Sequential Data Types)
+* 연속형 데이터란, 하나의 변수가 하나의 데이터를 가지고 있던 숫자형 데이터와 달리, 여러개의 데이터를 하나의 변수에 가지고 있는 데이터 타입이다.
+
+* 연속형 데이터 타입에는 리스트(List), 튜플(Tuple), 문자열(String)이 있다. (문자열을 문자들의 나열로 인식하기 때문에, 연속형 데이터이다.)
+
+* 연속형 데이터의 크기 제한은 없다. 하지만, 사용하는 컴퓨터의 가용 메모리 용량을 인지하며 사용해야 한다.
+
+* 각 연속형 데이터 타입마다 특징이 다르다. 그 특징을 파악하여 용도에 맞는 데이터 타입을 사용하는 것이 중요하다.
+ 
+> 사전(dictionary) 타입은 associative array라고 불리며, 흔히 알고있는 Hash table 구조이다.
+
+### 3.3.1 리스트(List)
+* 가장 많이 사용되는 연속형 데이터 타입이자, 굉장히 유연한 구조를 가지고 있어 대부분의 데이터를 편하게 다룰 수 있다.
+
+* 파이썬에서 `[`와 `]`를 이용하여 표현한다. e.g. [1, 2, 3]
+
+* 리스트의 원소는 쉼표로 구분되며, 리스트의 원소는 아무 데이터 타입이나 가능하다. 리스트조차 가능하다.
+
+* 리스트를 이용하면 파이썬에서 다루는 대부분의 데이터는 아무 무리없이 다룰 수 있다. 하지만 수정이 자유롭기 때문에 수정을 하면 안되는 경우에는 사용하면 안된다.
+
+#### 리스트를 만드는 방법
+{% highlight python linenos %}
+L = [1, 2, 3]
+L
+{% endhighlight python %}
+
+{% highlight python linenos %}
+L1 = []
+type(L1)
+{% endhighlight python %}
+
+{% highlight python linenos %}
+L2 = list() # 빈 리스트를 만드는 같은 방법
+type(L2)
+{% endhighlight python %}
+
+{% highlight python linenos %}
+L3 = [1, "Hi", 3.14, [1, 2, 3]] # 리스트에는 다양한 타입의 원소를 다 포함할 수 있다. 심지어 리스트도.
+L3
+{% endhighlight python %}
+
+{% highlight python linenos %}
+L4 = [[1, 2],
+     [3, 4]] # 2x2 행렬 표현처럼 사용할 수 있다. 이를 2차원 리스트라고 한다.
+L4 # 실제로는 2개의 리스트를 원소로 가지는 리스트이다.
+{% endhighlight python %}
+
+#### Indexing (***)
+- 연속형 데이터들은 하나의 변수에 여러가지 데이터를 가지기 때문에 여러 데이터를 접근하는 방법이 필요하다.
+
+- 이를 위해 indexing이라는 기법이 있다. 말그대로 index를 통해 접근(access)하는 방법이다.
+
+- 리스트의 index는 맨 앞부터 0으로 시작하며, 1씩 증가하는 정수 index를 사용한다.
+
+- 파이썬에서는 음수 index도 제공하는데, 이는 뒤쪽부터 접근할 수 있는 방법이다.
+e.g. [1, 2, 3]이면 뒤에서 첫번째(맨 마지막)원소는 index가 -1이고, 뒤에서 두번째 원소는 index가 -2이다.
+
+- index를 통해 접근하는 방법은 해당 변수이름에 []를 사용하며, []안에 index를 넣어서 접근할 수 있다.
+e.g L = [1, 2, 3]이면 L[0]은 1이고, L[2]는 L[-1]이며 3이다.
+
+{% highlight python linenos %}
+L = [1, 2, 3, 4, 5]
+{% endhighlight python %}
+
+{% highlight python linenos %}
+# L의 첫번째 원소
+L[0] # index 0
+{% endhighlight python %}
+
+{% highlight python linenos %}
+# L의 5번째 원소
+L[4]
+{% endhighlight python %}
+
+{% highlight python linenos %}
+L[8]
+{% endhighlight python %}
+{% highlight python%}
+---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+<ipython-input-70-87bd48964891> in <module>
+      1 # L에 없는 index는?
+----> 2 L[8]
+
+IndexError: list index out of range
+{% endhighlight python %}
+
+{% highlight python linenos %}
+# L의 마지막 원소
+L[-1]
+L[-3] # L[len(L)-3] == L[5-3] == L[2] -> 3번째 원소 == 3
+{% endhighlight python %}
+
+{% highlight python linenos %}
+L[0] + L[1]
+{% endhighlight python %}
+
+{% highlight python linenos %}
+L2 = [1, [2, 3], 5]
+L2
+{% endhighlight python %}
+
+{% highlight python linenos %}
+L2[1][0]
+{% endhighlight python %}
+
+#### Slicing (**)
+**슬라이싱은 리스트에서 뿐만 아니라, 리스트와 비슷한 구조인 numpy array와 pandas series, dataframe에서도 많이 이용되니 꼭 알아두어야 한다.**
+
+- 슬라이싱은 리스트의 일부분만 잘라낸다는 의미이다. (말그대로 슬라이싱)
+
+- 리스트의 일부만 사용하고 싶을 때 쓰는 기법이며, indexing을 범위로 하는 느낌이다.
+
+- 리스트의 index와 `:`를 사용하여 슬라이싱을 할 수 있다.
+e.g. L = [1, 2, 3, 4]  L[0:2]는 [1, 2]이다.
+
+{% highlight python linenos %}
+L = [1, 2, 3, 4, 5]
+L
+{% endhighlight python %}
+
+{% highlight python linenos %}
+# L의 첫번째부터 index2 까지 자르기
+L[0:2] # [1, 2] # L[0], L[1]
+{% endhighlight python %}
+
+{% highlight python linenos %}
+# L의 두번째부터 index4 까지 자르기
+L[1:4] # L[1], L[2], L[3]
+{% endhighlight python %}
+
+{% highlight python linenos %}
+# 시작 index를 생략하면, 자동으로 index는 0이 된다. (맨 처음)
+L[:-1] # L[:-1] == L[:len(L)-1] == L[:5-1] == L[:4]
+{% endhighlight python %}
+
+{% highlight python linenos %}
+# 끝 index를 생략하면, 자동으로 index는(리스트의 길이)가 된다. (맨 마지막)
+L[-2:] # L[-2:len(L)]
+{% endhighlight python %}
+
+> 문자열도 연속형 데이터 타입이기 때문에, indexing과 slicing이 다 된다.
+
+#### 리스트 연산하기
+##### 리스트 더하기
+{% highlight python linenos %}
+L = [1, 2, 3]
+L2 = [4, 5]
+L + L2
+{% endhighlight python %}
+
+##### 리스트 곱하기
+{% highlight python linenos %}
+L * 3
+{% endhighlight python %}
+
+##### 리스트 수정하기 
+{% highlight python linenos %}
+L[2] = 1
+L
+{% endhighlight python %}
+
+{% highlight python linenos %}
+L2[0] = 7
+L2
+{% endhighlight python %}
+
+#### 리스트 관련 함수
+##### 리스트에 원소 추가하기 append() (***)
+{% highlight python linenos %}
+L = []
+L.append(3)
+
+L.append(2)
+
+L.append(1)
+L
+{% endhighlight python %}
+
+##### 리스트 원소 정렬하기 sort() 
+{% highlight python linenos %}
+L = [4, 3, 16]
+L.sort() # ascending order
+#L.sort(reverse=True) # descending order
+L
+{% endhighlight python %}
+
+##### 리스트 뒤집기(정렬 X) reverse()
+{% highlight python linenos %}
+#L.reverse() # reverse()와 같은 결과를 내는 신박한 방법도 있다.
+L = [1, 2, 3, 4, 5, 6]
+L[::-1]
+{% endhighlight python %}
+
+##### 리스트에서 원소 제거하기 pop()
+{% highlight python linenos %}
+L1 = L.pop()
+print(L1)
+L2 = L.pop()
+print(L2)
+{% endhighlight python %}
+
+### 3.3.2 튜플(Tuple)
+- tuple은 list과 거의 같다.
+> indexing, slicing 모두 동일하게 사용 가능하다.
+> 원소들도 자유롭게 사용 가능하다.
+
+- 거의 같은데, 다른 점이 딱 2가지 있다.
+**1) 리스트는 []를 사용하고, 튜플은 ()을 사용한다.**
+**2) 리스트는 생성 후에 변경이 가능하고(mutable) 튜플은 생성 후에 변경이 불가능하다.(immutable)**
+> Mutable : 생성된 이후에 변경(assignment)이 자유롭게 가능한 data type.
+e.g. List, dict, set
+> immutable : 생성된 이후에 변경이 불가능한 data type
+e.g. int, float, string, tuple, frozenset
+
+> 1. 성능적인 이슈 -> 변경되지는 않는 그 자체로 장점이 생김.
+> 2. 프로그래밍적인 이슈 -> 데이터 수정 자체를 하지 않는 경우 실수를 방지할 수 있다.
+
+{% highlight python linenos %}
+t = (1, 2)
+t
+{% endhighlight python %}
+
+{% highlight python linenos %}
+t1 = ()
+t1, type(t1) # 사실 이 때까지 이렇게 2항에 대해서 출력한 모든 결과는 tuple이었다.
+{% endhighlight python %}
+
+{% highlight python linenos %}
+t2 = ('a', 'b', ('a', 'b'))
+t2
+{% endhighlight python %}
+
+{% highlight python linenos %}
+t2[:2]
+{% endhighlight python %}
+
+{% highlight python linenos %}
+t[0]
+{% endhighlight python %}
+
+{% highlight python linenos %}
+t[-1]
+{% endhighlight python %}
+
+{% highlight python linenos %}
+t[0] = 3
+{% endhighlight python %}
+{% highlight python %}
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-108-3618893200c3> in <module>
+----> 1 t[0] = 3
+
+TypeError: 'tuple' object does not support item assignment
+{% endhighlight python %}
+
+{% highlight python linenos %}
+# 튜플의 연산
+t = (1, 2)
+t2 = (3, 4)
+t + t2
+{% endhighlight python %}
+
+{% highlight python linenos %}
+t2 * 3
+{% endhighlight python %}
+
+{% highlight python linenos %}
+len(t * 3)
+{% endhighlight python %}
+
+### 3.3.3 집합(Set)
+- 집합 자료형은 정말 말그대로 수학에서 배우는 집합 그 자체이다.
+
+- 공집합을 생성할 때는 *반드시* set()으로 생성해야 한다. {}로 생성하면 빈 사전이 생성된다.
+e.g. {1, 2, 3} : 집합, {'a':1, 'b':2} : 사전
+
+- 집합의 연산자인 교집합, 합집합, 차집합을 모두 지원한다.
+
+- 집합의 특징이 2가지 있는데, 이 특징이 리스트와의 차이점이라 사용한다. 첫번째 특징이 집합 자료형을 사용하는 주된 이유이다.
+
+1) 집합은 원소의 중복을 허용하지 않는다. 즉, **원소의 종류**를 나타내기 좋다.
+2) 집합은 원소의 순서가 존재하지 않는다. 즉, 원소의 index가 없다.
+
+{% highlight python linenos %}
+s = {1, 2, 3}
+s, type(s), type(s)
+{% endhighlight python %}
+
+{% highlight python linenos %}
+s[1]
+{% endhighlight python %}
+{% highlight python %}
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-117-119c3881ee56> in <module>
+----> 1 s[1]
+
+TypeError: 'set' object is not subscriptable
+{% endhighlight python %}
+
+#### 집합의 연산
+{% highlight python linenos %}
+s1 = {1, 2, 3, 4, 5}
+s2 = {3, 4, 5, 6, 7}
+{% endhighlight python %}
+
+##### 교집합
+{% highlight python linenos %}
+# s1과 s2의 교집합
+s1 & s2
+{% endhighlight python %}
+
+{% highlight python linenos %}
+s1.intersection(s2)
+# s2.intersection(s1)
+{% endhighlight python %}
+
+##### 합집합
+{% highlight python linenos %}
+# s1과 s2의 합집합
+s1 | s2 # s1 + s2가 아님
+{% endhighlight python %}
+
+{% highlight python linenos %}
+s1.union(s2)
+# s2.union(s1)
+{% endhighlight python %}
+
+##### 차집합
+{% highlight python linenos %}
+# s1과 s2의 차집합
+s1 - s2
+{% endhighlight python %}
+
+{% highlight python linenos %}
+s2 - s1
+{% endhighlight python %}
+
+#### 집합의 원소의 uniqueness를 활용하는 경우
+{% highlight python linenos %}
+L = [1, 2, 3, 3, 4, 1, 2, 34, 5, 6, 1, 2]
+print(len(set(L)))
+set(L)
+{% endhighlight python %}
+
+#### 집합 관련 함수
+##### 집합에 원소 하나 추가하기 add()
+{% highlight python linenos %}
+s = set()
+s.add(4)
+s
+{% endhighlight python %}
+
+##### 집합에 여러 원소 추가하기 update()
+{% highlight python linenos %}
+s = {1, 2, 3}
+s.update({4, 5}) # s.union({4, 5}) 출력 결과는 같지만, 의미가 다르다.
+s
+{% endhighlight python %}
+
+##### 집합에서 원소 제거하기 remove()
+{% highlight python linenos %}
+s.remove(3)
+s
+{% endhighlight python %}
+
+### 3.3.4 사전(Dictionary) (**)
+**파이썬에서 리스트와 함께 굉장히 많이 사용되는 구조. 특히 이번 교육과정 중에 많이 사용되니 꼭 마스터하는 것을 추천한다.**
+
+- 파이썬에서 제공하는 사전 자료형은 key - value 방법을 통해 저장한다.
+
+| name | code |
+| --- | --- |
+| "John" | 0011 |
+| "Maria" | 1234 |
+
+- 이런 table concept을 의미하며, 정수 index가 아닌 key값을 통해서 value를 access한다.
+> key-value 방식으로 저장을 하는 것으로 얻는 이점은?
+> A. 순서가 아닌 의미가 있는 값을 통해서 데이터 접근이 가능하다.
+
+- 같은 말로 Hash Table이라고 불리며 데이터 관리에서 굉장히 중요한 개념이다.
+
+- 파이썬에서 사전 자료형은 {}을 이용하여 표현하는데, 집합과의 차이점을 두기 위해 원소에 *반드시* `:`가 들어가야 한다.
+
+- 사전을 표현할 때는 {key : value, key2 : value2, ... } 형태로 표현한다.
+e.g. {'a' : 1', "b" : 3}
+
+#### 사전을 만드는 방법
+{% highlight python linenos %}
+D = {} # 공집합이 아니다!
+type(D)
+{% endhighlight python %}
+
+{% highlight python linenos %}
+D = {'John' : '0011', 'Maria' : '1234'}
+D['John'] # dict indexing
+{% endhighlight python %}
+
+{% highlight python linenos %}
+D['a'] = 4 # assignment를 할 때, key값이 없다면 key-value pair를 추가. 있다면, value를 수정.
+D
+# 리스트의 경우.
+# L = [1, 2, 3]
+# L[0] = 4
+# L
+{% endhighlight python %}
+
+{% highlight python linenos %}
+D["b"] 
+# key값이 이미 존재하는 경우에는 key값을 통한 indexing이 되며, key값이 존재하지 않을 때는 assignment를 사용하여 원소를 추가한다.
+{% endhighlight python %}
+{% highlight python %}
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-1-2e181af46200> in <module>
+----> 1 D['b']
+
+NameError: name 'D' is not defined
+{% endhighlight python %}
+
+{% highlight python linenos %}
+D2 = {'a' : 1 , 'a' : 2, 'b': 3} # key 중복문제
+D2
+{% endhighlight python %}
+
+> **TIP** 사전을 만들 때 key는 중복이 있으면 절대 안된다.
+> 사전에서 key가 될 수 있는 data type은 **immutable**이어야 한다.
+
+#### 사전 관련 함수
+##### 사전의 모든 key값들 보기 keys()
+{% highlight python linenos %}
+D = {'name': 'kim', 'phone': '01012345679', 'birth': '1234'}
+print(D.keys())
+type(D.keys())
+{% endhighlight python %}
+
+##### 사전의 모든 value들 보기 values()
+{% highlight python linenos %}
+D.values()
+{% endhighlight python %}
+
+##### 사전의 모든 key, value 쌍 보기 items()
+{% highlight python linenos %}
+D.items()
+{% endhighlight python %}
+
+##### 사전의 원소 가져오기 get()
+{% highlight python linenos %}
+D.get('phone', "Seoul") # D['name'] 과 같음
+# get(key[, default]) key에 해당하는 값이 없으면 default 출력(default에 아무것도 없어도 None이 기본이기에 KeyError가 없다)
+{% endhighlight python %}
+
+##### 사전에 해당 key값이 존재하는지 확인하기 in
+- in이라는 operator는 사전뿐만 아니라 모든 연속형 데이터 타입에 사용할 수 있다.
+- 사전의 경우에는 key값을 대상으로 하고, 리스트, 튜플, 집합, 문자열에 대해서는 해당 원소가 좆재하는지 찾아서 True / False 를 알려준다.
+
+{% highlight python linenos %}
+"phone" in D # D.keys()
+{% endhighlight python %}
+
+{% highlight python linenos %}
+"major" in D
+{% endhighlight python %}
+
+{% highlight python linenos %}
+'1234' in D.values()
+{% endhighlight python %}
