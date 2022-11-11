@@ -1,13 +1,17 @@
 ---
-layout: post
 title: Spring Boot Project (2)
 published: true
 date:   2022-10-27
 description: 프로젝트 구현 (1/2)
-toc: true
 comments: true
+categories:
+ - spring boot
 tags:
  - spring boot
+ - java
+toc: true
+toc_sticky: true
+toc_label: 프로젝트 구현 (1/2)
 ---
 ---
 # 1) 레이아웃 구현

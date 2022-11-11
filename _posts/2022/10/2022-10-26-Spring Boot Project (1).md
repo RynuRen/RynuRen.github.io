@@ -1,13 +1,17 @@
 ---
-layout: post
 title: Spring Boot Project (1)
 published: true
 date:   2022-10-26
 description: 프로젝트 구상
-# toc: true
 comments: true
+categories:
+ - spring boot
 tags:
  - spring boot
+ - java
+toc: true
+toc_sticky: true
+toc_label: 프로젝트 구상
 ---
 ---
 # 구상
