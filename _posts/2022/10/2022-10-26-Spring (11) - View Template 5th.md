@@ -1,12 +1,17 @@
 ---
-layout: post
 title: Spring (11) - View Template 5th
+published: true
 date:   2022-10-26
 description: 데이터베이스 연동
-toc: true
 comments: true
+categories:
+ - spring boot
 tags:
  - spring boot
+ - java
+toc: true
+toc_sticky: true
+toc_label: View Template 5th
 ---
 ---
 1. 개발 환경 준비 [1)](/2022/10/Spring-(1)-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A4%80%EB%B9%84/)

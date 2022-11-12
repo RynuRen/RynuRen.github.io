@@ -1,13 +1,16 @@
 ---
-layout: post
 title: Data Analysis
 published: true
 date:   2022-11-07
 description: 데이터 분석 개요
-toc: true
 comments: true
+categories:
+ - python
 tags:
  - python
+toc: true
+toc_sticky: true
+toc_label: Data Analysis
 ---
 ---
 # 데이터 분석의 목적

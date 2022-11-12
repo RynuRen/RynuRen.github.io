@@ -1,13 +1,17 @@
 ---
-layout: post
 title: Spring Boot Project (4)
 published: false
 date:   2022-10-30
 description: 프로젝트 보강
-toc: true
 comments: true
+categories:
+ - spring boot
 tags:
  - spring boot
+ - java
+toc: true
+toc_sticky: true
+toc_label: 프로젝트 보강
 ---
 ---
 # 개선점
