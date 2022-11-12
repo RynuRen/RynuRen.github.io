@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 이 페이지는 Jekyll minimal-mistakes 테마 aqua skin을 기본으로 작성되었습니다.
+=======
+이 페이지는 Jekyll minimal-mistakes 테마 dark skin을 기본으로 작성되었습니다.
+>>>>>>> a631452598257af703a1fc6476031db2886cdff3
 
 - [minimal-mistakes theme 공식 홈페이지](https://mmistakes.github.io/minimal-mistakes/)
 - [minimal-mistakes 가이드](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/)
