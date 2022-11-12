@@ -1,16 +1,20 @@
 ---
-layout: post
-title: Pandas
+title: Python (6) - Pandas
 published: false
-date:   2022-11-11
+date: 2022-11-11
 description: Pandas
-toc: true
 comments: true
+categories:
+ - python
 tags:
  - python
+ - pandas
+toc: true
+toc_sticky: true
+toc_label: Pandas
 ---
 ---
-# Pandas
+# 8. Pandas
 
 
 

@@ -1,17 +1,22 @@
 ---
-layout: post
-title:  Pandas, Numpy
+title: Python (5) - Numpy
 published: false
-date:   2022-11-10
-description: 
-toc: true
+date: 2022-11-10
+description: Numpy
 comments: true
+categories:
+ - python
 tags:
  - python
+ - numpy
+toc: true
+toc_sticky: true
+toc_label: Numpy
 ---
 ---
-# 6. Package and Module
+# 7. Numpy
 ## 
+
 
 
 

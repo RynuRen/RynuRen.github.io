@@ -1,7 +1,7 @@
 ---
 title: Spring Boot Project (1)
 published: true
-date:   2022-10-26
+date: 2022-10-26
 description: 프로젝트 구상
 comments: true
 categories:

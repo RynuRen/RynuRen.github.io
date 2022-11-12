@@ -1,7 +1,7 @@
 ---
 title: Data Analysis
 published: true
-date:   2022-11-07
+date: 2022-11-07
 description: 데이터 분석 개요
 comments: true
 categories:
