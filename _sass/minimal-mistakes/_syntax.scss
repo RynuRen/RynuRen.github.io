@@ -7,7 +7,7 @@ figure.highlight {
   position: relative;
   margin-bottom: 1em;
   background: $base00;
-  color: $base05;
+  color: #fbf1c7;
   font-family: $monospace;
   font-size: $type-size-6;
   line-height: 1.8;
@@ -35,8 +35,8 @@ figure.highlight {
     &.rouge-gutter {
       padding-right: 1em;
       width: 1em;
-      color: $base04;
-      border-right: 1px solid $base04;
+      color: #665c54;
+      border-right: 1px solid #665c54;
       text-align: right;
     }
 
@@ -57,263 +57,274 @@ figure.highlight {
 }
 
 .highlight .hll {
-  background-color: $base06;
+  background-color: #504945;
 }
 .highlight {
   .c {
     /* Comment */
-    color: $base04;
+    color: #928374;
+    font-style: italic;
   }
   .err {
     /* Error */
-    color: $base08;
+    color: #fb4934;
+    background-color: #282828;
+    font-weight: bold;
   }
   .k {
     /* Keyword */
-    color: $base0e;
+    color: #fb4934;
   }
   .l {
     /* Literal */
-    color: $base09;
+    color: #d3869b;
   }
   .n {
     /* Name */
-    color: $base05;
+    color: #fbf1c7;
   }
   .o {
     /* Operator */
-    color: $base0c;
+    color: #83a598;
   }
   .p {
     /* Punctuation */
-    color: $base05;
+    color: #fbf1c7;
   }
   .cm {
     /* Comment.Multiline */
-    color: $base04;
+    color: #928374;
+    font-style: italic;
   }
   .cp {
     /* Comment.Preproc */
-    color: $base04;
+    color: #8ec07c;
   }
   .c1 {
     /* Comment.Single */
-    color: $base04;
+    color: #928374;
+    font-style: italic;
   }
   .cs {
     /* Comment.Special */
-    color: $base04;
+    color: #928374;
+    font-style: italic;
   }
   .gd {
     /* Generic.Deleted */
-    color: $base08;
+    color: #fb4934;
+    background-color: #282828;
   }
   .ge {
     /* Generic.Emph */
+    color: #83a598;
     font-style: italic;
   }
   .gh {
     /* Generic.Heading */
-    color: $base05;
+    color: #b8bb26;
     font-weight: bold;
   }
   .gi {
     /* Generic.Inserted */
-    color: $base0b;
+    color: #b8bb26;
+    background-color: #282828;
   }
   .gp {
     /* Generic.Prompt */
-    color: $base04;
+    color: #ebdbb2;
     font-weight: bold;
   }
   .gs {
     /* Generic.Strong */
+    color: #ebdbb2;
     font-weight: bold;
   }
   .gu {
     /* Generic.Subheading */
-    color: $base0c;
+    color: #b8bb26;
     font-weight: bold;
   }
   .kc {
     /* Keyword.Constant */
-    color: $base0e;
+    color: #d3869b;
   }
   .kd {
     /* Keyword.Declaration */
-    color: $base0e;
+    color: #fe8019;
   }
   .kn {
     /* Keyword.Namespace */
-    color: $base0c;
+    color: #81c07c;
   }
   .kp {
     /* Keyword.Pseudo */
-    color: $base0e;
+    color: #fb4934;
   }
   .kr {
     /* Keyword.Reserved */
-    color: $base0e;
+    color: #fb4934;
   }
   .kt {
     /* Keyword.Type */
-    color: $base0a;
+    color: #fabd2f;
   }
   .ld {
     /* Literal.Date */
-    color: $base0b;
+    color: #b8bb26;
   }
   .m {
     /* Literal.Number */
-    color: $base09;
+    color: #d3869b;
   }
   .s {
     /* Literal.String */
-    color: $base0b;
+    color: #b8bb26;
   }
   .na {
     /* Name.Attribute */
-    color: $base0d;
+    color: #b8bb26;
+    font-weight: bold;
   }
   .nb {
     /* Name.Builtin */
-    color: $base05;
+    color: #fabd2f;
   }
   .nc {
     /* Name.Class */
-    color: $base0a;
+    color: #fabd2f;
   }
   .no {
     /* Name.Constant */
-    color: $base08;
+    color: #d3869b;
   }
   .nd {
     /* Name.Decorator */
-    color: $base0c;
+    color: #83a598;
   }
   .ni {
     /* Name.Entity */
-    color: $base05;
+    color: #fabd2f;
   }
   .ne {
     /* Name.Exception */
-    color: $base08;
+    color: #fabd2f;
   }
   .nf {
     /* Name.Function */
-    color: $base0d;
+    color: #fabd2f;
   }
   .nl {
     /* Name.Label */
-    color: $base05;
+    color: #fb4934;
   }
   .nn {
     /* Name.Namespace */
-    color: $base0a;
+    color: #bdae93;
   }
   .nx {
     /* Name.Other */
-    color: $base0d;
+    color: #fbf1c7;
   }
   .py {
     /* Name.Property */
-    color: $base05;
+    color: #fbf1c7;
   }
   .nt {
     /* Name.Tag */
-    color: $base0c;
+    color: #fb4934;
   }
   .nv {
     /* Name.Variable */
-    color: $base08;
+    color: #ebdbb2;
   }
   .ow {
     /* Operator.Word */
-    color: $base0c;
+    color: #83a598;
   }
   .w {
     /* Text.Whitespace */
-    color: $base05;
+    color: #fbf1c7;
   }
   .mf {
     /* Literal.Number.Float */
-    color: $base09;
+    color: #d3869b;
   }
   .mh {
     /* Literal.Number.Hex */
-    color: $base09;
+    color: #d3869b;
   }
   .mi {
     /* Literal.Number.Integer */
-    color: $base09;
+    color: #d3869b;
   }
   .mo {
     /* Literal.Number.Oct */
-    color: $base09;
+    color: #d3869b;
   }
   .sb {
     /* Literal.String.Backtick */
-    color: $base0b;
+    color: #b8bb26;
   }
   .sc {
     /* Literal.String.Char */
-    color: $base05;
+    color: #b8bb26;
   }
   .sd {
     /* Literal.String.Doc */
-    color: $base04;
+    color: #b8bb26;
   }
   .s2 {
     /* Literal.String.Double */
-    color: $base0b;
+    color: #b8bb26;
   }
   .se {
     /* Literal.String.Escape */
-    color: $base09;
+    color: #fe8019;
   }
   .sh {
     /* Literal.String.Heredoc */
-    color: $base0b;
+    color: #b8bb26;
   }
   .si {
     /* Literal.String.Interpol */
-    color: $base09;
+    color: #b8bb26;
   }
   .sx {
     /* Literal.String.Other */
-    color: $base0b;
+    color: #b8bb26;
   }
   .sr {
     /* Literal.String.Regex */
-    color: $base0b;
+    color: #b8bb26;
   }
   .s1 {
     /* Literal.String.Single */
-    color: $base0b;
+    color: #b8bb26;
   }
   .ss {
     /* Literal.String.Symbol */
-    color: $base0b;
+    color: #83a598;
   }
   .bp {
     /* Name.Builtin.Pseudo */
-    color: $base05;
+    color: #fbf1c7;
   }
   .vc {
     /* Name.Variable.Class */
-    color: $base08;
+    color: #ebdbb2;
   }
   .vg {
     /* Name.Variable.Global */
-    color: $base08;
+    color: #ebdbb2;
   }
   .vi {
     /* Name.Variable.Instance */
-    color: $base08;
+    color: #ebdbb2;
   }
   .il {
     /* Literal.Number.Integer.Long */
-    color: $base09;
+    color: #d3869b;
   }
 }
 
