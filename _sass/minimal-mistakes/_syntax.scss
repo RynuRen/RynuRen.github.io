@@ -6,7 +6,7 @@ div.highlighter-rouge,
 figure.highlight {
   position: relative;
   margin-bottom: 1em;
-  background: $base00;
+  background: #282828;
   color: #fbf1c7;
   font-family: $monospace;
   font-size: $type-size-6;
@@ -17,6 +17,9 @@ figure.highlight {
   pre.highlight {
     margin: 0;
     padding: 1em;
+  }
+  ::selection {
+    background-color: #384539;
   }
 }
 
@@ -183,7 +186,7 @@ figure.highlight {
   }
   .na {
     /* Name.Attribute */
-    color: #b8bb26;
+    color: #fabd2f;
     font-weight: bold;
   }
   .nb {
@@ -232,7 +235,7 @@ figure.highlight {
   }
   .nt {
     /* Name.Tag */
-    color: #fb4934;
+    color: #8ec07c;
   }
   .nv {
     /* Name.Variable */
