@@ -1,21 +1,27 @@
 ---
-layout: post
 title: Spring Boot Project (2)
 published: true
 date:   2022-10-27
 description: 프로젝트 구현 (1/2)
-toc: true
 comments: true
+categories:
+ - spring boot
 tags:
  - spring boot
+ - java
+toc: true
+toc_sticky: true
+toc_label: 프로젝트 구현 (1/2)
 ---
 ---
 # 1) 레이아웃 구현
 thymeleaf-layout을 이용해 페이지를 세 구역을 나눴고 일단 footer에 copyright 문구만 띄우는데는 성공했다.
+
 head fragment에는 페이지에서 타이틀 값을 가져와 타이틀을 설정하는 기능을 넣었다.
 
 ## top 페이지
 top구역을 네비게이션 구역으로 사용해 게시판과 유저관련 기능을 넣었다. div태그에 float속성을 줘서 3개로 나눴다.
+
 메인과 게시판으로 이동하는 링크들을 좌측에, 유저관련 기능은 우측으로 넣었다. 로그인 세션의 유무에 따라 없으면 '로그인과 계정생성' 있으면 '로그아웃과 정보수정'을 표시했다.
 
 > `file`\src\main\resources\templates\fragments\topNav.html
@@ -46,6 +52,7 @@ top구역을 네비게이션 구역으로 사용해 게시판과 유저관련 �
 
 ## 계정 생성
 계정 생성 페이지에서 form태그의 input태그에 type속성을 각각 다르게 설정해서 입력받을 값을 지정했다. 비밀번호는 타입을 password로 해서 입력을 가렸고 minlength 속성도 8로 추가해 8자리 이상을 받도록 했다. 이메일은 타입을 email로 해서 입력받을 때 @양쪽으로 문자가 있는지 체크하게 했다.
+
 필수적으로 입력받을 아이디, 비밀번호, 닉네임에는 required 속성을 추가해 반드시 값을 입력받도록 했습니다. 이로써 null 데이터를 db에 등록하는 것을 막을 수 있었다.
 
 > `file`\src\main\resources\templates\user\join.html
@@ -85,6 +92,7 @@ top구역을 네비게이션 구역으로 사용해 게시판과 유저관련 �
 ---
 ## 로그인
 계정 생성과 마찬가지로 아이디와 비밀번호에 required 속성을 추가해 null이면 submit할 수 없게 했다.
+
 비밀번호의 타입도 password로 설정했다.
 
 > `file`\src\main\java\kr\ac\sesac\springboot\webproject\controller\UserController.java
@@ -117,8 +125,11 @@ public String login(User user, HttpSession session) {
 ---
 ## 정보수정
 로그인 해서 세션에 유저 정보가 있을 때만 접근할 수 있도록 했다.
+
 아이디는 수정할 수 없게 readonly 속성을 주고 비밀번호를 제외한 닉네임과 이메일은 해당 세션의 유저정보에서 읽어와 보여주고 수정도 가능하게 했다.
+
 수정을 하려면 현재 비밀번호에 맞는 비밀번호를 입력해야 하고 비밀번호를 변경하고자 할때에는 바꿀 비밀번호 칸에 입력하면 DB상에 수정되도록 했다.
+
 가장 아래쪽에는 계정을 생성한 날짜를 보여준다.
 
 > `file`\src\main\resources\templates\user\userDetail.html
@@ -188,12 +199,16 @@ public String userDetail(String fixPw, User user, HttpSession session) {
 ---
 # 3) 게시글 관련
 게시글의 데이터는 데이터를 구별할 고유id와 제목, 내용, 작성자, 작성자를 구별할 작성자id, 작성일, 수정일, 조회수, 추천, 비추천으로 정했다.
+
 추가로 DB에서 불러올 때 매길 row number를 저장할 필드도 선언해 뒀다.
 
 ## 게시글 리스트
 이곳에서는 해당 게시글의 내용과 수정일은 사용하지 않고 나머지 6개의 데이터만 게시글당 한줄에 나타냈다.
+
 우선 게시글이 하나도 없을 경우 목록의 한 열을 병합해 게시글이 존재하지 않음을 나타냈다.
+
 해당 게시글의 제목에 게시글의 상세페이지로 넘어갈 하이퍼링크를 만들었다.
+
 작성일의 경우 게시글이 오늘 작성됐다면 시:분으로 아니라면 월-일만 표시되도록 if문을 쓰고 thymeleaf의 클래스인 calendars, dates들의 메서드를 활용했다.
 
 > `file`\src\main\resources\templates\board\list.html
@@ -228,6 +243,7 @@ DB에 저장한 시간을 불러 웹에 표시했을때 시간이 맞지 않은 
     spring.datasource.url=jdbc:mysql://localhost:3306/webproject?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
 
 페이지네이션을 구현하기 위해 매퍼에서 쿼리로 불러올때 구문에 LIMIT를 써서 해당 페이지에 표시할 게시글만 불러왔다. 표시하지 않을 내용과 수정일은 포함하지 않았다.
+
 MariaDB에서는 Row_Number를 지원하지 않으므로 변수를 설정하여 가장 오래된 게시글부터 번호를 매겼고, 표시를 시작할 게시글의 전 숫자와 출력할 게시글 수를 LIMIT의 변수로 넘겨 해당 페이지에 표시할 게시글만 가져오게 작성했다.
 
 > `file`\src\main\resources\mapper\boardMapper.xml
@@ -324,20 +340,31 @@ public String list(Model model, HttpSession session, @RequestParam(defaultValue 
 ---
 # 추가 사항
 아이디 중복체크 - 버튼으로 쿼리실행, 결과 획득에 따라 가능/불가능 팝업 메시지를 띄울 수 있으면 좋겠다.
+
 계정 생성시 비밀번호 확인 기능을 넣어 생성 버튼을 눌렀을때 두항목이 다르면 에러 팝업 메시지를 띄울 수 있으면 좋겠다.
+
 게시판 리스트에서 한 페이지에 표시할 글의 수를 유저가 고를 수 있게 콤보박스를 구현해보면 좋겠다.
+
 조회수와 추천, 비추천 시스템도 추가해 보자.
+
 게시글 작성 버튼은 유저 세션이 존재할 경우에만 표시되게 한다.
+
 게시글의 수정과 삭제는 작성자와 세션의 유저가 같을 경우에만 표시되게 한다.
+
 아마 시간이 안될테지만 관리자 계정으로 게시글을 작성할 경우 공지로 등록할 수 있는 옵션을 주고 공지일 경우 게시글 목록의 상단에 고정한다.
+
 추천에 비추천을 뺀 값을 기준으로 상위 몇개의 개시글을 상단에 노출시킬 수 있으면 좋겠다.
 
 ---
 # Reference
 sgoho01: [타임리프 레이아웃 (thymeleaf layout dialect)](https://sgoho01.tistory.com/12)
+
 Jan92: [Spring Boot 타임리프 Thymeleaf layout 적용하는 방법](https://wildeveloperetrain.tistory.com/136)
+
 mdn web docs: [input: 입력 요소](https://developer.mozilla.org/ko/docs/Web/HTML/Element/Input)
+
 zepinos: [페이징에 대한 이해](https://zepinos.tistory.com/29)
+
 간둥이: [[Thymeleaf] 현재 날짜 출력 및 형식 변경](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=hay6308&logNo=220968374336)
+
 로넬: [[Mysql] Default Timezone 설정 방법](https://blog.naver.com/developer501/222492629932)
-{: style="text-align: right"}

@@ -1,12 +1,15 @@
 ---
-layout: post
 title: Java - Exception
+published: true
 date:   2022-10-18
-description: 예외 처리
-toc: true
 comments: true
+categories:
+ - java
 tags:
  - java
+toc: true
+toc_sticky: true
+toc_label: 예외 처리
 ---
 ---
 # 예외 처리

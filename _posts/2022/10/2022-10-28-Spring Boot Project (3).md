@@ -1,13 +1,17 @@
 ---
-layout: post
 title: Spring Boot Project (3)
 published: true
 date:   2022-10-28
 description: 프로젝트 구현 (2/2)
-toc: true
 comments: true
+categories:
+ - spring boot
 tags:
  - spring boot
+ - java
+toc: true
+toc_sticky: true
+toc_label: 프로젝트 구현 (2/2)
 ---
 ---
 # 3) 게시글 관련
@@ -85,6 +89,7 @@ public String detail(Model model, HttpSession session, @RequestParam int boardId
 {% endhighlight xml %}
 
 게시글 수정일은 수정일에 데이터가 있을 때만 표시되도록 했다.
+
 게시글의 수정과 삭제는 작성자와 세션의 유저가 같을 경우에만 표시되게 한다.
 
 > `file`\src\main\resources\templates\board\detail.html
@@ -197,28 +202,35 @@ public String delete(@RequestParam int boardId) {
 
 ---
 # 구현 화면
-메인페이지
+* 메인페이지
+
 ![img]({{ '/assets/images/2022/10/28/img1.PNG' | relative_url }}){: .left-image }
 
-계정생성
+* 계정생성
+
 ![img]({{ '/assets/images/2022/10/28/img2.PNG' | relative_url }}){: .left-image }
 
-비밀번호 길이 제한
+* 비밀번호 길이 제한
+
 ![img]({{ '/assets/images/2022/10/28/img3.PNG' | relative_url }}){: .left-image }
 
-이메일 형식 제한
+* 이메일 형식 제한
+
 ![img]({{ '/assets/images/2022/10/28/img4.PNG' | relative_url }}){: .left-image }
 
-로그인
+* 로그인
+
 ![img]({{ '/assets/images/2022/10/28/img5.PNG' | relative_url }}){: .left-image }
 
-로그인 성공 시 메인페이지
+* 로그인 성공 시 메인페이지
+
 ![img]({{ '/assets/images/2022/10/28/img6.PNG' | relative_url }}){: .left-image }
 
-로그인 세션이 없을 때 게시판 화면
+* 로그인 세션이 없을 때 게시판 화면
+
 ![img]({{ '/assets/images/2022/10/28/img7.PNG' | relative_url }}){: .left-image }
 
-게시글 리스트 설정 변경시 페이지네이션과 보이는 리스트
+* 게시글 리스트 설정 변경시 페이지네이션과 보이는 리스트
 
 > `file`\src\main\java\kr\ac\sesac\springboot\webproject\controller\BoardController.java
 {: style="text-align: right"}
@@ -238,24 +250,30 @@ int countPost = 3; // 한 페이지에 출력할 게시글 수
 ![img]({{ '/assets/images/2022/10/28/img9.PNG' | relative_url }}){: .left-image }
 ![img]({{ '/assets/images/2022/10/28/img10.PNG' | relative_url }}){: .left-image }
 
-로그인 세션이 존재할 경우
+* 로그인 세션이 존재할 경우
+
 ![img]({{ '/assets/images/2022/10/28/img11.PNG' | relative_url }}){: .left-image }
 
-게시글 작성
+* 게시글 작성
+
 ![img]({{ '/assets/images/2022/10/28/img12.PNG' | relative_url }}){: .left-image }
 ![img]({{ '/assets/images/2022/10/28/img13.PNG' | relative_url }}){: .left-image }
 
-게시글 상세보기
+* 게시글 상세보기
+
 ![img]({{ '/assets/images/2022/10/28/img14.PNG' | relative_url }}){: .left-image }
 
-로그인 세션이 없을 시
+* 로그인 세션이 없을 시
+
 ![img]({{ '/assets/images/2022/10/28/img15.PNG' | relative_url }}){: .left-image }
 
-게시글 수정
+* 게시글 수정
+
 ![img]({{ '/assets/images/2022/10/28/img16.PNG' | relative_url }}){: .left-image }
 ![img]({{ '/assets/images/2022/10/28/img17.PNG' | relative_url }}){: .left-image }
 
-게시글 삭제
+* 게시글 삭제
+
 ![img]({{ '/assets/images/2022/10/28/img18.PNG' | relative_url }}){: .left-image }
 
 ---
@@ -272,7 +290,9 @@ int countPost = 3; // 한 페이지에 출력할 게시글 수
 ---
 # 마무리
 자바 스프링 부트의 기능을 넣는 것에 집중해서 웹페이지상의 디자인이 너무 심플했다. 보기만이라도 좋게 하려고 HTML로 이리저리 찾아봤지만 마음대로 되지 않아 시간을 많이 잡아 먹은 듯 하다.
+
 DB와 연동해 필요한 것만 화면에 출력하는 게 생각보다 재미있었다. SQL에 대해 좀더 배우고 프로젝트를 시작했으면 더 즐거웠을 것 같다.
+
 구현하고 싶은 기능들을 넣기위해 방법을 찾거나 테스트를 하는데 시간이 걸려 최초에 목표했던 기능들을 넣지 못한게 아쉽다. 그래도 구현한 기능들이 에러없이 출력되는 것을 보니 성취감은 있었다. 
 
 ---
