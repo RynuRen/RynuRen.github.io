@@ -118,3 +118,8 @@ public class RequustController {
 {% endhighlight %}
 > http://localhost:8080/req/data?area=제주도&score=100
 ![img]({{ '/assets/images/2022/10/20/img3.PNG' | relative_url }}){: .left-image }
+
+---
+# Reference
+
+* 이 포스트는 SeSAC 인공지능 SW 개발자 양성 과정 - 김영식 강사님의 강의내용을 정리한 것입니다.

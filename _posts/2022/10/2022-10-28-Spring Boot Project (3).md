@@ -297,5 +297,5 @@ DB와 연동해 필요한 것만 화면에 출력하는 게 생각보다 재미�
 
 ---
 # Reference
-밈아: [[Thymeleaf] location.href에 변수 넣기 (th:onclick, GET)](https://mimah.tistory.com/entry/Thymeleaf-locationhref%EC%97%90-%EB%B3%80%EC%88%98-%EB%84%A3%EA%B8%B0-thonclick-GET)
-{: style="text-align: right"}
+
+* 밈아: [[Thymeleaf] location.href에 변수 넣기 (th:onclick, GET)](https://mimah.tistory.com/entry/Thymeleaf-locationhref%EC%97%90-%EB%B3%80%EC%88%98-%EB%84%A3%EA%B8%B0-thonclick-GET)

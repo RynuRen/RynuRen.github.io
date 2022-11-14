@@ -84,3 +84,8 @@ public String second() {
 
 ...
 {% endhighlight %}
+
+---
+# Reference
+
+* 이 포스트는 SeSAC 인공지능 SW 개발자 양성 과정 - 김영식 강사님의 강의내용을 정리한 것입니다.

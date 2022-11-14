@@ -82,3 +82,8 @@ Anaconda framework가 유용하나 유료..<br>
 Google Colaboratory(Colab)을 통해 부라우저 내에서 Python 스크립트를 작성하고 실행
 
 > Google Colab 단축키 : `Ctrl`{:.key} + `m`{:.key} + `h`{:.key}
+
+---
+# Reference
+
+* 이 포스트는 SeSAC 인공지능 SW 개발자 양성 과정 - 나예진 강사님의 강의내용을 정리한 것입니다.

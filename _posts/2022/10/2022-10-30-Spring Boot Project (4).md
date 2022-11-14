@@ -29,5 +29,5 @@ toc_label: 프로젝트 보강
 
 ---
 # Reference
-누구: [어디](하이퍼링크)
-{: style="text-align: right"}
+
+* 누구: [어디](하이퍼링크)

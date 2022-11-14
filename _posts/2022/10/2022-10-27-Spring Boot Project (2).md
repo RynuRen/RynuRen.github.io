@@ -357,15 +357,10 @@ public String list(Model model, HttpSession session, @RequestParam(defaultValue 
 
 ---
 # Reference
-sgoho01: [타임리프 레이아웃 (thymeleaf layout dialect)](https://sgoho01.tistory.com/12)
-{: style="text-align: right"}
-Jan92: [Spring Boot 타임리프 Thymeleaf layout 적용하는 방법](https://wildeveloperetrain.tistory.com/136)
-{: style="text-align: right"}
-mdn web docs: [input: 입력 요소](https://developer.mozilla.org/ko/docs/Web/HTML/Element/Input)
-{: style="text-align: right"}
-zepinos: [페이징에 대한 이해](https://zepinos.tistory.com/29)
-{: style="text-align: right"}
-간둥이: [[Thymeleaf] 현재 날짜 출력 및 형식 변경](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=hay6308&logNo=220968374336)
-{: style="text-align: right"}
-로넬: [[Mysql] Default Timezone 설정 방법](https://blog.naver.com/developer501/222492629932)
-{: style="text-align: right"}
+
+* sgoho01: [타임리프 레이아웃 (thymeleaf layout dialect)](https://sgoho01.tistory.com/12)
+* Jan92: [Spring Boot 타임리프 Thymeleaf layout 적용하는 방법](https://wildeveloperetrain.tistory.com/136)
+* mdn web docs: [input: 입력 요소](https://developer.mozilla.org/ko/docs/Web/HTML/Element/Input)
+* zepinos: [페이징에 대한 이해](https://zepinos.tistory.com/29)
+* 간둥이: [[Thymeleaf] 현재 날짜 출력 및 형식 변경](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=hay6308&logNo=220968374336)
+* 로넬: [[Mysql] Default Timezone 설정 방법](https://blog.naver.com/developer501/222492629932)

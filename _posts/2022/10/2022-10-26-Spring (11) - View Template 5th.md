@@ -386,5 +386,6 @@ public String boardRemove(@RequestParam int boardNo) {
 
 ---
 # Reference
-아기상어 뚜루루뚜루: [MariaDB | 윈도우 MariaDB 설치 및 접속하기](https://kitty-geno.tistory.com/55)
-{: style="text-align: right"}
+
+* 이 포스트는 SeSAC 인공지능 SW 개발자 양성 과정 - 김영식 강사님의 강의내용을 정리한 것입니다.
+* 아기상어 뚜루루뚜루: [MariaDB | 윈도우 MariaDB 설치 및 접속하기](https://kitty-geno.tistory.com/55)

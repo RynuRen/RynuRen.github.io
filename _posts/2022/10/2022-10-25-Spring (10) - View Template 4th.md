@@ -618,8 +618,9 @@ public String boardUpdate(Board board, HttpSession session) {
 
 ---
 # Reference
-{: style="text-align: right"}
-PrinceY: [[Spring & Web] return "redirect:/주소" 와 일반 return "view이름"의 차이](https://blog.naver.com/PostView.naver?blogId=sim4858&logNo=221007278858&categoryNo=0&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView)
-Leica: [JSP - EL 표현식 문법과 사용 방법](https://atoz-develop.tistory.com/entry/JSP-EL-%ED%91%9C%ED%98%84%EC%8B%9D-%EB%AC%B8%EB%B2%95%EA%B3%BC-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95)
-하늘호수: [[CSS] CSS 레이아웃 div 태그, p 태그, span 태그의 차이점](https://blog.naver.com/pungwun/220501759403)
+
+* 이 포스트는 SeSAC 인공지능 SW 개발자 양성 과정 - 김영식 강사님의 강의내용을 정리한 것입니다.
+* PrinceY: [[Spring & Web] return "redirect:/주소" 와 일반 return "view이름"의 차이](https://blog.naver.com/PostView.naver?blogId=sim4858&logNo=221007278858&categoryNo=0&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView)
+* Leica: [JSP - EL 표현식 문법과 사용 방법](https://atoz-develop.tistory.com/entry/JSP-EL-%ED%91%9C%ED%98%84%EC%8B%9D-%EB%AC%B8%EB%B2%95%EA%B3%BC-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95)
+* 하늘호수: [[CSS] CSS 레이아웃 div 태그, p 태그, span 태그의 차이점](https://blog.naver.com/pungwun/220501759403)
 {: style="text-align: right"}

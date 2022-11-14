@@ -552,6 +552,6 @@ public String param2(@RequestParam Map<String, Object> map) {
 
 ---
 # Reference
-{: style="text-align: right"}
-코딩하는흑구: [[HTML] 경로표기법(절대경로, 상대경로)](https://sas-study.tistory.com/m/127)
-{: style="text-align: right"}
+
+* 이 포스트는 SeSAC 인공지능 SW 개발자 양성 과정 - 김영식 강사님의 강의내용을 정리한 것입니다.
+* 코딩하는흑구: [[HTML] 경로표기법(절대경로, 상대경로)](https://sas-study.tistory.com/m/127)
