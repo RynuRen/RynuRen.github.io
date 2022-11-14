@@ -890,8 +890,8 @@ In&nbsp;[16]:
 <div class="input_area" markdown="1">
 
 ```python
-client_id = "Itc0w1KlwWprE9a3yDPk"
-client_secret = "HySIZYZBDv"
+client_id = "********************"
+client_secret = "**********"
 ```
 
 </div>
