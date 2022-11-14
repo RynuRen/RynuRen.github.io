@@ -4031,6 +4031,7 @@ Out&nbsp;[48]:
 
 # Reference
 
+* 이 포스트는 SeSAC 인공지능 자연어처리, 컴퓨터비전 기술을 활용한 응용 SW 개발자 양성 과정 - 나예진 강사님의 강의를 정리한 내용입니다.
 * pandas: [What kind of data does pandas handle?](https://pandas.pydata.org/docs/getting_started/intro_tutorials/01_table_oriented.html)
 * pandas: [How do I read and write tabular data?](https://pandas.pydata.org/docs/getting_started/intro_tutorials/02_read_write.html)
 * SAURABH SINGH: [Iris.csv](https://www.kaggle.com/datasets/saurabh00007/iriscsv)

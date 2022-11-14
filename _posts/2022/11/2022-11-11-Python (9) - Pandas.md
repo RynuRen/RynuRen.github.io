@@ -3784,7 +3784,7 @@ In&nbsp;[32]:
 <div class="input_area" markdown="1">
 
 ```python
-# 각 구별로 스타벅스가 얼마나 있는지 확인합니다.
+# 각 구별로 스타벅스가 얼마나 있는지 확인한다.
 starbucks_gu = df_seoul_starbucks.groupby('시군구명')['상호명'].count().to_frame().sort_values(by='상호명', ascending=False)
 starbucks_gu = starbucks_gu.reset_index()
 starbucks_gu = starbucks_gu.set_index('시군구명')
@@ -3997,7 +3997,7 @@ In&nbsp;[36]:
 <div class="input_area" markdown="1">
 
 ```python
-# 주요 5대 커피브랜드 서울 입점 비율을 시각화합니다.
+# 주요 5대 커피브랜드 서울 입점 비율을 시각화한다.
 starbucks_rate = (len(df_seoul_starbucks) / len(df_seoul_coffee) * 100)
 mega_rate = (len(df_seoul_mega) / len(df_seoul_coffee)* 100)
 twosome_rate = (len(df_seoul_2some) / len(df_seoul_coffee)* 100)
@@ -4585,4 +4585,8 @@ Out&nbsp;[44]:
 </div>
 </div>
 
+# Reference
 
+* 이 포스트는 SeSAC 인공지능 자연어처리, 컴퓨터비전 기술을 활용한 응용 SW 개발자 양성 과정 - 나예진 강사님의 강의를 정리한 내용입니다.
+* 공공데이터포털: [소상공인시장진흥공단_상가(상권)정보_20220930](https://www.data.go.kr/data/15083033/fileData.do)
+* BRI2022 [커피전문점 브랜드 2022년 8월 빅데이터 분석결과](https://brikorea.com/bbs/board.php?bo_table=rep_1&wr_id=1632)
