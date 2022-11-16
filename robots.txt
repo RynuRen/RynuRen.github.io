@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rynuren.github.io/sitemap.xml
