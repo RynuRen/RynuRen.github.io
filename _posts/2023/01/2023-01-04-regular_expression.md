@@ -1443,7 +1443,7 @@ pattern = re.compile(r"A")
 
 start = time.time()
 # pattern.split(r)
-re.split(r, "A")
+re.split(pattern, r)
 print("re.split : ", time.time() - start)
 
 start = time.time()
@@ -1460,8 +1460,8 @@ Out&nbsp;[63]:
 {:.output_stream}
 
 ```
-re.split :  3.7663638591766357
-내장 split :  0.03450798988342285
+re.split :  0.06091761589050293
+내장 split :  0.03753256797790527
 
 ```
 
