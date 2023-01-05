@@ -1,6 +1,6 @@
 ---
 layout: jupyter
-title: 정규 표현식
+title: 자연어 처리 - 정규 표현식
 published: true
 date: 2023-01-04
 description: 정규 표현식
@@ -1401,7 +1401,7 @@ In&nbsp;[62]:
 <div class="input_area" markdown="1">
 
 ```python
-text4 = '''"이온빔을 HfO2 기반 강유전체에 조사해 산소 공공을 형성했다”며 “기존의 복잡한 공정과 후처리 과정 없이 이온빔 조사밀도 조절만으로 강유전성을 200% 이상 강화했다'''
+text4 = '''“이온빔을 HfO2 기반 강유전체에 조사해 산소 공공을 형성했다”며 “기존의 복잡한 공정과 후처리 과정 없이 이온빔 조사밀도 조절만으로 강유전성을 200% 이상 강화했다”'''
 re_res = re.sub("[^a-zA-Z]", ' ', text4) # 대소문자를 제외하고 ' '(공백)으로 치환
 re_res
 ```
@@ -1418,7 +1418,116 @@ Out&nbsp;[62]:
 {:.output_data_text}
 
 ```
-'      HfO                                                                                     '
+'      HfO                                                                                      '
+```
+
+
+
+<div class="in_prompt">
+In&nbsp;[63]:
+</div>
+
+<div class="input_area" markdown="1">
+
+```python
+re_res.split()
+```
+
+</div>
+
+<div class="output_prompt">
+Out&nbsp;[63]:
+</div>
+
+
+
+
+{:.output_data_text}
+
+```
+['HfO']
+```
+
+
+
+<div class="in_prompt">
+In&nbsp;[64]:
+</div>
+
+<div class="input_area" markdown="1">
+
+```python
+text5 = "ㅋㅋㅋ so 이따가 시간 돼?ㅠㅠ"
+re.compile("[ 가-힣]+").sub("", text5) # 가-힝: 완성형 한글 전체 범위
+```
+
+</div>
+
+<div class="output_prompt">
+Out&nbsp;[64]:
+</div>
+
+
+
+
+{:.output_data_text}
+
+```
+'ㅋㅋㅋso?ㅠㅠ'
+```
+
+
+
+<div class="in_prompt">
+In&nbsp;[65]:
+</div>
+
+<div class="input_area" markdown="1">
+
+```python
+re.compile("[가-힣]+").findall(text5)
+```
+
+</div>
+
+<div class="output_prompt">
+Out&nbsp;[65]:
+</div>
+
+
+
+
+{:.output_data_text}
+
+```
+['이따가', '시간', '돼']
+```
+
+
+
+<div class="in_prompt">
+In&nbsp;[66]:
+</div>
+
+<div class="input_area" markdown="1">
+
+```python
+re.compile("[가-힣]+").sub("", text5).split()
+```
+
+</div>
+
+<div class="output_prompt">
+Out&nbsp;[66]:
+</div>
+
+
+
+
+{:.output_data_text}
+
+```
+['ㅋㅋㅋ', 'so', '?ㅠㅠ']
 ```
 
 
@@ -1426,7 +1535,7 @@ Out&nbsp;[62]:
 ### s.split() vs. re.split(s)
 
 <div class="in_prompt">
-In&nbsp;[63]:
+In&nbsp;[67]:
 </div>
 
 <div class="input_area" markdown="1">
@@ -1454,7 +1563,7 @@ print("내장 split : ", time.time() - start)
 </div>
 
 <div class="output_prompt">
-Out&nbsp;[63]:
+Out&nbsp;[67]:
 </div>
 
 {:.output_stream}
@@ -1466,7 +1575,7 @@ re.split :  0.06091761589050293
 ```
 
 <div class="in_prompt">
-In&nbsp;[64]:
+In&nbsp;[68]:
 </div>
 
 <div class="input_area" markdown="1">
@@ -1483,7 +1592,7 @@ print(re.split('[:\d]+',"One:two:2:t h r e e:3::fourth field"))
 </div>
 
 <div class="output_prompt">
-Out&nbsp;[64]:
+Out&nbsp;[68]:
 </div>
 
 {:.output_stream}
@@ -1500,7 +1609,7 @@ Out&nbsp;[64]:
 ## ex
 
 <div class="in_prompt">
-In&nbsp;[65]:
+In&nbsp;[69]:
 </div>
 
 <div class="input_area" markdown="1">
@@ -1514,7 +1623,7 @@ princess leia 010 2454 3457 leia@gmail.com'''
 </div>
 
 <div class="in_prompt">
-In&nbsp;[66]:
+In&nbsp;[70]:
 </div>
 
 <div class="input_area" markdown="1">
@@ -1526,7 +1635,7 @@ regex = r'0\d{1,2}[ -]?\d{3,4}[ -]?\d{3,4}'
 </div>
 
 <div class="in_prompt">
-In&nbsp;[67]:
+In&nbsp;[71]:
 </div>
 
 <div class="input_area" markdown="1">
@@ -1539,7 +1648,7 @@ print("\n".join(result))
 </div>
 
 <div class="output_prompt">
-Out&nbsp;[67]:
+Out&nbsp;[71]:
 </div>
 
 {:.output_stream}
