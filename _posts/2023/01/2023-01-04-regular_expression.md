@@ -6,9 +6,10 @@ date: 2023-01-04
 description: 정규 표현식
 comments: true
 categories:
- - python
+ - NLP
 tags:
  - python
+ - NLP
 toc: true
 toc_sticky: true
 toc_label: 정규 표현식

@@ -6,9 +6,10 @@ date: 2023-01-05
 description: 형태소 분석
 comments: true
 categories:
- - python
+ - NLP
 tags:
  - python
+ - NLP
 toc: true
 toc_sticky: true
 toc_label: 형태소 분석
@@ -348,6 +349,8 @@ Please refer to following web sites for details:
 * tokenizer 선택 기준: 원하는 파싱(Parsing) 결과가 나오는가? 처리 속도는 적절한가?
 
 ## 한국어 형태소 분석기
+
+mecab: 속도는 빠르나 윈도우 환경과 호환성이 좋지않음(colab에서 사용 권장)
 
 <div class="in_prompt">
 In&nbsp;[16]:
@@ -772,7 +775,9 @@ Out&nbsp;[35]:
 
 
 
-## 영어 불용어(Stopwords)
+## 불용어(Stopwords) 처리
+
+### 영어 불용어
 
 <div class="in_prompt">
 In&nbsp;[36]:
@@ -996,7 +1001,7 @@ Out&nbsp;[44]:
 
 ```
 
-## 한국어 불용어
+### 한국어 불용어
 
 <div class="in_prompt">
 In&nbsp;[45]:
@@ -1167,212 +1172,6 @@ Out&nbsp;[51]:
 ['이', '따위', '물건', '팔고', '돈', '처', '그냥', '하자', '물건']
 
 ```
-
-# 정수 인코딩
-
-텍스트를 숫자로 바꾸는 기법
-
-<div class="in_prompt">
-In&nbsp;[52]:
-</div>
-
-<div class="input_area" markdown="1">
-
-```python
-text = '''
-오늘 네가
-보고싶다
-널 다시 품에
-안아보고 싶다
-오늘 네가 난
-생각난다
-너랑 같이 산책하던
-그곳에 서있다
-너의 체온이
-기억난다
-따뜻하게 내 쉬던
-숨소리 들려
-오늘 네가
-온 것 같아
-우리 같이 잠들던
-벤치에 기대니
-시간이 흘러흘러
-다시 만날 순 없지
-그래도 보고싶다 널
-그리운 내 사랑아
-오늘 네가 정말
-보고싶다
-너를 다시 내 품에
-안아보고 싶다
-오늘 네가 난
-생각난다
-너를 쓰다듬던 손이
-너를 기억한다
-니가 보고싶다
-'''
-```
-
-</div>
-
-<div class="in_prompt">
-In&nbsp;[53]:
-</div>
-
-<div class="input_area" markdown="1">
-
-```python
-okt = Okt()
-text = text.replace("\n", " ")
-text1 = okt.morphs(text)
-
-text2 = []
-for word in text1:
-    if 4 > len(word) > 1:
-        text2.append(word)
-print(text2)
-```
-
-</div>
-
-<div class="output_prompt">
-Out&nbsp;[53]:
-</div>
-
-{:.output_stream}
-
-```
-['오늘', '다시', '안아', '보고', '싶다', '오늘', '같이', '산책', '하던', '서있다', '체온', '쉬던', '숨소리', '들려', '오늘', '같아', '우리', '같이', '잠들던', '벤치', '기대니', '시간', '흘러', '흘러', '다시', '만날', '없지', '그래도', '그리운', '사랑', '오늘', '정말', '다시', '안아', '보고', '싶다', '오늘', '기억']
-
-```
-
-<div class="in_prompt">
-In&nbsp;[54]:
-</div>
-
-<div class="input_area" markdown="1">
-
-```python
-# 총 단어 갯수, 중복제거 단어 갯수
-len(text2), len(set(text2))
-```
-
-</div>
-
-<div class="output_prompt">
-Out&nbsp;[54]:
-</div>
-
-
-
-
-{:.output_data_text}
-
-```
-(38, 27)
-```
-
-
-
-<div class="in_prompt">
-In&nbsp;[55]:
-</div>
-
-<div class="input_area" markdown="1">
-
-```python
-vocab = {}
-for word in text2:
-    if word not in vocab:
-        vocab[word] = 1
-    else:
-        vocab[word] += 1
-print(vocab)
-```
-
-</div>
-
-<div class="output_prompt">
-Out&nbsp;[55]:
-</div>
-
-{:.output_stream}
-
-```
-{'오늘': 5, '다시': 3, '안아': 2, '보고': 2, '싶다': 2, '같이': 2, '산책': 1, '하던': 1, '서있다': 1, '체온': 1, '쉬던': 1, '숨소리': 1, '들려': 1, '같아': 1, '우리': 1, '잠들던': 1, '벤치': 1, '기대니': 1, '시간': 1, '흘러': 2, '만날': 1, '없지': 1, '그래도': 1, '그리운': 1, '사랑': 1, '정말': 1, '기억': 1}
-
-```
-
-<div class="in_prompt">
-In&nbsp;[56]:
-</div>
-
-<div class="input_area" markdown="1">
-
-```python
-vocab_sorted = sorted(vocab.items(), key=lambda x:x[1], reverse=True)
-print(vocab_sorted)
-```
-
-</div>
-
-<div class="output_prompt">
-Out&nbsp;[56]:
-</div>
-
-{:.output_stream}
-
-```
-[('오늘', 5), ('다시', 3), ('안아', 2), ('보고', 2), ('싶다', 2), ('같이', 2), ('흘러', 2), ('산책', 1), ('하던', 1), ('서있다', 1), ('체온', 1), ('쉬던', 1), ('숨소리', 1), ('들려', 1), ('같아', 1), ('우리', 1), ('잠들던', 1), ('벤치', 1), ('기대니', 1), ('시간', 1), ('만날', 1), ('없지', 1), ('그래도', 1), ('그리운', 1), ('사랑', 1), ('정말', 1), ('기억', 1)]
-
-```
-
-## 말뭉치: Corpus
-
-<div class="in_prompt">
-In&nbsp;[57]:
-</div>
-
-<div class="input_area" markdown="1">
-
-```python
-# 말뭉치: 빈도 목록
-# 2번이상 반복된 단어만 뽑아 반복된 횟수 순서대로 나열
-word_to_index = {}
-i = 0
-for (word, freq) in vocab_sorted:
-    if freq > 1:
-        i += 1
-        word_to_index[word] = i
-word_to_index
-```
-
-</div>
-
-<div class="output_prompt">
-Out&nbsp;[57]:
-</div>
-
-
-
-
-{:.output_data_text}
-
-```
-{'오늘': 1, '다시': 2, '안아': 3, '보고': 4, '싶다': 5, '같이': 6, '흘러': 7}
-```
-
-
-
-i = 0은 padding에 사용된다.
-
-말뭉치  
- ('오늘', 5),  
- ('다시', 3),  
- ('안아', 2),  
- ('보고', 2),  
- ('싶다', 2),  
- ('같이', 2),  
- ('흘러', 2),  
 
 # Reference
 

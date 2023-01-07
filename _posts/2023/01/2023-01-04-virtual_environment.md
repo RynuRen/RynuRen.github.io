@@ -5,9 +5,10 @@ date: 2023-01-04
 description: Anaconda 가상환경 설정
 comments: true
 categories:
- - python
+ - NLP
 tags:
  - python
+ - NLP
 toc: true
 toc_sticky: true
 toc_label: Anaconda 가상환경 설정
