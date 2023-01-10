@@ -6,9 +6,10 @@ date: 2023-01-09
 description: 텍스트 유사도
 comments: true
 categories:
- - Need_modify
+ - NLP
 tags:
- - Need_modify
+ - python
+ - NLP
 toc: true
 toc_sticky: true
 toc_label: 텍스트 유사도
@@ -362,3 +363,30 @@ Out&nbsp;[15]:
 ```
 
 
+
+<div class="in_prompt">
+In&nbsp;[16]:
+</div>
+
+<div class="input_area" markdown="1">
+
+```python
+print(len(set(token_doc1).intersection(set(token_doc2)))/len(set(token_doc1).union(set(token_doc2))))
+print(len(set(token_doc1).intersection(set(token_doc3)))/len(set(token_doc1).union(set(token_doc3))))
+print(len(set(token_doc2).intersection(set(token_doc3)))/len(set(token_doc2).union(set(token_doc3))))
+```
+
+</div>
+
+<div class="output_prompt">
+Out&nbsp;[16]:
+</div>
+
+{:.output_stream}
+
+```
+0.5
+0.5
+1.0
+
+```
