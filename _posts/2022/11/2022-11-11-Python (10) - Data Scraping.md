@@ -1,6 +1,6 @@
 ---
 layout: jupyter
-title: Python (10) - Data Scrapping
+title: Python (10) - Data Scraping
 published: true
 date: 2022-11-11
 description: 데이터 스크래핑
@@ -11,11 +11,11 @@ tags:
  - python
  - numpy
  - pandas
- - scrapping
+ - scraping
  - beautifulsoup
 toc: true
 toc_sticky: true
-toc_label: Data Scrapping
+toc_label: Data Scraping
 ---
 ---
 # 데이터 스크래핑 기본
