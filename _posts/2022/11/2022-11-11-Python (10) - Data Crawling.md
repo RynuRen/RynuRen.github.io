@@ -1,9 +1,9 @@
 ---
 layout: jupyter
-title: Python (10) - Data Crawling
+title: Python (10) - Data Scrapping
 published: true
 date: 2022-11-11
-description: 데이터 크롤링
+description: 데이터 스크래핑
 comments: true
 categories:
  - python
@@ -11,16 +11,16 @@ tags:
  - python
  - numpy
  - pandas
- - crawling
+ - scrapping
  - beautifulsoup
 toc: true
 toc_sticky: true
-toc_label: Data Crawling
+toc_label: Data Scrapping
 ---
 ---
-# 데이터 크롤링 기본
+# 데이터 스크래핑 기본
 
-## BeautifulSoup 를 활용한 네이버 웹툰의 인기급상승 크롤링
+## BeautifulSoup 를 활용한 네이버 웹툰의 인기급상승 스크래핑
 
 ![img]({{ '/assets/images/2022/11/11/img1.PNG' | relative_url }}){: .left-image }
 
@@ -30,7 +30,7 @@ toc_label: Data Crawling
 - 속도가 빠름
 - html을 파싱하기 편함
 
-## 크롤링에서 BeautifulSoup을 사용하는 경우
+## 스크래핑에서 BeautifulSoup을 사용하는 경우
 
 * 해당 웹사이트가 정적인 페이지인 경우
 * 로그인, 버튼 클릭등 페이지내에 동작이 필요하지 않은경우
@@ -498,7 +498,7 @@ Out&nbsp;[8]:
 
 # 응용해보기
 
-## BeautifulSoup 를 활용하여 요일별 전체웹툰 크롤링
+## BeautifulSoup 를 활용하여 요일별 전체웹툰 스크래핑
 
 <div class="in_prompt">
 In&nbsp;[9]:
@@ -864,7 +864,7 @@ Out&nbsp;[14]:
 
 
 
-# API를 활용한 데이터 크롤링
+# API를 활용한 데이터 스크래핑
 
 [네이버 개발자 센터](https://developers.naver.com/)
 
