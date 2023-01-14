@@ -358,23 +358,6 @@ model name: hidden_layer, lapyer_weight: [array([[-0.9871975]], dtype=float32), 
 model name: output_layer, lapyer_weight: [array([[-1.0779022]], dtype=float32), array([-0.00863029], dtype=float32)]
 
 ```
+hidden_layer(SimpleRNN): $$h_t = W_x*X_t + W_h*h_{t-1} + b$$ => weights: W_x, W_h, b
 
-* RNN(Recurrent Neural Network)
-
-![img](https://images.ctfassets.net/3viuren4us1n/6lAT51BtXZ3zD5HCxe09m2/2b3b959d4c2a24aaa243c4b7771e9fd6/RNN2.jpg?fm=webp&w=828)
-
-현재 대상은 과거 대상 출력의 중첩.. 다시(re) 현재(current) => Dense 학습 => 미래 예측  
-현재입력의 가중치 + 과거출력의 가중치 = 현재출력  
-미래입력의 가중치 + 현재출력의 가중치 = 미래예측
-
-라인(시간, 흐름)이 길어질수록 과거의 입력값이 미치는 영향이 희석된다!
-
-과거의 값을 일부는 그대로, 일부는 현재와 혼합해 과거의 값이 미치는 영향을 보존해 RNN을 보강 => LSTM  
-LSTM(Long Short Term Memory) - RNN만 사용할 경우 과거의 영향이 줄어들 경우 사용한다.  
-LSTM은 연산과정이 오래 걸리므로 Long Term이 필요없을 경우 RNN만 사용하여도 충분하다.
-
-![img](http://i.imgur.com/jKodJ1u.png)
-
-# Reference
-
-* TELUS International: [What’s the difference between CNN and RNN?](https://www.telusinternational.com/insights/ai-data/article/difference-between-cnn-and-rnn)
+output_layer(Dense): $$y= W*x + b$$ => weights: W, b
