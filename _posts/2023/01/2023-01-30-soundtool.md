@@ -12,7 +12,7 @@ tags:
  - STT/TTS
 toc: true
 toc_sticky: true
-toc_label: 음성 처리 - 사운드 툴
+toc_label: 사운드 툴
 use_math: true
 ---
 ---
