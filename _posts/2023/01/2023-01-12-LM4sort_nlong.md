@@ -9,7 +9,7 @@ categories:
  - python
 tags:
  - python
- - coding test
+ - coding tip
 toc: true
 toc_sticky: true
 toc_label: 정렬(3) - 퀵, 힙, 병합
