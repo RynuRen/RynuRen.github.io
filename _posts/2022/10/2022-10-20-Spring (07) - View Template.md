@@ -14,11 +14,11 @@ toc_sticky: true
 toc_label: View Template
 ---
 ---
-1. 개발 환경 준비 [1)](/2022/10/Spring-(1)-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A4%80%EB%B9%84/)
-2. Spring IoC [1)](/2022/10/Spring-(2)-Spring-IoC/) [2)](/2022/10/Spring-(3)-Spring-IoC-2nd/)
-3. Spring MVC [1)](/2022/10/Spring-(4)-Spring-MVC/) [2)](/2022/10/Spring-(5)-Spring-MVC-2nd/) [3)](/2022/10/Spring-(6)-Spring-MVC-3rd/)
+1. 개발 환경 준비 [1)](/spring%20boot/Spring-(01)-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A4%80%EB%B9%84/)
+2. Spring IoC [1)](/spring%20boot/Spring-(02)-Spring-IoC/) [2)](/spring%20boot/Spring-(03)-Spring-IoC-2nd/)
+3. Spring MVC [1)](/spring%20boot/Spring-(04)-Spring-MVC/) [2)](/spring%20boot/Spring-(05)-Spring-MVC-2nd/) [3)](/spring%20boot/Spring-(06)-Spring-MVC-3rd/)
 4. ~~Database 활용~~
-5. <span style="color:Turquoise">**View Template**</span> <span style="color:SteelBlue">**1)**</span> [2)](/2022/10/Spring-(8)-View-Template 2nd/) [3)](/2022/10/Spring-(9)-View-Template-3rd/) [4)](/2022/10/Spring-(10)-View-Template-4th/) [5)](/2022/10/Spring-(11)-View-Template-5th/)
+5. <span style="color:Turquoise">**View Template**</span> <span style="color:SteelBlue">**1)**</span> [2)](/spring%20boot/Spring-(08)-View-Template-2nd/) [3)](/spring%20boot/Spring-(09)-View-Template-3rd/) [4)](/spring%20boot/Spring-(10)-View-Template-4th/) [5)](/spring%20boot/Spring-(11)-View-Template-5th/)
 6. AOP / Filter / Interceptor
 7. File Upload / Download
 
