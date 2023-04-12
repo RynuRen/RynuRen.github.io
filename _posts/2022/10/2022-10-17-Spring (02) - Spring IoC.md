@@ -245,4 +245,4 @@ System.out.println(b.run());
 # Reference
 
 * 이 포스트는 SeSAC 인공지능 SW 개발자 양성 과정 - 김영식 강사님의 강의내용을 정리한 것입니다.
-* 젼꾸이자 쪄니: [스프링 기본 핵심원리 (스프링 컨테이너와 스프링 빈)](https://jihyunhillpark.github.io/springframework/spring-fundamental4/)
+* ~~젼꾸이자 쪄니: [스프링 기본 핵심원리 (스프링 컨테이너와 스프링 빈)](https://jihyunhillpark.github.io/springframework/spring-fundamental4/)~~
