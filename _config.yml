@@ -279,7 +279,6 @@ compress_html:
   ignore:
     envs: development
 
-
 # Defaults
 defaults:
   # _posts
@@ -293,6 +292,7 @@ defaults:
       comments: true
       share: true
       related: true
+      show_date: true
 
   # _pages
   - scope:
@@ -301,3 +301,5 @@ defaults:
     values:
       layout: single
       author_profile: true
+
+date_format: "%Y년 %m월 %d일"
