@@ -21,7 +21,7 @@ title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "RynuRen"
 description              : "학습한 것들을 정리해보자"
-url                      : "http://RynuRen.github.io"
+url                      : "http://rynuren.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "https://github.com/RynuRen/RynuRen.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
